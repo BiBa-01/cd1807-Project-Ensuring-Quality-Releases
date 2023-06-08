@@ -18,4 +18,4 @@ variable address_space {}
 # Virtual Machine
 variable vm_admin_username {}
 #variable resource_type {}
-#variable network_interface_ids {}
+variable network_interface_id {}
