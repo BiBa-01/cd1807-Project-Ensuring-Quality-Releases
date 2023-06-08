@@ -1,5 +1,5 @@
 #!/bin/bash
-RESOURCE_GROUP_NAME="tfstate$RANDOM$RANDOM"/configure-tfstate-storage-account.sh"
+RESOURCE_GROUP_NAME="tfstate$RANDOM$RANDOM/configure-tfstate-storage-account.sh"
 STORAGE_ACCOUNT_NAME="mystoragebiba1"
 CONTAINER_NAME="tfstate"
 
