@@ -1,27 +1,29 @@
-resource "azurerm_network_interface" "" {
-  name                = "${var.application_type}-${var.resource_type}-nic"
-  location            = "var.location"
-  resource_group_name = "var.resource_group"
+resource "azurerm_network_interface" "azuredevops_interface" {
+  name                = ""
+  location            = ""
+  resource_group_name = ""
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = "var.subnet_id"
+    subnet_id                     = ""
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = "var.public_ip_address_id"
+    public_ip_address_id          = ""
   }
 }
 
 resource "azurerm_linux_virtual_machine" "test" {
-  name                = "${var.application_type}-${var.resource_type}"
-  location            = "var.location"
-  resource_group_name = "var.resource_group"
+  name                = ""
+  location            = ""
+  resource_group_name = ""
   size                = "Standard_DS2_v2"
-  admin_username      = "var.vm_admin_username"
-  network_interface_ids = [azurerm_network_interface.test.id]
+  admin_username      = ""
+  network_interface_ids = []
   admin_ssh_key {
-    username   = "var.vm_admin_username"
-    public_key = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDP/fVdWF+vqF34dI3Bjs6QE6AyA46oD3Mhfx2vGxh2cwuv/qS/kVMcmoAPlaT04cfIu2dmP8CBIMOtOUVc/GKcD8Lw8YjoHTqKmREdeDGDt0cFZSpNvVrfgTIGqnQ56+e+6XEIlY/rzPWZu7x54K7W1G8VsDRMXqALyiDJtdgP/pujvMmjHe2Sk02KdiCeSZExG+7NMXU2rrNPeKvnSYUjq5+DChYw8MAE5hcD8kw4cL9v/CuV/bpoIEt+HHPzf3UUFaGZabqxY2WsH8QnkSrZxl2koj3Ddwoto85tB0eVQiRKYNZchkSQCGPFlMkFR3QymwhiPfutM7dCa7aBkt+2b8Lc+17TM7aExi6yaZkZ+M0VJOmpgmItr1dZ2xR56yUOYeoho6v12IM1hXSi84I53Bwumpfb6RdnWGdWia2+l98L6vkK8GQljmwzNCyMpaSLIGe12ZB7G/3/AEnoK6jaaVoRtghuWWd9F1Hqs1ZORz8BOvQ60jROM6Xzt1coBhE= birte_balzer@cc-10959323-9c5ddd49f-f7wjg #"file("~/.ssh/id_rsa.pub")"
-  }
+    username = "adminuser"
+    public_key = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDXg4XFyaZElYVo0mljBKi33xS9RPDqYiehibpex6l3kYZlxspVt3eCkucw0lLSOaL2mx37Z3p9n7na+94uev5MwfxqALLTKSRXQQnNgyj4GJGEFisXR3xOElT/TsLQmuEBR7EtN1Y4ho8ODFKsZVJsiEIurQNcTlSgtAu1h0rqQztUKsDXVseeqKbLpx3k0CmsJfMWGmUa1pXGpsg3P97wyIrAKBs2pcH+MLt26DC1+EXC8LtJ6KxgLF//brBOkHhWqJIuuI20Zyo30hnNhLMSqOjOWi2SyuBJyZqaIlStFsld9RmPmvLFzX56yr1JRbvZyBcBTqcdorQcdBCSFtTYavPKBKye3Hi9UAyJYqcZElcsmZqxz3vEPw/jMRBZG4slV7Eu8zW8sN6tpmf0fQFki83ZD5V5A7IV8XFFG+tc+mSb25cWyMwNdMi/mpbENVu3PYumeoCChBedIdF5mFN/TmNb11VO4YLFgsUjLAAROTSiGT//NkBkpIyueX/TFF0= odl_user@cc-f958-ab119495-6448dd6dbb-pcbfh #file("~/home/odl_user/.ssh/id_rsa")
+}
+
+
   os_disk {
     caching           = "ReadWrite"
     storage_account_type = "Standard_LRS"
