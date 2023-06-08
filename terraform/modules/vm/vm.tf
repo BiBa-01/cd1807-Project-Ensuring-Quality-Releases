@@ -20,8 +20,8 @@ resource "azurerm_linux_virtual_machine" "test" {
   admin_username      = "${var.vm_admin_username}"
   network_interface_ids = []
   admin_ssh_key {
-    username = "odl_user_235293@udacityhol.onmicrosoft.com"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDXg4XFyaZElYVo0mljBKi33xS9RPDqYiehibpex6l3kYZlxspVt3eCkucw0lLSOaL2mx37Z3p9n7na+94uev5MwfxqALLTKSRXQQnNgyj4GJGEFisXR3xOElT/TsLQmuEBR7EtN1Y4ho8ODBs2pcH+MLt26DC1+EXC8LtJ6KxgLF//brBOkHhWqJIuuI20Zyo30hnNhLMSqOjOWi2SyuBJyZqaIlStFsld9RmPmvLFzX56yr1JRbvZyBcBTqcdorQcdBCSFtTYavPKBKye3Hi9UAyJYqcZElcsmZqxz3vEPw/jMRBZG4slV7Eu8zW8sN6tpmf0fQFki83ZD5V5A7IV8XFFG+tc+mSb25cWyMwNdMi/mpbENVu3PYumeoCChBedIdF5mFN/TmNb11VO4YLFgsUjLAAROTSiGT//NkBkpIyueX/TFF0= odl_user@cc-f958-ab119495-6448dd6dbb-pcbfh" 
+    username = "odl_user_235335@udacityhol.onmicrosoft.com"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJ4y77ET9reHxEEDHmJCNZ4t+SgcVkoq2RxDmVxxKhyr4uv/vo/uVh7fMczTu6oo0VsuBbE+xoPNjkWnEOVwiPlNN7O1axhScXSue8LY4ZeEisDB9cJ9CUdh8pt4cM/6Uodag3TVIEJVF5ZkH0EHqzH79UCA/FKjJzXUz8EkMfyuXWoa21lvXQssry5p0f0Sux0xXxutEiNMqdw4eiTjbpYTwaayTe3lGodO1RX6+WXLkv0PEfpyklTE/rC8gqYjBgBkg9GzRfRIDZ/Wq56F2V8Y7qMwcuInw8MxBwTfxZIWMLx1/s2t1OH7U3Qk6/vtZrqyW10IxTK9FaPV8c6lu2B2Rop3AROFU46kv3WflY5wu0TEjg47prQa0mk2hZ3Kp8+KuWxErZxuTHs+nNmcFhhRhOVa7R7A27zD6z5dUs2yEcg52tbba2PvksX61MXK+R+j9t/LxEg6nMvH9tae8A5bJrHIZ6/Ou+95lNZHY1tB/jiObEzIFsvF0ATPn8dzs= odl_user@cc-23754026-7d9fcc7cd9-hbrqh" 
 }
 
 
