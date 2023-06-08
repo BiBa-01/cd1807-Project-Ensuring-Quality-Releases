@@ -16,6 +16,6 @@ variable address_prefix_test {}
 variable address_space {}
 
 # Virtual Machine
-#variable vm_admin_username {}
+variable vm_admin_username {}
 #variable resource_type {}
 #variable network_interface_ids {}
