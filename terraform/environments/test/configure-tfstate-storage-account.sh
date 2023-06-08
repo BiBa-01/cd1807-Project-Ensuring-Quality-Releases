@@ -1,6 +1,6 @@
 #!/bin/bash
-RESOURCE_GROUP_NAME="tfstate$RANDOM$RANDOM/configure-tfstate-storage-account.sh"
-STORAGE_ACCOUNT_NAME="mystoragebiba1"
+RESOURCE_GROUP_NAME="Azuredevops"
+STORAGE_ACCOUNT_NAME="tfstate$Random$Random"
 CONTAINER_NAME="tfstate"
 
 # This command is not needed in the Udacity provided Azure account. 
