@@ -20,7 +20,7 @@ resource "azurerm_linux_virtual_machine" "test" {
   network_interface_ids = []
   admin_ssh_key {
   username = "adminuser"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("/home/odl_user/.ssh/id_rsa")
 }
 
 
