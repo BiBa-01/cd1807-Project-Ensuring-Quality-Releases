@@ -1,5 +1,5 @@
 #!/bin/bash
-RESOURCE_GROUP_NAME="udacity_rg./configure-tfstate-storage-account.sh"
+RESOURCE_GROUP_NAME="Azuredevops/configure-tfstate-storage-account.sh"
 STORAGE_ACCOUNT_NAME="tfstate$RANDOM$RANDOM"
 CONTAINER_NAME="tfstate"
 
