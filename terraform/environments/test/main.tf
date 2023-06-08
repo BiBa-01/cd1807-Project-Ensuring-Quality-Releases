@@ -5,7 +5,7 @@ provider "azurerm" {
   client_secret   = "${var.client_secret}"
   features {
      resource_group {
-        prevent_deletion_if_contains_resources
+        prevent_deletion_if_contains_resources = false
      }
   }
 }
