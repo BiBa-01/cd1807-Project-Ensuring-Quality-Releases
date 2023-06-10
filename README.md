@@ -1,5 +1,17 @@
-# Project Starter
-This repository contains the starter code for the **Ensuring Quality Releases** project of the cd1807 Ensuring Quality Releases (Quality Assurance) course taught by Nathan Anderson. 
+# Project Quality Releases
+This is my final project for the Udacity Nanodegree "Cloud Devops using Microsoft Azure.
+It includes creating Terraform configuration files, setting up a CI/CD Pipeline in Azure Devops and design, running test suites with JMeter, Postman and Selenium and using azure monitor to identify and mitigate operational issues.
+
+Tools
+
+Visual Studio Code
+Azure
+Azure Devops
+Terraform
+JMeter
+Postman
+Selenium
+Azure Monitor
 
 
 ## How to use?
