@@ -1,4 +1,4 @@
-# Project Quality Releases
+# Project Ensuring Quality Releases
 This is my final project for the Udacity Nanodegree "Cloud Devops using Microsoft Azure.
 It includes creating Terraform configuration files, setting up a CI/CD Pipeline in Azure Devops and design, running test suites with JMeter, Postman and Selenium and using azure monitor to identify and mitigate operational issues.
 
