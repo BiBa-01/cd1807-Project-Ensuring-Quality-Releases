@@ -16,6 +16,9 @@ terraform {
     key                  = "terraform.tfstate"
     access_key           = "+xUXHJaXGO+ak9xetG6mr2SRUoeSnC/xVVITgZYa+0oBk+7PCB1x5xGg5BhQYLyQYaSdX+eS8RKE+AStMreuWQ=="
   }
+    lifecycle {
+      prevent_destroy = true
+    }
 }
 module "resource_group" {
   source               = "../../modules/resource_group"
