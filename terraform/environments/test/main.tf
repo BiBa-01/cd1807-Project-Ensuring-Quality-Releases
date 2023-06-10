@@ -4,21 +4,16 @@ provider "azurerm" {
   client_id       = "${var.client_id}"
   client_secret   = "${var.client_secret}"
   features {
-     resource_group {
-        prevent_deletion_if_contains_resources = false
      }
   }
 }
 terraform {
   backend "azurerm" {
-    storage_account_name = "tfstatebb4"
-    container_name       = "tfstatebb4"
-    key                  = "terraform.tfstate"
-    access_key           = "+xUXHJaXGO+ak9xetG6mr2SRUoeSnC/xVVITgZYa+0oBk+7PCB1x5xGg5BhQYLyQYaSdX+eS8RKE+AStMreuWQ=="
+    storage_account_name = ""
+    container_name       = ""
+    key                  = ""
+    access_key           = ""
   }
-    lifecycle {
-      prevent_destroy = true
-    }
 }
 module "resource_group" {
   source               = "../../modules/resource_group"
