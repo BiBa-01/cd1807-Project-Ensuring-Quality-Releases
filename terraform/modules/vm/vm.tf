@@ -1,4 +1,4 @@
-resource "azurerm_network_interface" "azuredevops_interface" {
+resource "azurerm_network_interface" "test" {
   name                = "${var.application_type}-${var.resource_type}-nic"
   location            = "${var.location}"
   resource_group_name = "${var.resource_group}"
