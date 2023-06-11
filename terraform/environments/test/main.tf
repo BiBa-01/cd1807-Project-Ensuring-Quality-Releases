@@ -16,7 +16,7 @@ terraform {
     access_key           = "0X4x25GIW4KQIl6hecRjYt9QVAhZIhjlBiZZVYWJS5HlAs9WOvg2C6st4vzRvNgKhfSkW9VQfeNJ+ASt58FGQA=="
    }
  }
-}
+
 module "resource_group" {
   source               = "../../modules/resource_group"
   resource_group       = "AzureDevops"
