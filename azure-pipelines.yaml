@@ -80,11 +80,11 @@ stages:
         sshPublicKey: '$(PubKey)'            # variable value
         sshKeySecureFile: 'id_rsa.pub' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
     
-     - task: DownloadSecureFile@1
-       name: udacity_public_key
-       displayName: 'Download Public Key'
-       inputs:
-        secureFile: 'id_rsa.pub'
+    - task: DownloadSecureFile@1
+      name: PubKey
+      displayName: 'Download Public Key'
+      inputs:
+       secureFile: 'id_rsa.pub'
 
     
     # Run Terraform Apply
