@@ -219,7 +219,7 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment:
-      name:         # ToDo: Change/provide a name
+      name:        'Test'
       resourceType: VirtualMachine
       tags: selenium
     strategy:
