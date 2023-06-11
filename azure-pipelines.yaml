@@ -64,7 +64,7 @@ stages:
         backendAzureRmContainerName: 'tfstatebb4'
         backendAzureRmKey: 'test.terraform.tfstate'
 
-    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+    - task: Terraform@2#ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: Terraform validate
       inputs:
         provider: 'azurerm'
