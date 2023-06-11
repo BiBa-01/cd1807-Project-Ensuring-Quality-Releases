@@ -7,6 +7,7 @@ provider "azurerm" {
     resource_group{
      prevent_deletion_if_contains_resources = false
     }
+   }
  }
 terraform {
   backend "azurerm" {
@@ -14,7 +15,7 @@ terraform {
     container_name       = "tfstatebb4"
     key                  = "test.terraform.tfstate"
     access_key           = "0X4x25GIW4KQIl6hecRjYt9QVAhZIhjlBiZZVYWJS5HlAs9WOvg2C6st4vzRvNgKhfSkW9VQfeNJ+ASt58FGQA=="
-   }}
+   }
  }
 
 module "resource_group" {
