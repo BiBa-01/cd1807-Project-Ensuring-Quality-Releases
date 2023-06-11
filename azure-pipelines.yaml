@@ -8,7 +8,7 @@ trigger:
 
 # ToDo: Replace the agent pool name, if you are using Udacity Cloud lab. 
 # Otherwise, comment out the line below. 
-pool: 'myagentpool'
+  pool: 'myagentpool'
 
 # Agent VM image name
   vmImageName: 'myPackerImage'
