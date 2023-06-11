@@ -45,7 +45,7 @@ stages:
 
     # Run Terraform Init on the pipeline agent 
     # ToDo: Replace the resource group name, storage account name, and container name below
-    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@2
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: 'Terrafom init'
       inputs:
         Arguments: 
@@ -64,7 +64,7 @@ stages:
         backendAzureRmContainerName: 'tfstatebb4'
         backendAzureRmKey: 'test.terraform.tfstate'
 
-    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@2
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: Terraform validate
       inputs:
         provider: 'azurerm'
@@ -161,7 +161,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
-        rootFolderOrFile: 
+        rootFolderOrFile: 'automatedtesting/jmeter/fakerestapi'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
@@ -175,7 +175,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive PerformanceTestSuite'
       inputs:
-        rootFolderOrFile: 
+        rootFolderOrFile: 'automatedtesting/jmeter/fakerestapi'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
