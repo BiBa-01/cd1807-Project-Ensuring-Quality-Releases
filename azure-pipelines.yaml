@@ -10,13 +10,16 @@ trigger:
 # Otherwise, comment out the line below. 
 pool: 'myagentpool'
 
-# Agent VM image name
-vmImageName: 'myPackerImage'
 
-# Web app name
-webAppName: 'myApplication-AppService'
 
 variables:
+
+# Agent VM image name
+  vmImageName: 'myPackerImage'
+
+# Web app name
+  webAppName: 'myApplication-AppService'
+
   python.version: '3.7.6'
   # ToDo: Replace the service connection name as used in the DevOps project settings
   azureServiceConnectionId: 'myserviceconnection'
