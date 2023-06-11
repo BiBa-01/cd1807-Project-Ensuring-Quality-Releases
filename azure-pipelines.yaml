@@ -195,7 +195,7 @@ stages:
   - deployment: FakeRestAPI
     pool:
       vmImage: 'Ubuntu-18.04'      
-    environment: <environment name>   # ToDo
+    environment: test   # ToDo
     strategy:
       runOnce:
         deploy:
@@ -203,7 +203,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
-              azureSubscription: ''     # ToDo
+              azureSubscription: 'a3a536c2-3690-4c5f-8032-998a8dc3234e'     # ToDo
               appName: ''               # ToDo
               appType: webApp
               package: $(Pipeline.Workspace)/<artifact>/<archiveFile>       # ToDo: Use the published zip artifact. 
