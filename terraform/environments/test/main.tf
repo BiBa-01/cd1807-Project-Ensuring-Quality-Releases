@@ -8,14 +8,14 @@ provider "azurerm" {
      prevent_deletion_if_contains_resources = false
     }
  }
-}
 terraform {
   backend "azurerm" {
     storage_account_name = "tfstatebb4"
     container_name       = "tfstatebb4"
     key                  = "test.terraform.tfstate"
-    access_key           = "SMe55dwahF1B3NLcdWZjzlyConZcJUCiYvJy1RT3nd735sYMLVMSe7dh8JxgfI3Zq1Xn8FdZlTe5+AStdhA/8w=="
-  }
+    access_key           = ""
+  }}
+
 }
 module "resource_group" {
   source               = "../../modules/resource_group"

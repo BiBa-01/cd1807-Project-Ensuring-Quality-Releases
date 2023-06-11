@@ -1,6 +1,6 @@
 #!/bin/bash
 RESOURCE_GROUP_NAME="Azuredevops"
-STORAGE_ACCOUNT_NAME="tfstatebb4$Random$Random"
+STORAGE_ACCOUNT_NAME="tfstatebb4"
 CONTAINER_NAME="tfstatebb4"
 
 # This command is not needed in the Udacity provided Azure account. 
