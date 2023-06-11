@@ -1,13 +1,3 @@
-name: Azure Pipelines
-- task: Terraform@2
-  inputs:
-    Arguments: 
-    InstallTerraform: true
-    UseAzureSub: true
-    ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-    ConnectedServiceNameARM: 'myserviceconnection'
-    ManageState: false
-
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -51,7 +41,8 @@ stages:
       displayName: 'Terrafom installation'
       inputs:
         terraformVersion: '1.2.9'
-    
+
+
     # Run Terraform Init on the pipeline agent 
     # ToDo: Replace the resource group name, storage account name, and container name below
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
