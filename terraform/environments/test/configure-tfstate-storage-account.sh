@@ -8,7 +8,7 @@ CONTAINER_NAME="tfstatebb4"
 # az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 # Create storage account
-az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --encryption-services blob
+az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --encryption-services blob --public-access blob
 
 # Get storage account key
 ACCOUNT_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --query '[0].value' -o tsv)
@@ -21,5 +21,7 @@ echo "RESOURCE_GROUP_NAME=$RESOURCE_GROUP_NAME"
 echo "STORAGE_ACCOUNT_NAME=$STORAGE_ACCOUNT_NAME"
 echo "CONTAINER_NAME=$CONTAINER_NAME"
 echo "ACCOUNT_KEY=$ACCOUNT_KEY"
+echo "ACCESS_KEY=$ACCESS_KEY"
 echo $ARM_ACCESS_KEY
+
 
