@@ -20,8 +20,8 @@ resource "azurerm_linux_virtual_machine" "test" {
   admin_username      = "${var.vm_admin_username}"
   network_interface_ids = [azurerm_network_interface.test.id]
   admin_ssh_key {
-    username = "odl_user_235500@udacityhol.onmicrosoft.com"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2cV+EipxVv7wSPsQZQ56DmfCYInlWJO4DtoWrdHQLZh/GkqigS8OWxqjv8PwySv2KjDnFJNd2rJAiArYxlMUa75jtLLVowbwycm4mfuy2rZd2+UOTwCOQl8Q7oQEypVuv69ZS0iIBX3i9qZh4cSXpqMXZVFw0mSbBCWhiZVpK0EvctrEl2501gDA4RMn3gBsbox2zjQn+8nTrOIcs8POu0CN+TqXVuuzwgO2Qi8ZdsqP94cFysTjehC5ejp04z1dmQV06TmT7Ijv7KwOWoQlIy8MA6sx3gyqPKIP0rq42GN1qsh85hRU86A6+B5AVbox51jweShTH/tIWMmcjIsS26brRhgjMR6WxENsoekZLO0MLxEOokJIulrmjYIY7nJ07/0ji2aHImQJByB1nqYiaXcgMGyM/Q26Kc44iyZ3bNGLtHrFmGD6K4jqyYbR6VuHN0BQ1dIsqPT7nOexiWPza8snjjci/oETvkdw04/vExhFMc7GojTdz3qIJxh2qeiM= odl_user@cc-ec83fb63-5494dfcdd9-96wmh"
+    username = "odl_user_235618@udacityhol.onmicrosoft.com"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCgJzOveqJjcrv/36Nd8jClN7g+h8BT/tPKVLjSapMgaAnrKjqU+jqJPpbiXgo/uwUjlCBJNNlpJx8bu22587krX6zqTfNsXEE+488auqwTHXiYb4438XyBqGszbLz4kexNUa6VqbTF0kX6tQ6sObyXEhQOeqUsQeCNwPG/Q3LxTD6LSDoCZD1Msp0PD1EGvHPud36ot6mERGz0M5p8ee/ObtJfvG5iZe5EDoFvATvkIBrg/V1Nn2+iYr5tGS6SHoqz+zCScwER4JI35tQArJhLAGJJPN2Z/lSN+pA6PMaCcUqlmOJ/arGyJdBk7HgOvq/OK/IyRxXiWDNL1q4i7o5WR+T6azx2o/T4o0BzJXGgW3dRMFW98PidTtXRZYy2PSiZO+S2ufCLfP0SguODr0JuNUew1jl3lufT1icm5m7s8L80NbXGozqZP7InWcCJv9nTCNDjKCQkeNrDntQBE5X7IwVIUY4q0ZEfInwiqJ2YqABwG6RI6IhhJx30jqxIxgc= odl_user@cc-995681bc-8f88588bb-9kd2k"
 }
 
   os_disk {
