@@ -1,7 +1,7 @@
 #!/bin/bash
 RESOURCE_GROUP_NAME="Azuredevops"
-STORAGE_ACCOUNT_NAME="tfstatebb4"
-CONTAINER_NAME="tfstatebb4"
+STORAGE_ACCOUNT_NAME="tfstatebb5"
+CONTAINER_NAME="tfstatebb5"
 
 # This command is not needed in the Udacity provided Azure account. 
 # Create resource group
@@ -12,7 +12,7 @@ az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_
 
 # Get storage account key
 ACCOUNT_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --query '[0].value' -o tsv)
-export ARM_ACCESS_KEY=
+#export ARM_ACCESS_KEY=
 
 
 # Create blob container
