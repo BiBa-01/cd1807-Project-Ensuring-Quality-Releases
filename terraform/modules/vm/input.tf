@@ -9,4 +9,4 @@ variable "application_type" {}
 variable "resource_type" {}
 
 variable "vm_admin_username" {}
-#variable "network_interface_ids" {}
+variable "network_interface_ids" {}

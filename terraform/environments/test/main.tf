@@ -26,7 +26,7 @@ resource "azurerm_resource_group" "test" {
 
 module "resource_group" {
   source               = "../../modules/resource_group"
-  resource_group       = "AzureDevops"
+  resource_group       = "${var.resource_group}"
   location             = "${var.location}"
 }
 module "network" {
