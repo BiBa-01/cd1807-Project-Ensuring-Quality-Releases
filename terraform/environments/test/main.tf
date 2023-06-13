@@ -14,8 +14,8 @@ terraform {
     storage_account_name = "tfstatebb6"
     container_name       = "tfstatebb6"
     key                  = "test.terraform.tfstate"
-    #account_key         = "Ug5yJYcNibUN2suFlWDWyj9NgR6ChT8uXZ08kF4tNyfIGCnwMtyHp8z9rXwbzCgC5KZaoefdyvIQ+AStYk3WAg=="
-    access_key           = "Ug5yJYcNibUN2suFlWDWyj9NgR6ChT8uXZ08kF4tNyfIGCnwMtyHp8z9rXwbzCgC5KZaoefdyvIQ+AStYk3WAg=="
+    #account_key         = "CkZ1avCcrwWgbpvO2/3KtmEFPXm1+bEzGsk0saiaX8k8g0uYTT2pNQKfpZ5QXbHnBXL0oUF0evE2+AStsnp9Nw=="
+    access_key           = "CkZ1avCcrwWgbpvO2/3KtmEFPXm1+bEzGsk0saiaX8k8g0uYTT2pNQKfpZ5QXbHnBXL0oUF0evE2+AStsnp9Nw=="
    }
  }
 
