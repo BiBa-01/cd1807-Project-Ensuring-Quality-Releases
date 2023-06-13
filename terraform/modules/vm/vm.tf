@@ -18,7 +18,7 @@ resource "azurerm_linux_virtual_machine" "test" {
   resource_group_name = "${var.resource_group}"
   size                = "Standard_DS2_v2"
   admin_username      = "${var.vm_admin_username}"
-  network_interface_ids = [azurerm_network_interface.test.id]
+  network_interface_ids = "/subscriptions/456cc604-544c-45f8-99d0-c1b73aeec440/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/network_interface" #[azurerm_network_interface.test.id]
 
   admin_ssh_key {
     username = "odl_user_235647@udacityhol.onmicrosoft.com"

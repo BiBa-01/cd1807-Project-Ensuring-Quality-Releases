@@ -68,8 +68,6 @@ module "vm" {
   location         = "${var.location}"
   resource_group   = "${module.resource_group.resource_group_name}"
   application_type = "${var.application_type}"
-  #network_interface_ids = "${var.network_interface.test.id}"
-  network_interface_ids = [azurerm_network_interface.test.id]
   resource_type    = "vm"
   subnet_id        = "${module.network.subnet_id_test}"
   public_ip_address_id = "${module.publicip.public_ip_address_id}"
