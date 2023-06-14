@@ -1,3 +1,3 @@
-output "id" {
-  value = data.azurerm_resource_group.test.id
+output "subnet_id_test" {
+  value = "${azurerm_subnet.test.id}"
 }
