@@ -22,7 +22,7 @@ resource "azurerm_linux_virtual_machine" "test" {
 
   admin_ssh_key {
     username = "birtebalzer@gmail.com"
-    public_key = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDYJsolRl6rLWr4XedS/lAGYG3sKwo5lQbZ3emd1xJFRIy7GVDBV5tohVTufPyBlZOYWRnktuTUblghlpheakaiN+aCDen+z5Jfo+xzVcCfxgXw7boC3tvpayiXeeotu3M8qaqoUN6BtzHFOiv4DPb2UqpDS3TrNNSJm6VIeJP0Z9bLy6Fb2S5UXHGsTQMlvZTWyOuL5XabW/CwxKi17/Rhbui+DLoTH+7d+HQz05wLwKKAm5h0NP8Jt2b7TqiAjKyqXh7eeQN1lNTqbLr0eQabsyhGsb/Z5PLZSYDwxwRmyNSsuuj/sNsYD6T+pBYb4TobWm8As9sSN3zhZ3ZRYXHPRWiqIWoqjlZQuQUg2X2ioIwGOMi3ieSjAbwrk6+2fNcjFF6Z2267BgIlK6otQrztT0Tf79NBDe841vanxxm1vqal1zZrE1jc9Qmg/NVbwn+OnI0HUkkM7paz5qRPAk79HrhlOtmep4Y5CNzL5tqtFZkTnLXRcU95PGUFWceGeqE= birte@cc-7646c6f4-77f999f845-jjm27"
 }
 
   os_disk {
