@@ -14,8 +14,8 @@ terraform {
     storage_account_name = "tfstatebb6"
     container_name       = "tfstatebb6"
     key                  = "test.terraform.tfstate"
-    #account_key         = ""
-    access_key           = ""
+    #account_key         = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
+    access_key           = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
    }
  }
 
