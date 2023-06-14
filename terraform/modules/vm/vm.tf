@@ -21,8 +21,8 @@ resource "azurerm_linux_virtual_machine" "test" {
   network_interface_ids = [azurerm_network_interface.test.id]
 
   admin_ssh_key {
-    username = "odl_user_235734@udacityhol.onmicrosoft.com"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1X2jIbClkntYDtbcjXGBrEP4HneVk3PIPwV8CrYVKTsCRLYj0Yzjw1EnTppJEEojJlH1n/gPHiVnWDA3D2H8HPEjNpBgWgwLXGZ8fFrNLTFgdMpuSjtBBvpDjsVWv7bh4JEsnM+XvMurOwoO1ro3q6PYt8tHgIkCCt6VfPHAIgID1FU099RI/YO0P5H4hm3V6MvuQgZhp38vP4ArbI+nCIVwjsFDBeMRMceSUj6bgSTZ+4bTG32BK2udVhXM2UWOUmjkD3x4lDepv0FuY87wZdQXLs+ft7dMm0kG/DEmaO6ONhOhGA7TMacgEfpAsdNPH8n0E7gnknKBy1unhjK2NmF5cW3JRrS2BLdkUFQLGSMRrgMiRZbSXfO7nS8TQWWckAcBllu8QwqmnJrmydqm2/S/sijPzM7HJyhNgZ5Na5pBqWoT+vt9z8llsrdL+VOBBKdVIsVYBn64sEBnxj0lgFaLuICSu6xMvo614+PrkBfGcheyTWN0ljPO/qZ/zX+s= odl_user@cc-1ede84d0-66b67b4656-fzhz7"
+    username = "birtebalzer@gmail.com"
+    public_key = ""
 }
 
   os_disk {
