@@ -16,10 +16,11 @@ terraform {
    }
  }
 
-#resource "azurerm_resource_group" "test" {
-#  name     = "Azuredevops"
- # location = "eastus"
-#}
+resource "azurerm_resource_group" "test" {
+  name     = "Azuredevops"
+  location = "eastus"
+}
+
 
 module "resource_group" {
   source               = "../../modules/resource_group"
