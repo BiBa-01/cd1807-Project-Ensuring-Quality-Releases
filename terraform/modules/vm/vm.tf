@@ -22,7 +22,7 @@ resource "azurerm_linux_virtual_machine" "test" {
 
   admin_ssh_key {
     username = "birtebalzer@gmail.com"
-    public_key = ""
+    public_key = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
 }
 
   os_disk {
