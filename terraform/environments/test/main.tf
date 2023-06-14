@@ -24,11 +24,11 @@ resource "azurerm_resource_group" "test" {
   location = "eastus"
 }
 
-module "resource_group" {
-  source               = "../../modules/resource_group"
-  resource_group       = "${var.resource_group}"
-  location             = "${var.location}"
-}
+#module "resource_group" {
+ # source               = "../../modules/resource_group"
+  #resource_group       = "${var.resource_group}"
+  #location             = "${var.location}"
+#}
 module "network" {
   source               = "../../modules/network"
   address_space        = "${var.address_space}"
@@ -46,7 +46,7 @@ module "nsg-test" {
   application_type = "${var.application_type}"
   resource_type    = "NSG"
   resource_group   = "${module.resource_group.resource_group_name}"
-  subnet_id        = "${module.network.subnet_id_test}"
+ # subnet_id        = "${module.network.subnet_id_test}"
   address_prefix_test = "${var.address_prefix_test}"
 }
 module "appservice" {
@@ -69,7 +69,7 @@ module "vm" {
   resource_group   = "${module.resource_group.resource_group_name}"
   application_type = "${var.application_type}"
   resource_type    = "vm"
-  subnet_id        = "${module.network.subnet_id_test}"
+  # subnet_id        = "${module.network.subnet_id_test}"
   public_ip_address_id = "${module.publicip.public_ip_address_id}"
   vm_admin_username  = var.vm_admin_username 
 }
