@@ -1,8 +1,10 @@
 variable "location" {
-    default = "eastus" }
+    default = "eastus"
+}
 
 variable "resource_group" {
-    default = "project"}
+    default = "project"
+}
 
 variable "public_ip_address_id" {}
 variable "subnet_id" {}
@@ -12,6 +14,19 @@ variable "application_type" {
     default = "ProjectApp"}
 
 variable "resource_type" {
-    default = " project"}
+    default = " project"
+}
 
 variable "vm_admin_username" {}
+
+
+variable "vm_name" {
+  description = "project_vm"
+  type        = string
+}
+
+variable "vm_size" {
+  description = "B1s"
+  type        = string
+}
+
