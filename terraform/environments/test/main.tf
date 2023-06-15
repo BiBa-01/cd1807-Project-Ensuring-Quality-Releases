@@ -44,7 +44,7 @@ module "nsg-test" {
   application_type = "${var.application_type}"
   resource_type    = "NSG"
   resource_group   = "${module.resource_group.resource_group_name}"
-  subnet_id        = "${module.network.subnet_id_test}"
+  subnet_id        = "${module.network.subnet_id_test1}"
   address_prefix_test = "${var.address_prefix_test}"
 }
 module "appservice" {
