@@ -45,7 +45,7 @@ stages:
 
    - script: |
        # Build and deploy Flask application
-       flask run
+      flask run
      displayName: 'Build and deploy Flask application'
 
    - task: PythonScript@0
