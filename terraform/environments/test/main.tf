@@ -17,8 +17,8 @@ terraform {
  }
 
 resource "azurerm_resource_group" "test" {
-  name     = "azuredevops"
-  location = "westeurope"
+  name     = "project"
+  location = "eastus"
 }
 
 module "resource_group" {
