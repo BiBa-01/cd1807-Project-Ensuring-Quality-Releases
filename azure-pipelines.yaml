@@ -57,17 +57,17 @@ stages:
     # Use Terraform to create the Infrastructure      
     # Install Terraform on the pipeline agent 
   - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
-     displayName: 'Terrafom installation'
+    displayName: 'Terrafom installation'
     inputs:
       terraformVersion: '1.2.9'
 
 
     # Run Terraform Init on the pipeline agent 
     # ToDo: Replace the resource group name, storage account name, and container name below
-    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-      displayName: 'Terrafom init'
-      inputs:
-        Arguments: 
+   - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+     displayName: 'Terrafom init'
+     inputs:
+       Arguments: 
         InstallTerraform: true
         UseAzureSub: true
         ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
@@ -83,9 +83,9 @@ stages:
         backendAzureRmContainerName: 'tfstatebb4'
         backendAzureRmKey: 'test.terraform.tfstate'
 
-    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-      displayName: Terraform validate
-      inputs:
+   - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+     displayName: Terraform validate
+     inputs:
         provider: 'azurerm'
         command: 'validate'
 
