@@ -8,6 +8,7 @@
  
 terraform {
   backend "azurerm" {
+    resource_group_name  = "${var.resource_group}"
     storage_account_name = "tfstatebb7"
     container_name       = "tfstatebb7"
     key                  = "test.terraform.tfstate"
@@ -15,11 +16,6 @@ terraform {
     access_key           = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
    }
  }
-
-#resource "azurerm_resource_group" "test" {
-#  name     = "azuredevops"
-#  location = "eastus"
-#}
 
 
 module "resource_group" {
