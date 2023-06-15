@@ -33,7 +33,26 @@ stages:
 - stage: Build
   jobs:
   - job: BuildInfrastructure
-    steps:
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
+
+   - task: PipInstaller@1
+     inputs:
+       package: 'flask'
+
+   - script: |
+       # Build and deploy Flask application
+       flask run
+     displayName: 'Build and deploy Flask application'
+
+   - task: PythonScript@0
+     inputs:
+       scriptSource: 'filePath'
+       scriptPath: 'tests.py'
+     displayName: 'Run tests'
     #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
     # Install Terraform on the pipeline agent 
