@@ -16,6 +16,10 @@ terraform {
    }
  }
 
+resource "azurerm_resource_group" "test" {
+  name     = "azuredevops"
+  location = "westeurope"
+}
 
 module "resource_group" {
   source               = "../../modules/resource_group"
