@@ -52,7 +52,7 @@ stages:
     inputs:
       scriptSource: 'filePath'
       scriptPath: 'tests.py'
-     displayName: 'Run tests'
+    displayName: 'Run tests'
     #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
     # Install Terraform on the pipeline agent 
