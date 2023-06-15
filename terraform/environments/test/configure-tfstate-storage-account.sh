@@ -1,5 +1,5 @@
 #!/bin/bash
-RESOURCE_GROUP_NAME="tfstate"
+RESOURCE_GROUP_NAME="Azuredev1"
 STORAGE_ACCOUNT_NAME="tfstatebb8"
 CONTAINER_NAME="tfstatebb8"
 
