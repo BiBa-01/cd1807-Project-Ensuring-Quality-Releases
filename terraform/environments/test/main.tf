@@ -21,16 +21,12 @@ terraform {
 #  location = "eastus"
 #}
 
-resource "azurerm_resource_group" "test" {
-  name     = "azuredevops"
-  location = "eastus"
-}
 
-#module "resource_group" {
-#  source               = "../../modules/resource_group"
- # resource_group       = "${var.resource_group}"
- # location             = "${var.location}"
-#}
+module "resource_group" {
+  source               = "../../modules/resource_group"
+  resource_group       = "${var.resource_group}"
+  location             = "${var.location}"
+}
 module "network" {
   source               = "../../modules/network"
   address_space        = "${var.address_space}"
