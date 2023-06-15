@@ -9,11 +9,11 @@
 terraform {
   backend "azurerm" {
     resource_group_name  = "${var.resource_group}"
-    storage_account_name = "tfstatebb7"
-    container_name       = "tfstatebb7"
+    storage_account_name = "tfstatebb8"
+    container_name       = "tfstatebb8"
     key                  = "test.terraform.tfstate"
-    #account_key         = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
-    access_key           = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
+    #account_key         = ""
+    access_key           = ""
    }
  }
 
