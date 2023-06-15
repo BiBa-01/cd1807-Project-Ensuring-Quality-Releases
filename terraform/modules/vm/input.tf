@@ -11,7 +11,8 @@ variable "subnet_id" {}
 
 
 variable "application_type" {
-    default = "ProjectApp"}
+    default = "ProjectApp"
+}
 
 variable "resource_type" {
     default = " project"
