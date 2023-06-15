@@ -18,7 +18,9 @@ variable "resource_type" {
     default = " project"
 }
 
-variable "vm_admin_username" {}
+variable "vm_admin_username" {
+    default = "Biba"
+}
 
 
 
