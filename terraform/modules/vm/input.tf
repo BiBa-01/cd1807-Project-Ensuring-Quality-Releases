@@ -21,10 +21,5 @@ variable "resource_type" {
 variable "vm_admin_username" {}
 
 
-variable "vm_name" {
-  description = "project_vm"
-  type        = string
-}
-
 
 
