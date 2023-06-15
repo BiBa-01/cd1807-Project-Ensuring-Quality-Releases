@@ -26,8 +26,5 @@ variable "vm_name" {
   type        = string
 }
 
-variable "vm_size" {
-  description = "B1s"
-  type        = string
-}
+
 
