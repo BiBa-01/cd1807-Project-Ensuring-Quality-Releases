@@ -8,18 +8,18 @@
  
 terraform {
   backend "azurerm" {
-    storage_account_name = "tfstatebb8"
-    container_name       = "tfstatebb8"
+    storage_account_name = "tfstatebb7"
+    container_name       = "tfstatebb7"
     key                  = "test.terraform.tfstate"
-    #account_key         = ""
-    access_key           = ""
+    #account_key         = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
+    access_key           = "d58xK8h+k6ArXkLjwl+zWD6m+LVcu8m/eWLc4/lDvBcVpDiJqT/W6fSOChZEBoZkmlCiApaVWw5S+AStppX5cQ=="
    }
  }
 
 
 module "resource_group" {
   source               = "../../modules/resource_group"
-  resource_group       = "${var.resource_group}"
+  resource_group       = "Azuredevops" "${var.resource_group}"
   location             = "${var.location}"
 }
 module "network" {
