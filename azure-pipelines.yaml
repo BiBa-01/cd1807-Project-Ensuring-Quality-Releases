@@ -33,13 +33,13 @@ stages:
 - stage: Build
   jobs:
   - job: BuildInfrastructure
-  steps:
+  
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.x'
       addToPath: true
 
-   - task: PipInstaller@1
+  - task: PipInstaller@1
      inputs:
        package: 'flask'
 
