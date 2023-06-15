@@ -19,7 +19,7 @@ terraform {
 
 module "resource_group" {
   source               = "../../modules/resource_group"
-  resource_group       = "Azuredevops" "${var.resource_group}"
+  resource_group       = "${var.resource_group}"
   location             = "${var.location}"
 }
 module "network" {
