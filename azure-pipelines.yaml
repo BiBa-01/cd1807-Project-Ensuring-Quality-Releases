@@ -40,8 +40,8 @@ stages:
       addToPath: true
 
   - task: PipInstaller@1
-     inputs:
-       package: 'flask'
+    inputs:
+      package: 'flask'
 
    - script: |
        # Build and deploy Flask application
