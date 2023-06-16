@@ -6,7 +6,7 @@ Tools
 
 Visual Studio Code
 Azure
-Azure Devops
+Azure Devops (installing Terraform Azure Pipelines Extension from Marketplace)
 Terraform
 JMeter
 Postman
@@ -14,9 +14,10 @@ Selenium
 Azure Monitor
 
 
-## How to use?
-- Fork this repository to your Github account and clone it locally for further development. 
-- Follow the classroom instructions, and check the rubric before a submission. 
+### Utilize Terraform to apply infrastructure as Code
 
-## Suggestions and Corrections
-Feel free to submit PRs to this repo should you have any proposed changes. 
+#### Build
+<img width="452" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/72c6ece5-bcaf-412a-8741-116f3a5e5c11">
+
+#### Screenshot of successful execution of pipeline build
+
