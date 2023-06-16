@@ -102,7 +102,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
-              azureSubscription: '2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b'
+              azureSubscription: 'myserviceconnection'
               appName: 'mywebapp'
               appType: webApp
               package: $(Pipeline.Workspace)/<artifact>/<archiveFile>
