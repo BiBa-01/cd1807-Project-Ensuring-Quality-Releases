@@ -1,4 +1,4 @@
-﻿trigger:
+trigger:
 - main
 
 variables:
@@ -21,25 +21,25 @@ stages:
 
     # ... (other tasks)
 
-- stage: Deploy
-  jobs:
-  - deployment: FakeRestAPI
-    pool:
-      vmImage: 'Ubuntu-18.04'
-    environment: Test
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: AzureWebApp@1
-            displayName: 'Deploy Azure Web App'
-            inputs:
-              azureSubscription: '2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b'
-              appName: 'mywebapp'
-              appType: webApp
-              package: $(Pipeline.Workspace)/<artifact>/<archiveFile>
+#- stage: Deploy
+ # jobs:
+ # - deployment: FakeRestAPI
+ #   pool:
+ #     vmImage: 'Ubuntu-18.04'
+ #   environment: Test
+ #   strategy:
+ #     runOnce:
+  #      deploy:
+  #        steps:
+  #        - task: AzureWebApp@1
+   #         displayName: 'Deploy Azure Web App'
+   #         inputs:
+   #           azureSubscription: '2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b'
+   #           appName: 'mywebapp'
+   #           appType: webApp
+   #           package: $(Pipeline.Workspace)/<artifact>/<archiveFile>
 
-    # ... (other tasks)
+  
     #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
