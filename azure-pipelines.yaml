@@ -107,7 +107,7 @@ stages:
               azureSubscription: 'myserviceconnection'
               appName: 'mywebapp'
               appType: webApp
-              package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
+              package: $(Pipeline.Workspace)/$(Build.BuildId)-fakerestapi.zip
 
   
     #--------------------------------------------#    
