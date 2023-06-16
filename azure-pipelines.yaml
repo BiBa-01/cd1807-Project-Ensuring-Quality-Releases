@@ -32,7 +32,7 @@ stages:
          InstallTerraform: true
          UseAzureSub: true
          ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-         ConnectedServiceNameARM: 'myserviceconnection'
+         ConnectedServiceNameARM: 'ConnectedServiceNameARM'
          ManageState: false
 
          provider: 'azurerm'
