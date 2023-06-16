@@ -21,36 +21,36 @@ stages:
   #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
     # Install Terraform on the pipeline agent 
-  - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
-    displayName: 'Terrafom installation'
-    inputs:
-      terraformVersion: '1.2.9'
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+      displayName: 'Terrafom installation'
+      inputs:
+        terraformVersion: '1.2.9'
 
 
     # Run Terraform Init on the pipeline agent 
     # ToDo: Replace the resource group name, storage account name, and container name below
-  - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-    displayName: 'Terrafom init'
-    inputs:
-       Arguments: 
-        InstallTerraform: true
-        UseAzureSub: true
-        ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'myserviceconnection'
-        ManageState: false
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+      displayName: 'Terrafom init'
+      inputs:
+         Arguments: 
+         InstallTerraform: true
+         UseAzureSub: true
+         ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
+         ConnectedServiceNameARM: 'myserviceconnection'
+         ManageState: false
 
-        provider: 'azurerm'
-        command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-        backendServiceArm: '$(azureServiceConnectionId)'
-        backendAzureRmResourceGroupName: 'tfstatebb8'
-        backendAzureRmStorageAccountName: 'tfstatebb8'
-        backendAzureRmContainerName: 'tfstatebb8'
-        backendAzureRmKey: 'test.terraform.tfstate'
+         provider: 'azurerm'
+         command: 'init'
+         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+         backendServiceArm: '$(azureServiceConnectionId)'
+         backendAzureRmResourceGroupName: 'tfstatebb8'
+         backendAzureRmStorageAccountName: 'tfstatebb8'
+         backendAzureRmContainerName: 'tfstatebb8'
+         backendAzureRmKey: 'test.terraform.tfstate'
 
-  - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-    displayName: Terraform validate
-    inputs:
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+      displayName: Terraform validate
+      inputs:
         provider: 'azurerm'
         command: 'validate'
 
@@ -58,23 +58,23 @@ stages:
     # Generate an SSH key pair in your local/AZ Cloud shell. Use the public key in the Terraform VM module. 
     # Install public key and private key file to the pipeline agent, using the task below. 
     # ToDo: Change the inputs value below
-  - task: InstallSSHKey@0
-    inputs:
-        knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2cV+EipxVv7wSPsQZQ56DmfCYInlWJO4DtoWrdHQLZh/GkqigS8OWxqjv8PwySv2KjDnFJNd2rJAiArYxlMUa75jtLLVowbwycm4mfuy2rZd2+UOTwCOQl8Q7oQEypVuv69ZS0iIBX3i9qZh4cSXpqMXZVFw0mSbBCWhiZVpK0EvctrEl2501gDA4RMn3gBsbox2zjQn+8nTrOIcs8POu0CN+TqXVuuzwgO2Qi8ZdsqP94cFysTjehC5ejp04z1dmQV06TmT7Ijv7KwOWoQlIy8MA6sx3gyqPKIP0rq42GN1qsh85hRU86A6+B5AVbox51jweShTH/tIWMmcjIsS26brRhgjMR6WxENsoekZLO0MLxEOokJIulrmjYIY7nJ07/0ji2aHImQJByB1nqYiaXcgMGyM/Q26Kc44iyZ3bNGLtHrFmGD6K4jqyYbR6VuHN0BQ1dIsqPT7nOexiWPza8snjjci/oETvkdw04/vExhFMc7GojTdz3qIJxh2qeiM= odl_user@cc-ec83fb63-5494dfcdd9-96wmh' # variable value
-        sshPublicKey: '$(PubKey)'            # variable value
-        sshKeySecureFile: 'id_rsa.pub' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
+    - task: InstallSSHKey@0
+      inputs:
+         knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2cV+EipxVv7wSPsQZQ56DmfCYInlWJO4DtoWrdHQLZh/GkqigS8OWxqjv8PwySv2KjDnFJNd2rJAiArYxlMUa75jtLLVowbwycm4mfuy2rZd2+UOTwCOQl8Q7oQEypVuv69ZS0iIBX3i9qZh4cSXpqMXZVFw0mSbBCWhiZVpK0EvctrEl2501gDA4RMn3gBsbox2zjQn+8nTrOIcs8POu0CN+TqXVuuzwgO2Qi8ZdsqP94cFysTjehC5ejp04z1dmQV06TmT7Ijv7KwOWoQlIy8MA6sx3gyqPKIP0rq42GN1qsh85hRU86A6+B5AVbox51jweShTH/tIWMmcjIsS26brRhgjMR6WxENsoekZLO0MLxEOokJIulrmjYIY7nJ07/0ji2aHImQJByB1nqYiaXcgMGyM/Q26Kc44iyZ3bNGLtHrFmGD6K4jqyYbR6VuHN0BQ1dIsqPT7nOexiWPza8snjjci/oETvkdw04/vExhFMc7GojTdz3qIJxh2qeiM= odl_user@cc-ec83fb63-5494dfcdd9-96wmh' # variable value
+         sshPublicKey: '$(PubKey)'            # variable value
+         sshKeySecureFile: 'id_rsa.pub' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
     
-  - task: DownloadSecureFile@1
-    name: PubKey
-    displayName: 'Download Public Key'
-    inputs:
-       secureFile: 'id_rsa.pub'
+    - task: DownloadSecureFile@1
+      name: PubKey
+      displayName: 'Download Public Key'
+      inputs:
+        secureFile: 'id_rsa.pub'
 
     
     # Run Terraform Apply
-  - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-    displayName: Terraform apply
-    inputs:
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+      displayName: Terraform apply
+      inputs:
         provider: 'azurerm'
         command: 'apply'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
