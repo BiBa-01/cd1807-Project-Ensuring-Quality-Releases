@@ -1,0 +1,41 @@
+{
+    "builders": [
+        {
+            "type": "azure-arm",
+            "client_id": "e36d1893-313e-4241-92a9-a7a301769eda",
+            "client_secret": ".aH8Q~aMrZbdtQ1w23DGCXm5EpZdfaEUiuttddoY",
+            "tenant_id": "f958e84a-92b8-439f-a62d-4f45996b6d07",
+            "subscription_id": "d63f8116-7a20-4117-80f3-6b57296b37a5",
+            "managed_image_resource_group_name": "project",
+            "managed_image_name": "myPackerImage",
+            "os_type": "Linux",
+            "image_publisher": "Canonical",
+            "image_offer": "UbuntuServer",
+            "image_sku": "18.04-LTS",
+            "location": "East US",
+            "vm_size": "Standard_B1s",
+            "image_version": "latest"
+        }
+    ],
+    "provisioners": [
+        {
+            "inline": [
+                     "apt-get update",
+                     "apt-get upgrade -y",
+                     "apt-get install python3-pip -y",
+                     "apt-get install unzip -y",
+                     "apt-get install -y chromium-browser",
+                     "apt-get install python3-venv",
+                     "python3 -m venv env",
+                     "pip3 install selenium",
+                     "wget https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip",
+                     "unzip chromedriver_linux64.zip",
+                     "rm chromedriver_linux64.zip",
+                     "chown root:root chromedriver",
+                     "chmod 777 chromedriver"
+                 ],
+                 "inline_shebang": "/bin/sh -x",
+                 "type": "shell",
+                 "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
+               }]
+             }
