@@ -3,7 +3,7 @@
     "client_id": "e36d1893-313e-4241-92a9-a7a301769eda",
     "client_secret": ".aH8Q~aMrZbdtQ1w23DGCXm5EpZdfaEUiuttddoY",
     "resource_group": "project",
-    "subscription_id": "d63f8116-7a20-4117-80f3-6b57296b37a5",
+    "subscription_id": "d63f8116-7a20-4117-80f3-6b57296b37a5"
   },
     "builders": [
         {
