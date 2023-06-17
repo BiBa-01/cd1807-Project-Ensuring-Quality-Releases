@@ -11,7 +11,7 @@
             "client_id": "47a292e1-8c66-4dcd-ba4e-1e1da31f1cc0",
             "client_secret": "mh-8Q~saZ44Y9oQ9HYF4TgRqUyJTiUd3~27A0cn0",
             "tenant_id": "f958e84a-92b8-439f-a62d-4f45996b6d07",
-            "subscription_id": "myserviceconnection",
+            "subscription_id": "2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b",
             "managed_image_resource_group_name": "project",
             "managed_image_name": "myPackerImage",
             "os_type": "Linux",
