@@ -6,7 +6,7 @@
             "client_secret": "mh-8Q~saZ44Y9oQ9HYF4TgRqUyJTiUd3~27A0cn0",
             "tenant_id": "f958e84a-92b8-439f-a62d-4f45996b6d07",
             "subscription_id": "myserviceconnection",
-            "managed_image_resource_group_name": "azuretest",
+            "managed_image_resource_group_name": "test",
             "managed_image_name": "myPackerImage",
             "os_type": "Linux",
             "image_publisher": "Canonical",
