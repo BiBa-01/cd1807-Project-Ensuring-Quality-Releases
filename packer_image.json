@@ -4,8 +4,6 @@
     "client_secret": ".aH8Q~aMrZbdtQ1w23DGCXm5EpZdfaEUiuttddoY",
     "resource_group": "project",
     "subscription_id": "d63f8116-7a20-4117-80f3-6b57296b37a5",
-    #"ssh_user": "centos",
-   # "ssh_pass": "XXXXXXXXXX"
   },
     "builders": [
         {
