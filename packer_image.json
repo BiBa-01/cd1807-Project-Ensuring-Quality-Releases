@@ -1,17 +1,16 @@
-{
-    "variables": {
-    "client_id": "e36d1893-313e-4241-92a9-a7a301769eda",
-    "client_secret": ".aH8Q~aMrZbdtQ1w23DGCXm5EpZdfaEUiuttddoY",
+"variables": {
+    "client_id": "47a292e1-8c66-4dcd-ba4e-1e1da31f1cc0",
+    "client_secret": ". mh-8Q~saZ44Y9oQ9HYF4TgRqUyJTiUd3~27A0cn0",
     "resource_group": "project",
-    "subscription_id": "d63f8116-7a20-4117-80f3-6b57296b37a5"
+    "subscription_id": "2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b"
   },
     "builders": [
         {
             "type": "azure-arm",
-            "client_id": "47a292e1-8c66-4dcd-ba4e-1e1da31f1cc0",
-            "client_secret": "mh-8Q~saZ44Y9oQ9HYF4TgRqUyJTiUd3~27A0cn0",
+            "client_id": " e36d1893-313e-4241-92a9-a7a301769eda ",
+            "client_secret": ".aH8Q~aMrZbdtQ1w23DGCXm5EpZdfaEUiuttddoY ",
             "tenant_id": "f958e84a-92b8-439f-a62d-4f45996b6d07",
-            "subscription_id": "2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b",
+            "subscription_id": "d63f8116-7a20-4117-80f3-6b57296b37a5",
             "managed_image_resource_group_name": "project",
             "managed_image_name": "myPackerImage",
             "os_type": "Linux",
@@ -23,6 +22,7 @@
             "image_version": "latest"
         }
     ],
+
     "provisioners": [
         {
             "inline": [
