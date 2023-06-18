@@ -2,7 +2,7 @@ trigger:
 - main
 
 variables:
-  vmImageName: 'myPackerImage'
+  vmImageName: 'myimage_gallery'
   webAppName: 'myApplication-AppService'
   python.version: '3.7.6'
   azureServiceConnectionId: 'myserviceconnection'
