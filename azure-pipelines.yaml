@@ -180,7 +180,7 @@ stages:
     pool:
       vmImage: 'myimage_gallery'
     steps:
-    - task: 
+    - task: TerraformCLI@0 
       inputs:
         command: 'destroy'
         workingDirectory: $(System.DefaultWorkingDirectory)/terraform/environments
