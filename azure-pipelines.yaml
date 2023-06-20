@@ -173,18 +173,17 @@ stages:
                 echo "Starting Selenium Tests"
                 python3 add_remove_from_cart.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."
-  stages:
-   - stage: final
-     jobs:
-     - job: Destroy
-       displayName: Terraform Destroy
-       pool:
-         vmImage: 'myimage_gallery'
-       steps:
-       - task: 
-         inputs:
-           command: 'destroy'
-           workingDirectory: $(System.DefaultWorkingDirectory)/terraform/environments
-           environmentServiceName: 'test'
-           secureVarsFile: 'terraform.tfvars'
+- stage: final
+  jobs:
+  - job: Destroy
+    displayName: Terraform Destroy
+    pool:
+      vmImage: 'myimage_gallery'
+    steps:
+    - task: 
+      inputs:
+        command: 'destroy'
+        workingDirectory: $(System.DefaultWorkingDirectory)/terraform/environments
+        environmentServiceName: 'test'
+        secureVarsFile: 'terraform.tfvars'
 
