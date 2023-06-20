@@ -15,7 +15,7 @@ stages:
    - job: provision_infrastructure
      displayName: Provision infrastructure
      pool:
-       vmImage: 'myimage'
+       vmImageName: 'myimage_gallery'
      #steps:
      #  - task: DownloadSecureFile@1
      #    inputs: 
