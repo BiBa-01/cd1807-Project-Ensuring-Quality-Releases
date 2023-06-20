@@ -173,5 +173,5 @@ stages:
         command: 'destroy'
         workingDirectory: $(System.DefaultWorkingDirectory)/terraform/environments
         environmentServiceName: 'myserviceconnection'
-        secureVarsFile: 'terraform.tfvars'
+        #secureVarsFile: 'terraform.tfvars'
 
