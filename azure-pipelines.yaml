@@ -180,7 +180,7 @@ stages:
     pool:
       vmImage: 'myimage_gallery'
     steps:
-    - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI #TerraformCLI@0 
+    - task: TerraformCLI@0 
       inputs:
         command: 'destroy'
         workingDirectory: $(System.DefaultWorkingDirectory)/terraform/environments
