@@ -53,7 +53,7 @@ stages:
 
          provider: 'azurerm'
          command: 'init'
-         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments'
+         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
          backendServiceArm: 'myserviceconnection'
          backendAzureRmResourceGroupName: 'tfstatebb8'
          backendAzureRmStorageAccountName: 'tfstatebb8'
