@@ -37,7 +37,7 @@ stages:
 
          provider: 'azurerm'
          command: 'init'
-         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments'
          backendServiceArm: 'myserviceconnection'
          backendAzureRmResourceGroupName: 'tfstatebb8'
          backendAzureRmStorageAccountName: 'tfstatebb8'
@@ -161,3 +161,15 @@ stages:
                 echo "Starting Selenium Tests"
                 python3 add_remove_from_cart.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."
+  - stage: End
+    jobs:
+    - job: Destroy
+      displayName: Terraform Destroy
+      pool:
+        vmImage: 'myimage_gallery'
+      steps:
+      - task: 
+        inputs:
+          command: 'destroy'
+          workingDirectory: 
+
