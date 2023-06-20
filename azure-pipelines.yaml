@@ -16,15 +16,15 @@ stages:
      displayName: Provision infrastructure
      pool:
        vmImage: 'myimage_gallery'
-     steps:
-       - task: DownloadSecureFile@1
-         inputs: 
-           secureFile: 'id_rsa.pub'
-       - task: InstallSSHKey@0
-         inputs:
-           knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJKJ9hzTdhN2ZGxLc9p8AuvP1zBogKFgXLxs27yvAwrNZK0QpiaKpv8mD5vCtCIdOI+ssSyoMqw6/BjheUD1KsbLSzmG9vlTM9NHWekrPpaUI2U2aXErMLNEcvqTyln34w+Hlaz9O8ME3H5g1vckWPOFjTSh92f0//amHk4yZ5ETR7RK2GbpJ+5GpZX7AyRzHofsM+dlR1S6v/Q+iRxtYmG0qmDfjx1Jy5NVndp1Kd6qtYpLa7YkSqPaZESt9TEZ5xdck4a7MVBuPZn4DK0MV6jHQ1omv8/wlwRh+0wmfnNU94StxDPHaGYamtMyr7pLpusUNUYXM/2yVDqZtWJJ1DBIzYJc/0rVUqxSfGp76HT0eHYQ0quFtC/WHWzxTlNuIFaPRYK0t72DHKDBLS7Vv/bXti9E8bYs+xONwcxef9Sz7UDvoBwvBnX8gM2jkqk/WLiFfm/ZavZjDtDb39JpXE7+35vaZyicgmipp7Kpzxxn/rlD1zl6DYzZ885ASl3C0= generated-by-azure' # variable value
-           sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJKJ9hzTdhN2ZGxLc9p8AuvP1zBogKFgXLxs27yvAwrNZK0QpiaKpv8mD5vCtCIdOI+ssSyoMqw6/BjheUD1KsbLSzmG9vlTM9NHWekrPpaUI2U2aXErMLNEcvqTyln34w+Hlaz9O8ME3H5g1vckWPOFjTSh92f0//amHk4yZ5ETR7RK2GbpJ+5GpZX7AyRzHofsM+dlR1S6v/Q+iRxtYmG0qmDfjx1Jy5NVndp1Kd6qtYpLa7YkSqPaZESt9TEZ5xdck4a7MVBuPZn4DK0MV6jHQ1omv8/wlwRh+0wmfnNU94StxDPHaGYamtMyr7pLpusUNUYXM/2yVDqZtWJJ1DBIzYJc/0rVUqxSfGp76HT0eHYQ0quFtC/WHWzxTlNuIFaPRYK0t72DHKDBLS7Vv/bXti9E8bYs+xONwcxef9Sz7UDvoBwvBnX8gM2jkqk/WLiFfm/ZavZjDtDb39JpXE7+35vaZyicgmipp7Kpzxxn/rlD1zl6DYzZ885ASl3C0= generated-by-azure'            # variable value
-           sshKeySecureFile: 'id_rsa' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
+     #steps:
+     #  - task: DownloadSecureFile@1
+     #    inputs: 
+     #      secureFile: 'id_rsa.pub'
+     #  - task: InstallSSHKey@0
+     #    inputs:
+     #      knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJKJ9hzTdhN2ZGxLc9p8AuvP1zBogKFgXLxs27yvAwrNZK0QpiaKpv8mD5vCtCIdOI+ssSyoMqw6/BjheUD1KsbLSzmG9vlTM9NHWekrPpaUI2U2aXErMLNEcvqTyln34w+Hlaz9O8ME3H5g1vckWPOFjTSh92f0//amHk4yZ5ETR7RK2GbpJ+5GpZX7AyRzHofsM+dlR1S6v/Q+iRxtYmG0qmDfjx1Jy5NVndp1Kd6qtYpLa7YkSqPaZESt9TEZ5xdck4a7MVBuPZn4DK0MV6jHQ1omv8/wlwRh+0wmfnNU94StxDPHaGYamtMyr7pLpusUNUYXM/2yVDqZtWJJ1DBIzYJc/0rVUqxSfGp76HT0eHYQ0quFtC/WHWzxTlNuIFaPRYK0t72DHKDBLS7Vv/bXti9E8bYs+xONwcxef9Sz7UDvoBwvBnX8gM2jkqk/WLiFfm/ZavZjDtDb39JpXE7+35vaZyicgmipp7Kpzxxn/rlD1zl6DYzZ885ASl3C0= generated-by-azure' # variable value
+      #     sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJKJ9hzTdhN2ZGxLc9p8AuvP1zBogKFgXLxs27yvAwrNZK0QpiaKpv8mD5vCtCIdOI+ssSyoMqw6/BjheUD1KsbLSzmG9vlTM9NHWekrPpaUI2U2aXErMLNEcvqTyln34w+Hlaz9O8ME3H5g1vckWPOFjTSh92f0//amHk4yZ5ETR7RK2GbpJ+5GpZX7AyRzHofsM+dlR1S6v/Q+iRxtYmG0qmDfjx1Jy5NVndp1Kd6qtYpLa7YkSqPaZESt9TEZ5xdck4a7MVBuPZn4DK0MV6jHQ1omv8/wlwRh+0wmfnNU94StxDPHaGYamtMyr7pLpusUNUYXM/2yVDqZtWJJ1DBIzYJc/0rVUqxSfGp76HT0eHYQ0quFtC/WHWzxTlNuIFaPRYK0t72DHKDBLS7Vv/bXti9E8bYs+xONwcxef9Sz7UDvoBwvBnX8gM2jkqk/WLiFfm/ZavZjDtDb39JpXE7+35vaZyicgmipp7Kpzxxn/rlD1zl6DYzZ885ASl3C0= generated-by-azure'            # variable value
+      #     sshKeySecureFile: 'id_rsa' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
            
 - stage: Build
   jobs:
@@ -68,18 +68,6 @@ stages:
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         environmentServiceNameAzureRM: 'myserviceconnection'
 
-    # OPTIONAL - This step is needed only if your Terraform VM uses an SSH key pair for login and you want your pipeline agent to connect to it. 
-    # Generate an SSH key pair in your local/AZ Cloud shell. Use the public key in the Terraform VM module. 
-    # Install public key and private key file to the pipeline agent, using the task below. 
-    # ToDo: Change the inputs value below
-   #- task: InstallSSHKey@0
-      #inputs:
-       # knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJKJ9hzTdhN2ZGxLc9p8AuvP1zBogKFgXLxs27yvAwrNZK0QpiaKpv8mD5vCtCIdOI+ssSyoMqw6/BjheUD1KsbLSzmG9vlTM9NHWekrPpaUI2U2aXErMLNEcvqTyln34w+Hlaz9O8ME3H5g1vckWPOFjTSh92f0//amHk4yZ5ETR7RK2GbpJ+5GpZX7AyRzHofsM+dlR1S6v/Q+iRxtYmG0qmDfjx1Jy5NVndp1Kd6qtYpLa7YkSqPaZESt9TEZ5xdck4a7MVBuPZn4DK0MV6jHQ1omv8/wlwRh+0wmfnNU94StxDPHaGYamtMyr7pLpusUNUYXM/2yVDqZtWJJ1DBIzYJc/0rVUqxSfGp76HT0eHYQ0quFtC/WHWzxTlNuIFaPRYK0t72DHKDBLS7Vv/bXti9E8bYs+xONwcxef9Sz7UDvoBwvBnX8gM2jkqk/WLiFfm/ZavZjDtDb39JpXE7+35vaZyicgmipp7Kpzxxn/rlD1zl6DYzZ885ASl3C0= generated-by-azure' # variable value
-        #sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJKJ9hzTdhN2ZGxLc9p8AuvP1zBogKFgXLxs27yvAwrNZK0QpiaKpv8mD5vCtCIdOI+ssSyoMqw6/BjheUD1KsbLSzmG9vlTM9NHWekrPpaUI2U2aXErMLNEcvqTyln34w+Hlaz9O8ME3H5g1vckWPOFjTSh92f0//amHk4yZ5ETR7RK2GbpJ+5GpZX7AyRzHofsM+dlR1S6v/Q+iRxtYmG0qmDfjx1Jy5NVndp1Kd6qtYpLa7YkSqPaZESt9TEZ5xdck4a7MVBuPZn4DK0MV6jHQ1omv8/wlwRh+0wmfnNU94StxDPHaGYamtMyr7pLpusUNUYXM/2yVDqZtWJJ1DBIzYJc/0rVUqxSfGp76HT0eHYQ0quFtC/WHWzxTlNuIFaPRYK0t72DHKDBLS7Vv/bXti9E8bYs+xONwcxef9Sz7UDvoBwvBnX8gM2jkqk/WLiFfm/ZavZjDtDb39JpXE7+35vaZyicgmipp7Kpzxxn/rlD1zl6DYzZ885ASl3C0= generated-by-azure'            # variable value
-        #sshKeySecureFile: 'id_rsa' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
-    
-    
-    
     
     # Run Terraform Apply
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
