@@ -76,7 +76,7 @@ stages:
         provider: 'azurerm'
         command: 'apply'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-        commandOptions: '-var "public_key_path=$(public_key.secureFilePath)"'
+        #commandOptions: '-var "public_key_path=$(public_key.secureFilePath)"'
         environmentServiceNameAzureRM: 'myserviceconnection'
 
     # ToDo: Change the workingDirectory path, as applicable to you
