@@ -22,11 +22,7 @@ variable "vm_admin_username" {
     default = "Biba"
 }
 
-variable "network_interface" {
-    description = "The network interface for the virtual machine"
-    type        = list(string)
-    default = ["network_interface_id"]
-}
+
 
 
 
