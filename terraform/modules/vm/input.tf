@@ -16,9 +16,7 @@ variable "application_type" {
 
 variable "resource_type" {}
 
-variable "vm_admin_username" {
-    default = "Biba"
-}
+variable "vm_admin_username" {}
 
 
 
