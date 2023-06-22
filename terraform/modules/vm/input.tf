@@ -23,7 +23,7 @@ variable "vm_admin_username" {
 }
 
 variable "network_interface_ids" {
-    default = "network_interface"
+    default = ["network_interface"]
 }
 
 
