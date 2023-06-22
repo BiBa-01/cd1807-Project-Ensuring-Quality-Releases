@@ -22,6 +22,10 @@ variable "vm_admin_username" {
     default = "Biba"
 }
 
+variable "network_interface_ids" {
+    default = "network_interface"
+}
+
 
 
 
