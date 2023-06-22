@@ -19,6 +19,7 @@ terraform {
 resource "azurerm_resource_group" "test" {
   name     = "project"
   location = "eastus"
+  id       = "/subscriptions/2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b/resourceGroups/project"
 }
 
 module "resource_group" {
