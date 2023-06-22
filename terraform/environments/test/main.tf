@@ -16,13 +16,13 @@ terraform {
    }
  }
 
-resource "azurerm_resource_group" "test" {
+#resource "azurerm_resource_group" "test" {
   #name     = "project"
   #location = "eastus"
-  source               = "../../modules/resource_group"
-  resource_group       = "${var.resource_group}"
-  location             = "${var.location}"
-}
+ # source               = "../../modules/resource_group"
+ # resource_group       = "${var.resource_group}"
+ # location             = "${var.location}"
+#}
 
 module "resource_group" {
   source               = "../../modules/resource_group"
