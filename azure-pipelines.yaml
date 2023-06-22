@@ -28,8 +28,18 @@ stages:
            
 - stage: Build
   jobs:
-  - job: BuildInfrastructure
+  - job: Build
+    pool: 
+      VMimage: ubuntu-20.04
+      
     steps:
+     - task: Bash@3
+      displayName: 'Install Postman & Newman'
+      inputs:
+        targetType: 'inline'
+        script: |
+          #! /bin/bash
+          pwd
   #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
     # Install Terraform on the pipeline agent 
