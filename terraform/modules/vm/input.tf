@@ -25,7 +25,7 @@ variable "vm_admin_username" {
 variable "network_interface" {
     description = "The network interface for the virtual machine"
     type        = list(string)
-    default = ["network_interface"]
+    default = ["network_interface_id"]
 }
 
 
