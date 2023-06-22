@@ -34,8 +34,8 @@ stages:
       
     steps:
      - task: Bash@3
-      displayName: 'Install Postman & Newman'
-      inputs:
+       displayName: 'Install Postman & Newman'
+       inputs:
         targetType: 'inline'
         script: |
           #! /bin/bash
