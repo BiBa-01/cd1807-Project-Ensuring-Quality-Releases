@@ -74,7 +74,7 @@ stages:
       displayName: Terraform apply
       inputs:
         provider: 'azurerm'
-        command: ['apply', 'force-unlock 5505f44e-6456-34c7-d621-f57c811b5943']
+        command: 'apply'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         #commandOptions: '-var "public_key_path=$(public_key.secureFilePath)"'
         environmentServiceNameAzureRM: 'myserviceconnection'
