@@ -70,13 +70,13 @@ stages:
          backendAzureRmContainerName: 'tfstatebb8'
          backendAzureRmKey: 'test.terraform.tfstate'
 
-     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-       displayName: Terraform validate
-       inputs:
-         provider: 'azurerm'
-         command: 'validate'
-         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-         environmentServiceNameAzureRM: 'myserviceconnection'
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+      displayName: Terraform validate
+      inputs:
+        provider: 'azurerm'
+        command: 'validate'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        environmentServiceNameAzureRM: 'myserviceconnection'
 
     
     # Run Terraform Apply
