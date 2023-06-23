@@ -33,11 +33,11 @@ stages:
       VMimage: ubuntu-20.04
       
     steps:
-     - task: Bash@3
-       displayName: 'Install Postman & Newman'
-       inputs:
-        targetType: 'inline'
-        script: |
+    - task: Bash@3
+      displayName: 'Install Postman & Newman'
+      inputs:
+       targetType: 'inline'
+       script: |
           #! /bin/bash
           pwd
   #--------------------------------------------#  
