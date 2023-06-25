@@ -114,7 +114,7 @@ stages:
             displayName: 'Deploy Azure Web App'
             inputs:
               azureSubscription: 'myserviceconnection'
-              appName: 'mywebappBBfinal1'
+              appName: 'mywebappBBfinal'
               appType: webApp
               #package: $(Pipeline.Workspace)/$(Build.BuildId)-fakerestapi.zip
 
