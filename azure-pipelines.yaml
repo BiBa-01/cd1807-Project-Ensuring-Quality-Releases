@@ -16,6 +16,28 @@ stages:
      displayName: Provision infrastructure
      pool:
        vmImageName: myimage_gallery
+     steps:
+     - task: DownloadSecureFile@1
+       inputs:
+          secureFile: .env
+     - task: InstallSSHKey@0
+       inputs:
+          knownHostsEntry: 'known_host'
+          sshPublicKey: '$(ssh_pub_key)' 
+          sshKeySecureFile: 'id_rsa'
+     - task: InstallSSHKey@0
+       inputs:
+          knownHostsEntry: 'known_hosts'
+          sshPublicKey: '$(ssh_pub_key)'
+          sshKeySecureFile: 'id_rsa'
+     - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+       displayName: 'Use Terraform latest'
+       inputs:
+          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+     - task: TerraformCLI@0
+       displayName: 'check terraform version'
+       inputs:
+        command: version
     # steps:
       # - task: DownloadSecureFile@1
         # inputs: 
