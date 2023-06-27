@@ -156,7 +156,7 @@ stages:
               appType: 'webAppLinux'
               package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'
           - task: Bash@3
-           inputs:
+            inputs:
             targetType: 'inline'
             script: |
                  echo 'FakeRestAPI Running'
