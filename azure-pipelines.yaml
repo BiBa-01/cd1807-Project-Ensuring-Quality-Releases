@@ -160,14 +160,14 @@ stages:
             targetType: 'inline'
             script: |
                  echo 'FakeRestAPI Running'
--deployment:VMDeploy
- displayName: Deploy VM
- environment:
-    name: 'Test VM'
-    resourceType: VirtualMachine
- strategy:
-   runOnce:
-      deploy:
+- deployment: VMDeploy
+  displayName: Deploy VM
+  environment:
+     name: 'Test VM'
+     resourceType: VirtualMachine
+  strategy:
+     runOnce:
+       deploy:
         steps:
         - task: Bash@3
           inputs:
