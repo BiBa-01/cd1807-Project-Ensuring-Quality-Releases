@@ -116,9 +116,11 @@ stages:
 - stage: Deploy
   jobs:
   - deployment: FakeRestAPI
+    environment:
+            name: 'TEST'
+            resourceType: VirtualMachine
     pool:
-      vmImage: 'ubuntu-20.04'
-    environment: Test
+      vmImage: 'Ubunut-latest'
     strategy:
       runOnce:
         deploy:
