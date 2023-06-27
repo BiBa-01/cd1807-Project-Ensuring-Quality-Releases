@@ -121,7 +121,7 @@ stages:
             name: 'TEST'
             resourceType: VirtualMachine
     pool:
-      vmImage: 'Ubunut-latest'
+      vmImage: 'myimage_gallery'
     strategy:
       runOnce:
         deploy:
@@ -162,7 +162,7 @@ stages:
     environment:
       name:        'Test'
       resourceType: VirtualMachine
-      tags: selenium
+     # tags: selenium
     strategy:
       runOnce:
         deploy:
