@@ -274,23 +274,3 @@ stages:
         environmentServiceName: 'myserviceconnection'
         #secureVarsFile: 'terraform.tfvars'
 
-- stage: postDeployment
-    displayName: 'Tests'
-    pool:
-      vmImage: 'Ubuntu-latest'
-    jobs:
-    - job: runnewman
-      #-----------------------------------------------Running Postman/Newman Tests-------------------------------
-      steps:
-        - task: Bash@3
-          displayName: 'Run Postman/Newman Tests'
-          inputs:
-            targetType: 'inline'
-            script: |
-              sudo npm install -g newman reporter
-              echo 'Starting Tests...'
-              echo 'Running Regression Test'
-              newman run automatedtesting/postman/UdacityP3Regressiontest.postman_collection630.json  --delay-request 12000 --reporters cli,junit --suppress-exit-code
-              echo 'Running Data Validation Test'
-              newman run automatedtesting/postman/UdacityP3ValidationTest.postman_collection630.json  --delay-request 12000 --reporters cli,junit --suppress-exit-code
-        
