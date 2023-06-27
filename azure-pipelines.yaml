@@ -102,26 +102,17 @@ stages:
     #- publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
     #  displayName: 'Upload fakerrestapi Package'
     #  artifact: drop-fakerestapi
+    
     - task: ArchiveFiles@2
+      displayName: 'Archive Automation Tests'
       inputs:
-       rootFolderOrFile: 'automatedtesting'
-      includeRootFolder: true
-      archiveType: 'zip' 
-      archive file: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-      replaceExistingArchive: true
-    - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-      displayName: 'Uploade Package'
+        rootFolderOrFile: 'automatedtesting' 
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-automatedtests.zip' 
+    - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-automatedtests.zip'
+      displayName: 'Upload Package'
       artifact: drop
-    #- task: ArchiveFiles@2
-     # displayName: 'Archive Automation Tests'
-     # inputs:
-     #   rootFolderOrFile: 'automatedtesting' 
-     #   includeRootFolder: false
-     #   archiveType: 'zip'
-      #  archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-automatedtests.zip' 
-   # - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-automatedtests.zip'
-    #  displayName: 'Upload Package'
-   #   artifact: drop
 
 - stage: Deploy
   jobs:
