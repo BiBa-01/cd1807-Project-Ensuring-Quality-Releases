@@ -157,8 +157,8 @@ stages:
               package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'
           - task: Bash@3
             inputs:
-            targetType: 'inline'
-            script: |
+              targetType: 'inline'
+              script: |
                  echo 'FakeRestAPI Running'
   - deployment: VMDeploy
     displayName: Deploy VM
