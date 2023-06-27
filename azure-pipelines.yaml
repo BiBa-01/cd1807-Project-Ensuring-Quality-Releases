@@ -239,7 +239,7 @@ stages:
 - stage: Postman
   displayName: Postman Test
   jobs:
-  - job: Postman Test
+  - job: PostmanTest
     displayName: PostmanTests
     steps:
       - task: Bash@3
