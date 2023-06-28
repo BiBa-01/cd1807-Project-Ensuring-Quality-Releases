@@ -137,7 +137,7 @@ stages:
           name: 'TEST'
           resourceType: VirtualMachine
     pool:
-      vmImage: 'ubuntu-20.04'
+      vmImage: ubuntu-20.04
     strategy:
       runOnce:
         deploy:
