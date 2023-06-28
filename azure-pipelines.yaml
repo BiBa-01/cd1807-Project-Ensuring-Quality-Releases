@@ -15,7 +15,7 @@ stages:
    - job: provision_infrastructure
      displayName: Provision infrastructure
      pool:
-       vmImageName: myimage_gallery
+       vmImageName: ubuntu-20.04
   #   steps:
   #   - task: DownloadSecureFile@1
   #     inputs:
