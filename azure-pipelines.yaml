@@ -261,20 +261,20 @@ stages:
             testRunTitle: Data and Regression Tests
             testResultsFiles: '**/newman-*.xml'     
 #- stage: final
-  jobs:
-  - job: Destroy
-    displayName: Terraform Destroy
-    pool:
-      vmImage: 'myimage_gallery'
-    steps:
-    - task: TerraformCLI@0
-    inputs:
-     command: 'destroy'
-     environmentServiceName: 'project(2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b)'
-     allowTelemetryCollection: true
-    inputs:
-      command: 'destroy'
-      workingDirectory: $(System.DefaultWorkingDirectory)/terraform/environments
-      environmentServiceName: 'myserviceconnection'
+ # jobs:
+ # - job: Destroy
+ #   displayName: Terraform Destroy
+ #   pool:
+ #     vmImage: 'myimage_gallery'
+ #   steps:
+  #  - task: TerraformCLI@0
+   # inputs:
+   #  command: 'destroy'
+   #  environmentServiceName: 'project(2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b)'
+    # allowTelemetryCollection: true
+    #inputs:
+    #  command: 'destroy'
+     # workingDirectory: $(System.DefaultWorkingDirectory)/terraform/environments
+    #  environmentServiceName: 'myserviceconnection'
       #secureVarsFile: 'terraform.tfvars'
 
