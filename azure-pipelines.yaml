@@ -210,8 +210,8 @@ stages:
     #environment:
     #  name:        'Test'
       #resourceType: VirtualMachine
-      strategy:
-        runOnce:
+    strategy:
+      runOnce:
          deploy:
           steps:
           - download: current
