@@ -110,7 +110,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive Fakerestapi'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildID)-fakerestapi.zip' #'$(Build.BinariesDirectory)/$(Build.BuildID)-fakerestapi.zip'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/fakerestapi' #'$(Build.BinariesDirectory)/$(Build.BuildID)-fakerestapi.zip'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
@@ -119,11 +119,13 @@ stages:
       artifact: drop-fakerestapi
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.BinariesDirectory)/$(Build.BuildID)-automatedtests.zip'
-        includeRootFolder: true
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium' #'$(Build.BinariesDirectory)/$(Build.BuildID)-automatedtests.zip'
+        includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-automatedtests.zip'
-        replaceExistingArchive: false
+        archiveFile: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
+        replaceExistingArchive: true
+    - upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
+      artifact: selenium
 
 - stage: WebAppDeployment
   displayName: Web App Deployment
