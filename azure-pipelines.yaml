@@ -110,7 +110,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive Fakerestapi'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/fakerestapi' #'$(Build.BinariesDirectory)/$(Build.BuildID)-fakerestapi.zip'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/fakerestapi/' #'$(Build.BinariesDirectory)/$(Build.BuildID)-fakerestapi.zip'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
@@ -143,9 +143,9 @@ stages:
           - task: AzureWebApp@1
             inputs:
               azureSubscription: 'myserviceconnection'
-              appType: 'webAppLinux'
+              appType: webAppLinux
               appName: 'mywebappBBfinal-AppService'
-              package: '$(System.DefaultWorkingDirectory)/fakerestapi/fakerestapi.zip'
+              package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip #'$(System.DefaultWorkingDirectory)/fakerestapi/fakerestapi.zip'
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
