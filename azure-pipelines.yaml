@@ -124,8 +124,8 @@ stages:
         archiveType: 'zip'
         archiveFile: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
         replaceExistingArchive: true
-    - upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
-      artifact: selenium
+    #- upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
+     # artifact: selenium
 
 - stage: WebAppDeployment
   displayName: Web App Deployment
