@@ -3,44 +3,13 @@ trigger:
 
 variables:
   vmImageName: 'myimage_gallery'
-  webAppName: 'mywebappBBfinal'
+  webAppName: 'mywebappBBfinal-AppService' #'mywebappBBfinal'
   python.version: '3.7.6'
   azureServiceConnectionId: 'myserviceconnection'
   projectRoot: $(System.DefaultWorkingDirectory)
   environmentName: 'Test'
 
 stages:
-#- stage: Provision
- # jobs: 
- #  - job: provision_infrastructure
- #    displayName: Provision infrastructure
-  #   pool:
-  #     vmImageName: myimage_gallery
-  #   steps:
-  #   - task: DownloadSecureFile@1
-  #     inputs:
-  #        secureFile: .env
-  #   - task: InstallSSHKey@0
-  #     inputs:
-  #        knownHostsEntry: 'known_host'
-    #      sshPublicKey: '$(ssh_pub_key)' 
-   #       sshKeySecureFile: 'id_rsa'
-#     - task: InstallSSHKey@0
-    #   inputs:
-     #     knownHostsEntry: 'known_hosts'
-    #      sshPublicKey: '$(ssh_pub_key)'
-     #     sshKeySecureFile: 'id_rsa'
-   
-    # steps:
-      # - task: DownloadSecureFile@1
-        # inputs: 
-         #  secureFile: 'id_rsa.pub'
-     #  - task: InstallSSHKey@0
-         #inputs:
-         #  knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJKJ9hzTdhN2ZGxLc9p8AuvP1zBogKFgXLxs27yvAwrNZK0QpiaKpv8mD5vCtCIdOI+ssSyoMqw6/BjheUD1KsbLSzmG9vlTM9NHWekrPpaUI2U2aXErMLNEcvqTyln34w+Hlaz9O8ME3H5g1vckWPOFjTSh92f0//amHk4yZ5ETR7RK2GbpJ+5GpZX7AyRzHofsM+dlR1S6v/Q+iRxtYmG0qmDfjx1Jy5NVndp1Kd6qtYpLa7YkSqPaZESt9TEZ5xdck4a7MVBuPZn4DK0MV6jHQ1omv8/wlwRh+0wmfnNU94StxDPHaGYamtMyr7pLpusUNUYXM/2yVDqZtWJJ1DBIzYJc/0rVUqxSfGp76HT0eHYQ0quFtC/WHWzxTlNuIFaPRYK0t72DHKDBLS7Vv/bXti9E8bYs+xONwcxef9Sz7UDvoBwvBnX8gM2jkqk/WLiFfm/ZavZjDtDb39JpXE7+35vaZyicgmipp7Kpzxxn/rlD1zl6DYzZ885ASl3C0= generated-by-azure' # variable value
-         #  sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJKJ9hzTdhN2ZGxLc9p8AuvP1zBogKFgXLxs27yvAwrNZK0QpiaKpv8mD5vCtCIdOI+ssSyoMqw6/BjheUD1KsbLSzmG9vlTM9NHWekrPpaUI2U2aXErMLNEcvqTyln34w+Hlaz9O8ME3H5g1vckWPOFjTSh92f0//amHk4yZ5ETR7RK2GbpJ+5GpZX7AyRzHofsM+dlR1S6v/Q+iRxtYmG0qmDfjx1Jy5NVndp1Kd6qtYpLa7YkSqPaZESt9TEZ5xdck4a7MVBuPZn4DK0MV6jHQ1omv8/wlwRh+0wmfnNU94StxDPHaGYamtMyr7pLpusUNUYXM/2yVDqZtWJJ1DBIzYJc/0rVUqxSfGp76HT0eHYQ0quFtC/WHWzxTlNuIFaPRYK0t72DHKDBLS7Vv/bXti9E8bYs+xONwcxef9Sz7UDvoBwvBnX8gM2jkqk/WLiFfm/ZavZjDtDb39JpXE7+35vaZyicgmipp7Kpzxxn/rlD1zl6DYzZ885ASl3C0= generated-by-azure'            # variable value
-         #  sshKeySecureFile: 'id_rsa' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
-           
 - stage: Build
   jobs:
   - job: Build
@@ -48,13 +17,13 @@ stages:
       VMimage: ubuntu-20.04
       
     steps:
-    - task: Bash@3
-      displayName: 'Install Postman & Newman'
-      inputs:
-       targetType: 'inline'
-       script: |
-          #! /bin/bash
-          pwd
+    #- task: Bash@3
+    #  displayName: 'Install Postman & Newman'
+    #  inputs:
+     #  targetType: 'inline'
+     #  script: |
+     #     #! /bin/bash
+     #     pwd
   #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
     # Install Terraform on the pipeline agent 
@@ -104,6 +73,27 @@ stages:
         #commandOptions: '-var "public_key_path=$(public_key.secureFilePath)"'
         environmentServiceNameAzureRM: 'myserviceconnection'
 
+    #- task: Bash@3
+    #  displayName: 'Install Postman & Newman'
+    #  inputs:
+     #  targetType: 'inline'
+     #  script: |
+     #     #! /bin/bash
+     #     pwd
+
+    - task: CmdLine@2
+      displayName: Install Newman
+      inputs:
+        script: 'sudo npm install -g newman'
+        workingDirectory: $(System.DefaultWorkingDirectory)
+    #- task: CmdLine@2
+    #  displayName: Run Regression Tests
+   #   continueOnError: true
+    #  inputs:
+    #    script: 'newman run StarterAPIs.json'
+     #   workingDirectory: 'starter-code/automatedtesting/postman'         
+
+              
     # ToDo: Change the workingDirectory path, as applicable to you
     # Destroy the resources in Azure by running a separate pipeline. 
     
@@ -117,27 +107,35 @@ stages:
     #- publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
     #  displayName: 'Upload fakerrestapi Package'
     #  artifact: drop-fakerestapi
-    
     - task: ArchiveFiles@2
-      displayName: 'Archive Automation Tests'
+      displayName: 'Archive Fakerestapi'
       inputs:
-        rootFolderOrFile: 'automatedtesting' 
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/fakerestapi/' #'$(Build.BinariesDirectory)/$(Build.BuildID)-fakerestapi.zip'
         includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-automatedtests.zip' 
-    - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-automatedtests.zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
+    - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
       displayName: 'Upload Package'
-      artifact: drop
+      artifact: drop-fakerestapi
+    #- task: ArchiveFiles@2
+     # inputs:
+      #  rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium' #'$(Build.BinariesDirectory)/$(Build.BuildID)-automatedtests.zip'
+     #   includeRootFolder: false
+      #  archiveType: 'zip'
+      #  archiveFile: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
+      #  replaceExistingArchive: true
+    #- upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
+   #   artifact: selenium
 
 - stage: WebAppDeployment
   displayName: Web App Deployment
   jobs:
   - deployment: FakeRestAPI
     environment:
-          name: 'TEST'
-          resourceType: VirtualMachine
+          name: 'Test'
+          #resourceType: VirtualMachine
     pool:
-      vmImage: ubuntu-20.04
+      vmImage: ubuntu-latest
     strategy:
       runOnce:
         deploy:
@@ -145,14 +143,14 @@ stages:
           - task: AzureWebApp@1
             inputs:
               azureSubscription: 'myserviceconnection'
-              appType: 'webAppLinux'
-              appName: 'mywebappBBfinal'
-              package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              appType: webAppLinux
+              appName: 'mywebappBBfinal-AppService'
+              package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip #'$(System.DefaultWorkingDirectory)/fakerestapi/fakerestapi.zip'
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
               azureSubscription: 'myserviceconnection'
-              appName: 'mywebappBBfinal'
+              appName: 'mywebappBBfinal-AppService' #'mywebappBBfinal'
               appType: 'webAppLinux'
               package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'
           - task: Bash@3
@@ -169,73 +167,96 @@ stages:
     # runOnce:
     #   deploy:
      #   steps:
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: |           
-               #! /bin/bash
-                
-                sudo apt-get upgrade -y
-                sudo apt-get install python3-pip -y
-                sudo apt-get install unzip -y
-                sudo apt-get install -y chromium-browser
-                pip3 install selenium
-                cd ~/
-                DIR=/home/testuser/app
-                if [ ! -d "$DIR" ]; then
-                 mkdir app
-                fi
-                mv /home/testuser/azagent/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip app
-                cd app
-                unzip -o $(Build.BuildId)-uitests.zip
-                FILE=/home/testuser/app/chromedriver_linux64.zip
-                if [ ! -f "$FILE" ]; then
-                  LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-                  wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
-                  unzip -o chromedriver_linux64.zip
-                  sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
-                fi
-                export PATH=$PATH:/home/testuser/app
-                echo "Starting Selenium Tests"
-                python3 add_remove_from_cart.py >> selenium.log
-                echo "Completed Selenium Tests. Check selenium.log for results."
+          
+               
   
     #--------------------------------------------#    
           # Run JMeter test suite against the App Service
+       #   - task: Bash@3
+    #  displayName: 'Install Postman & Newman'
+    #  inputs:
+     #  targetType: 'inline'
+     #  script: |
+     #     #! /bin/bash
+     #     pwd
+
+    
 - stage: Jmeter
   displayName: JMeter Test
   jobs:
   - job: JMeterTest
     displayName: JMeterTests
     steps:
-    - task: CmdLine@2
+    - task: Bash@3
       inputs:
         script: |
-          wget "https://apache.mirrors.lucidnetworks.net//jmeter/binaries/apache-jmeter-5.2.1.tgz"
-          tar -xf apache-jmeter-5.2.1.tgz
+          sudo apt-get install openjdk-11-jre-headless -y
+          java -version
+          wget "wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.tgz"
+          tar -xf apache-jmeter-5.6.tgz
           unzip -o $(Build.BuildId)-perftests.zip
-          ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
-          cat jmeter.log                                                                           # ToDo: Write your commands
-          workingDirectory: '$(System.DefaultWorkingDirectory)'#(Pipeline.Workspace)/<artifact>            # ToDo: Use the artifact name from the task above
-              
+          ./apache-jmeter-5.6/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
+          cat jmeter.log                                                                          
+          workingDirectory: '$(System.DefaultWorkingDirectory)'#(Pipeline.Workspace)/<artifact>            
+    - task: Bash@3
+      displayName: Stress Test
+      inputs:
+        targetType: 'inline'
+        script: |
+          sudo mkdir stresstest-html-report
+          ls -la
+          rm -rf *.csv stress-test-html-report/*
+          echo "Run JMeter tests"
+          apache-jmeter-5.6/bin/jmeter -n -t automatedtesting/jmeter/starter.jmx \
+          -l StressTest_Results.csv -e -f -o stresstest-html-report/
+          ls -la
+    - task: Bash@3
+      displayName: Endurance Test
+      inputs:
+        targetType: 'inline'
+        script: |
+          mkdir test-html-report
+            ls -la 
+            rm -rf *.csv endurancetest-html-report/*
+            apache-jmeter-5.6/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
+            -l EnduranceTest_Results.csv -e -f -o endurancetest-html-report/
+            ls -la
     #--------------------------------------------#  
     # Selenium | Functional UI Tests
     # ToDo: 
-  - deployment: VMDeploy
-    displayName: Selenium Tests
-    environment:
-      name:        'Test'
-      resourceType: VirtualMachine
-    pool:
-      vmImage: 'myimage_gallery'
-     # tags: selenium
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: current
-            artifact: drop-ui-tests     # ToDo: Change/provide a name
-            
+  - job:
+    steps:
+    - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
+      artifact: selenium-python-file
+    - download: current
+      artifact: selenium-python-file
+    - task: Bash@3
+      displayName: 'Run Selenium Test'
+      inputs:
+        targetType: 'inline'
+        script: |
+          pwd
+          sudo apt-get update -y
+          sudo apt-get install python3-pip -y
+          sudo apt-get install unzip -y
+          sudo apt-get install -y chromium-browser
+          sudo apt-get install -y chromium-chromedriver
+          sudo pip3 install -U selenium
+          wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          rm -rf chromedriver_linux.zip
+          chromium-browser -version
+          chromedriver --version
+          sudo mkdir -p /var/logs/seleniumlogfile.txt
+          sudo chmod 775 /var/logs/seleniumlogfile.txt
+          sudo python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
+          cd $(System.DefaultWorkingDirectory)
+          mkdir -p logs/selenium
+          pwd
+          cat seleniumlog.txt
+          ls -la  
+  
+
 - stage: Postman
   displayName: Postman Test
   jobs:
