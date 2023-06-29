@@ -187,7 +187,7 @@ stages:
   - job: JMeterTest
     displayName: JMeterTests
     steps:
-    - task: CmdLine@2
+    - task: Bash@3
       inputs:
         script: |
           wget "https://apache.mirrors.lucidnetworks.net//jmeter/binaries/apache-jmeter-5.2.1.tgz"
