@@ -147,7 +147,7 @@ stages:
               azureSubscription: 'myserviceconnection'
               appType: 'webAppLinux'
               appName: 'myApplication1-AppService' #'mywebappBBfinal'
-              package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              package: '$(System.DefaultWorkingDirectory)/**/fakerestapi.zip'
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
