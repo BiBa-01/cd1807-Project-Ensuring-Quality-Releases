@@ -201,15 +201,15 @@ stages:
     # Selenium | Functional UI Tests
     # ToDo: 
   - job:
-    displayName: Selenium Tests
-   # steps: 
-    #- publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
-    #  artifact: selenium-python-file
-   # - download: current
-    #  artifact: selenium-python-file
-    environment:
-      name:        'Test'
-      resourceType: VirtualMachine
+    displayName: UI Tests
+    steps: 
+    - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
+      artifact: ui-file
+    - download: current
+      artifact: ui-file
+    #environment:
+    #  name:        'Test'
+      #resourceType: VirtualMachine
     strategy:
       runOnce:
         deploy:
