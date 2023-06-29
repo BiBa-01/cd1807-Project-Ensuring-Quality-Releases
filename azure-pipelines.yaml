@@ -258,11 +258,9 @@ stages:
           pwd
           cat seleniumlog.txt
           ls -la 
-   - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(Pipeline.Workspace)'
-        artifact: 'selenium'
-        publishLocation: 'pipeline'
+          - task: PublishPipelineArtifact@1
+            displayname: Selenium log
+        
 
 - stage: Postman
   displayName: Postman Test
