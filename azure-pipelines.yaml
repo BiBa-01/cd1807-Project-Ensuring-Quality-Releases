@@ -3,7 +3,7 @@ trigger:
 
 variables:
   vmImageName: 'myimage_gallery'
-  webAppName: 'myApplication1-AppService' #'mywebappBBfinal'
+  webAppName: 'mywebappBBfinal-AppService' #'mywebappBBfinal'
   python.version: '3.7.6'
   azureServiceConnectionId: 'myserviceconnection'
   projectRoot: $(System.DefaultWorkingDirectory)
@@ -117,15 +117,15 @@ stages:
     - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
       displayName: 'Upload Package'
       artifact: drop-fakerestapi
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium' #'$(Build.BinariesDirectory)/$(Build.BuildID)-automatedtests.zip'
-        includeRootFolder: false
-        archiveType: 'zip'
-        archiveFile: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
-        replaceExistingArchive: true
+    #- task: ArchiveFiles@2
+     # inputs:
+      #  rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium' #'$(Build.BinariesDirectory)/$(Build.BuildID)-automatedtests.zip'
+     #   includeRootFolder: false
+      #  archiveType: 'zip'
+      #  archiveFile: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
+      #  replaceExistingArchive: true
     #- upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
-     # artifact: selenium
+   #   artifact: selenium
 
 - stage: WebAppDeployment
   displayName: Web App Deployment
