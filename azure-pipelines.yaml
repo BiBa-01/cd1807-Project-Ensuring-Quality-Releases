@@ -192,10 +192,10 @@ stages:
         script: |
           sudo apt-get install openjdk-11-jre-headless -y
           java -version
-          wget "https://apache.mirrors.lucidnetworks.net//jmeter/binaries/apache-jmeter-5.2.1.tgz"
-          tar -xf apache-jmeter-5.2.1.tgz
+          wget "wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.tgz"
+          tar -xf apache-jmeter-5.6.tgz
           unzip -o $(Build.BuildId)-perftests.zip
-          ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
+          ./apache-jmeter-5.6/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
           cat jmeter.log                                                                          
           workingDirectory: '$(System.DefaultWorkingDirectory)'#(Pipeline.Workspace)/<artifact>            
     - task: Bash@3
@@ -207,8 +207,8 @@ stages:
           ls -la
           rm -rf *.csv stress-test-html-report/*
           echo "Run JMeter tests"
-          apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stresstest.jmx \
-          -l StressTest_Results.csv -e -f -o stresstest630-html-report/
+          apache-jmeter-5.6/bin/jmeter -n -t automatedtesting/jmeter/starter.jmx \
+          -l StressTest_Results.csv -e -f -o stresstest-html-report/
           ls -la
     - task: Bash@3
       displayName: Endurance Test
@@ -218,8 +218,8 @@ stages:
           mkdir test-html-report
             ls -la 
             rm -rf *.csv endurancetest-html-report/*
-            apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurancetest.jmx \
-            -l EnduranceTest_Results.csv -e -f -o endurancetest630-html-report/
+            apache-jmeter-5.6/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
+            -l EnduranceTest_Results.csv -e -f -o endurancetest-html-report/
             ls -la
     #--------------------------------------------#  
     # Selenium | Functional UI Tests
