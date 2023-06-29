@@ -234,10 +234,10 @@ stages:
         deploy:
           steps:
           - bash: |
-      displayName: 'Run Selenium Test'
-      inputs:
-        targetType: 'inline'
-        script: |
+      #displayName: 'Run Selenium Test'
+     # inputs:
+      #  targetType: 'inline'
+      #  script: |
           pwd
           sudo apt-get update -y
           sudo apt-get install python3-pip -y
