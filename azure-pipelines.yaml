@@ -3,7 +3,7 @@ trigger:
 
 variables:
   vmImageName: 'myimage_gallery'
-  webAppName: 'mywebappBBfinal'
+  webAppName: 'myApplication1-AppService' #'mywebappBBfinal'
   python.version: '3.7.6'
   azureServiceConnectionId: 'myserviceconnection'
   projectRoot: $(System.DefaultWorkingDirectory)
@@ -146,7 +146,7 @@ stages:
             inputs:
               azureSubscription: 'myserviceconnection'
               appType: 'webAppLinux'
-              appName: 'mywebappBBfinal'
+              appName: 'myApplication1-AppService' #'mywebappBBfinal'
               package: '$(System.DefaultWorkingDirectory)/**/*.zip'
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
