@@ -126,9 +126,9 @@ stages:
   - deployment: FakeRestAPI
     environment:
           name: 'Test'
-          resourceType: VirtualMachine
-    pool:
-      vmImage: ubuntu-20.04
+          #resourceType: VirtualMachine
+    #pool:
+     # vmImage: ubuntu-20.04
     strategy:
       runOnce:
         deploy:
