@@ -196,8 +196,8 @@ stages:
           tar -xf apache-jmeter-5.2.1.tgz
           unzip -o $(Build.BuildId)-perftests.zip
           ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
-          cat jmeter.log                                                                           # ToDo: Write your commands
-          workingDirectory: '$(System.DefaultWorkingDirectory)'#(Pipeline.Workspace)/<artifact>            # ToDo: Use the artifact name from the task above
+          cat jmeter.log                                                                          
+          workingDirectory: '$(System.DefaultWorkingDirectory)'#(Pipeline.Workspace)/<artifact>            
     - task: Bash@3
       displayName: Stress Test
       inputs:
@@ -226,12 +226,14 @@ stages:
     # ToDo: 
   - job:
     displayName: UI Tests
-    steps: 
-    - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
-      artifact: ui-file
-    - download: current
-      artifact: ui-file
-    - task: Bash@3
+    environment:
+      name: 'Test'
+      resourceType: VirtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - bash: |
       displayName: 'Run Selenium Test'
       inputs:
         targetType: 'inline'
@@ -255,7 +257,13 @@ stages:
           mkdir -p logs/selenium
           pwd
           cat seleniumlog.txt
-          ls -la  
+          ls -la 
+   - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'selenium'
+        publishLocation: 'pipeline'
+
 - stage: Postman
   displayName: Postman Test
   jobs:
