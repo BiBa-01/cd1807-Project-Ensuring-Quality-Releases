@@ -212,7 +212,7 @@ stages:
       #resourceType: VirtualMachine
     strategy:
       runOnce:
-         deploy:
+        deploy:
           steps:
           - download: current
             artifact: drop-ui-tests     # ToDo: Change/provide a name
