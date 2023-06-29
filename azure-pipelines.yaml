@@ -190,13 +190,37 @@ stages:
     - task: Bash@3
       inputs:
         script: |
+          sudo apt-get install openjdk-11-jre-headless -y
+          java -version
           wget "https://apache.mirrors.lucidnetworks.net//jmeter/binaries/apache-jmeter-5.2.1.tgz"
           tar -xf apache-jmeter-5.2.1.tgz
           unzip -o $(Build.BuildId)-perftests.zip
           ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
           cat jmeter.log                                                                           # ToDo: Write your commands
           workingDirectory: '$(System.DefaultWorkingDirectory)'#(Pipeline.Workspace)/<artifact>            # ToDo: Use the artifact name from the task above
-              
+    - task: Bash@3
+      displayName: Stress Test
+      inputs:
+        targetType: 'inline'
+        script: |
+          sudo mkdir stresstest-html-report
+          ls -la
+          rm -rf *.csv stress-test-html-report/*
+          echo "Run JMeter tests"
+          apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stresstest.jmx \
+          -l StressTest_Results.csv -e -f -o stresstest630-html-report/
+          ls -la
+    - task: Bash@3
+      displayName: Endurance Test
+      inputs:
+        targetType: 'inline'
+        script: |
+          mkdir test-html-report
+            ls -la 
+            rm -rf *.csv endurancetest-html-report/*
+            apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurancetest.jmx \
+            -l EnduranceTest_Results.csv -e -f -o endurancetest630-html-report/
+            ls -la
     #--------------------------------------------#  
     # Selenium | Functional UI Tests
     # ToDo: 
