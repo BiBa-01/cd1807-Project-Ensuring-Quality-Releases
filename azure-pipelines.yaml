@@ -111,7 +111,7 @@ stages:
       displayName: 'Archive Fakerestapi'
       inputs:
         rootFolderOrFile: '$(Build.BinariesDirectory)'
-        includeRootFolder: true
+        includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
     - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
