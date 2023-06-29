@@ -250,7 +250,7 @@ stages:
           sudo mkdir -p /var/logs/seleniumlogfile.txt
           sudo chmod 775 /var/logs/seleniumlogfile.txt
           sudo python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
-          cd $(System.DefaultWorkingDirectory)
+          cd $(System.DefaultWorkingDirectory)/automatedtesting/selenium
           mkdir -p logs/selenium
           pwd
           cat seleniumlog.txt
