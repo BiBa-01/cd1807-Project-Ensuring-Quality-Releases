@@ -225,19 +225,16 @@ stages:
     # Selenium | Functional UI Tests
     # ToDo: 
   - job:
-    displayName: UI Tests
-    environment:
-      name: 'Test'
-      resourceType: VirtualMachine
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - bash: |
-      #displayName: 'Run Selenium Test'
-     # inputs:
-      #  targetType: 'inline'
-      #  script: |
+    steps:
+    - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
+      artifact: selenium-python-file
+    - download: current
+      artifact: selenium-python-file
+    - task: Bash@3
+      displayName: 'Run Selenium Test'
+      inputs:
+        targetType: 'inline'
+        script: |
           pwd
           sudo apt-get update -y
           sudo apt-get install python3-pip -y
@@ -257,10 +254,8 @@ stages:
           mkdir -p logs/selenium
           pwd
           cat seleniumlog.txt
-          ls -la 
-          - task: PublishPipelineArtifact@1
-            displayname: Selenium log
-        
+          ls -la  
+  
 
 - stage: Postman
   displayName: Postman Test
