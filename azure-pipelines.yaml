@@ -60,35 +60,40 @@ stages:
         #commandOptions: '-var "public_key_path=$(public_key.secureFilePath)"'
         environmentServiceNameAzureRM: 'myserviceconnection'
 
-    #- task: Bash@3
-    #  displayName: 'Install Postman & Newman'
-    #  inputs:
-     #  targetType: 'inline'
-     #  script: |
-     #     #! /bin/bash
-     #     pwd
-
+   # Postman - Install Newman    
+     # ToDo: Update the command and verify the working directory
     - task: CmdLine@2
       displayName: Install Newman
       inputs:
         script: 'sudo npm install -g newman'
         workingDirectory: $(System.DefaultWorkingDirectory)
-         
-
-              
-    # ToDo: Change the workingDirectory path, as applicable to you
-    # Destroy the resources in Azure by running a separate pipeline. 
+    # Postman Data Validation Test Suite    
+    # ToDo: Verify the working directory
+    - task: CmdLine@2
+      displayName: Run Data Validation Tests
+      continueOnError: true
+      inputs:
+       script: 'newman run TestSuite.Data-Validation.json -e Test.environment.json --reporters cli,junit --reporter-junit-export TEST-DataValidation.xml'
+       workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
+    # Postman Regression Test Suite    
+    # ToDo: Verify the working directory
+    - task: CmdLine@2
+      displayName: Run Regression Tests
+      continueOnError: true
+      inputs:
+       script: 'newman run TestSuite.Regression.json -e Test.environment.json --reporters cli,junit --reporter-junit-export TEST-Regression.xml'
+       workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
+    # Postman - Publish Results 
+    # ToDo: Complete the task as explained here: https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results?view=azure-devops&tabs=trx%2Cyaml#yaml-snippet
+    - task: PublishTestResults@2
+      inputs:
+       testResultsFormat: 'JUnit'
+       testResultsFiles: '**/TEST-*.xml'
+       searchFolder:       # ToDo
+       mergeTestResults: true
+       testRunTitle:       # ToDo
     
-    #- task: ArchiveFiles@2
-    #  displayName: 'Archive FakeRestAPI'
-    #  inputs:
-     #   rootFolderOrFile: 'automatedtesting/jmeter/fakerestapi'
-    #    includeRootFolder: false
-     #   archiveType: 'zip'
-     #   archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
-    #- publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
-    #  displayName: 'Upload fakerrestapi Package'
-    #  artifact: drop-fakerestapi
+   
     - task: ArchiveFiles@2
       displayName: 'Archive Fakerestapi'
       inputs:
@@ -99,15 +104,7 @@ stages:
     - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
       displayName: 'Upload Package'
       artifact: drop-fakerestapi
-    #- task: ArchiveFiles@2
-     # inputs:
-      #  rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium' #'$(Build.BinariesDirectory)/$(Build.BuildID)-automatedtests.zip'
-     #   includeRootFolder: false
-      #  archiveType: 'zip'
-      #  archiveFile: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
-      #  replaceExistingArchive: true
-    #- upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
-   #   artifact: selenium
+    
 
 - stage: WebAppDeployment
   displayName: Web App Deployment
@@ -132,7 +129,7 @@ stages:
             displayName: 'Deploy Azure Web App'
             inputs:
               azureSubscription: 'myserviceconnection'
-              appName: 'mywebappBBfinal-AppService' #'mywebappBBfinal'
+              appName: 'mywebappBBfinal-AppService' 
               appType: 'webAppLinux'
               package: '$(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip'
           - task: Bash@3
@@ -241,30 +238,7 @@ stages:
           ls -la  
   
 
-- stage: Postman
-  displayName: Postman Test
-  jobs:
-  - job: PostmanTest
-    displayName: PostmanTests
-    steps:
-      - task: Bash@3
-        displayName: 'Run Postman/Newman Tests'
-        inputs:
-          targetType: 'inline'
-          script: |
-            sudo npm install -g newman reporter
-            echo 'Starting Tests...'
-            echo 'Running Regression Test'
-            newman run automatedtesting/postman/RegressionTest.postman_collection.json  --delay-request 12000 --reporters cli,junit --suppress-exit-code
-            echo 'Running Data Validation Test'
-            # newman run automatedtesting/postman/ValidationTest.postman_collection.json  --delay-request 12000 --reporters cli,junit --suppress-exit-code
-      - task: PublishTestResults@2
-        displayName: 'Publish Postman Newman Results **/newman-*.xml'
-        condition: always()
-        inputs:
-            testResultsFormat: 'JUnit'
-            testRunTitle: Data and Regression Tests
-            testResultsFiles: '**/newman-*.xml'     
+    
 #- stage: final
  # jobs:
  # - job: Destroy
