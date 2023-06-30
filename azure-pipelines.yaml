@@ -168,8 +168,6 @@ stages:
   jobs:
   - job: JMeterTest
     displayName: JMeterTests
-    pool:
-     vmImage: 'myimage_gallery'
     steps:
     - task: Bash@3
       inputs:
