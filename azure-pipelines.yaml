@@ -105,6 +105,17 @@ stages:
       displayName: 'Upload Package'
       artifact: drop-fakerestapi
     
+    - task: ArchiveFiles@2
+      displayName: 'Archive PerformanceTestSuite'
+      inputs:
+       rootFolderOrFile: 'automatedtesting/jmeter/fakerestapi'
+       includeRootFolder: false
+       archiveType: 'zip'
+       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
+    # JMeter Test Suite - Publish    
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip
+      displayName: 'Upload Package'
+      artifact: drop-perftests
 
 - stage: Deploy
   displayName: Web App Deployment
@@ -159,8 +170,9 @@ stages:
      #     #! /bin/bash
      #     pwd
 
+ 
     
-- stage: Jmeter
+- stage: Test
   displayName: JMeter Test
   jobs:
   - job: JMeterTest
