@@ -215,11 +215,11 @@ stages:
                apache-jmeter-5.6/bin/jmeter -n -t automatedtesting/jmeter/Starter.jmx \
                -l StressTest_Results.csv -e -f -o stresstest-html-report/
                ls -la
-         - task: Bash@3
-           displayName: Endurance Test
-           inputs:
-            targetType: 'inline'
-            script: |
+          - task: Bash@3
+            displayName: Endurance Test
+            inputs:
+             targetType: 'inline'
+             script: |
               mkdir test-html-report
               ls -la 
               rm -rf *.csv endurancetest-html-report/*
