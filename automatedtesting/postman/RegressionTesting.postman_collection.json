@@ -14,7 +14,22 @@
 					"script": {
 						"exec": [
 							"var jsonData = pm.response.json();",
-							"pm.environment.set(\"user_id\", jsonData.data._id);"
+							"pm.environment.set(\"user_id\", jsonData.data._id);",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
 						],
 						"type": "text/javascript"
 					}
@@ -58,6 +73,18 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"protocolProfileBehavior": {
@@ -76,7 +103,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/employee/1",
+					"raw": "https://dummy.restapiexample.com/api/v1/employee/1?id=5985",
 					"protocol": "https",
 					"host": [
 						"dummy",
@@ -88,6 +115,12 @@
 						"v1",
 						"employee",
 						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5985"
+						}
 					]
 				}
 			},
@@ -108,6 +141,18 @@
 							"});",
 							"pm.variables.get(\"variable_key\");",
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
 						],
 						"type": "text/javascript"
 					}
@@ -153,6 +198,18 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
@@ -177,14 +234,6 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
 			"name": "Delete a user ",
 			"event": [
 				{
@@ -192,6 +241,18 @@
 					"script": {
 						"exec": [
 							"pm.globals.unset(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
 						],
 						"type": "text/javascript"
 					}

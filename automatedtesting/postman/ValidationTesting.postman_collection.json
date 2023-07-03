@@ -16,7 +16,19 @@
 							"pm.test(\"Successful response\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"success\");",
 							"});",
-							""
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
 						],
 						"type": "text/javascript"
 					}
@@ -58,14 +70,27 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"id\");",
+							"});",
+							"",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"email\");",
-							"});",
-							"pm.variables.get(\"variable_key\");",
+							"",
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
 						],
 						"type": "text/javascript"
 					}
@@ -98,6 +123,31 @@
 		},
 		{
 			"name": "Update Employee data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -118,6 +168,31 @@
 		},
 		{
 			"name": "Delete a User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"Created\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let moment = require(\"moment\")",
+							"console.log(\"before:\", moment())",
+							"",
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
