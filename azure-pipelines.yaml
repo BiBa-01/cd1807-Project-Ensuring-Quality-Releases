@@ -161,10 +161,11 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive PerformanceTestSuite'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting' #'automatedtesting/jmeter/fakerestapi'
+        rootFolderOrFile: '$(Build.BinariesDirectory)' #'$(System.DefaultWorkingDirectory)/automatedtesting' #'automatedtesting/jmeter/fakerestapi'
         includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
+        archiveFile:  '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
+
     # JMeter Test Suite - Publish    
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip
       displayName: 'Upload Package'
