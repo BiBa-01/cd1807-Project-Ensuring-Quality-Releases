@@ -95,6 +95,49 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Update Employee data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{url}}?page=page{{url}}",
+					"host": [
+						"{{url}}"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "page{{url}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dummy.restapiexample.com/api/v1/delete/2",
+					"protocol": "https",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
