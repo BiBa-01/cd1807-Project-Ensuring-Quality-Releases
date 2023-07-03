@@ -147,7 +147,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
-        rootFolderOrFile: 'automatedtesting/jmeter/fakerestapi/'
+        rootFolderOrFile: 'automatedtesting/jmeter/fakerestapi'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
@@ -203,7 +203,7 @@ stages:
                 unzip -o $(Build.BuildId)-perftests.zip
                 ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
                 cat jmeter.log                                                                           # ToDo: Write your commands
-              workingDirectory: $(System.DefaultWorkingDirectory)/jmeter/$(Build.BuildId)-perftests.zip            # ToDo: Use the artifact name from the task above
+              workingDirectory: automatedtesting/$(Build.BuildId)-perftests.zip            # ToDo: Use the artifact name from the task above
           - task: Bash@3
             displayName: Stress Test
             inputs:
