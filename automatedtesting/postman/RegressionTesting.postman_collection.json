@@ -13,8 +13,6 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = pm.response.json();",
-							"pm.environment.set(\"user_id\", jsonData.data._id);",
 							"pm.test(\"Successful POST request\", function () {",
 							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
 							"});"
@@ -40,7 +38,12 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \n    \n    \"first_name\": \"{{first_name}}\",\n    \"last_name\": \"{{last_name}}\",\n    \"email\": \"{{email}}\",\n    \"mobile_no\": \"{{mobile_no}}\",\n    \"password\": \"{{password}}\"\n }"
+					"raw": "{\n\"name\": \"{{last_name}}\",\n\"salary\": \"{{salary}}\",\n\"age\": \"{{age}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "html"
+						}
+					}
 				},
 				"url": {
 					"raw": "https://dummy.restapiexample.com/api/v1/create",
@@ -136,9 +139,6 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"email\");",
-							"});",
 							"pm.variables.get(\"variable_key\");",
 							""
 						],
@@ -216,7 +216,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/update/21",
+					"raw": "https://dummy.restapiexample.com/api/v1/update/21?id=21",
 					"protocol": "https",
 					"host": [
 						"dummy",
@@ -228,6 +228,12 @@
 						"v1",
 						"update",
 						"21"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "21"
+						}
 					]
 				}
 			},
@@ -240,7 +246,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.globals.unset(\"variable_key\");"
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -262,7 +270,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/delete/2",
+					"raw": "https://dummy.restapiexample.com/api/v1/delete/2?id=2",
 					"protocol": "https",
 					"host": [
 						"dummy",
@@ -274,6 +282,12 @@
 						"v1",
 						"delete",
 						"2"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
 					]
 				}
 			},
