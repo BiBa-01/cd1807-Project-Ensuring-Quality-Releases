@@ -204,7 +204,7 @@ stages:
                 unzip -o perftests.zip # $(Build.BuildId)-
                 ./apache-jmeter-5.6/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
                 cat jmeter.log                                                                           # ToDo: Write your commands
-              workingDirectory: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests #$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip            # ToDo: Use the artifact name from the task above
+              workingDirectory: $(Build.ArtifactStagingDirectory)/$(Build.BuildId) #-perftests #$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip            # ToDo: Use the artifact name from the task above
           - task: Bash@3
             displayName: Stress Test
             inputs:
