@@ -13,8 +13,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
-							"    console.log(response.json());",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201, 202]);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -27,7 +27,7 @@
 							"let moment = require(\"moment\")",
 							"console.log(\"before:\", moment())",
 							"",
-							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
 						],
 						"type": "text/javascript"
 					}
@@ -95,7 +95,7 @@
 							"let moment = require(\"moment\")",
 							"console.log(\"before:\", moment())",
 							"",
-							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
 						],
 						"type": "text/javascript"
 					}
@@ -149,7 +149,7 @@
 							"let moment = require(\"moment\")",
 							"console.log(\"before:\", moment())",
 							"",
-							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
 						],
 						"type": "text/javascript"
 					}
@@ -192,7 +192,7 @@
 							"let moment = require(\"moment\")",
 							"console.log(\"before:\", moment())",
 							"",
-							"setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
 						],
 						"type": "text/javascript"
 					}
