@@ -13,8 +13,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+							"pm.test(\"Verify status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -292,6 +292,29 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"let moment = require(\"moment\")",
+					"  console.log(\"before:\", moment())",
+					"",
+					"  setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

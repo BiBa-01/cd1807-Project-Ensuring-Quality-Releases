@@ -180,9 +180,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code name has string\", function () {",
-							"    pm.response.to.have.status(\"Created\");",
-							"});"
+							"pm.collectionVariables.unset(\"variable_key\");"
 						],
 						"type": "text/javascript"
 					}
@@ -220,6 +218,29 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"let moment = require(\"moment\")",
+					"  console.log(\"before:\", moment())",
+					"",
+					"  setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
