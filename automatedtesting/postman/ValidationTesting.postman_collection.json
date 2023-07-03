@@ -229,7 +229,7 @@
 					"let moment = require(\"moment\")",
 					"  console.log(\"before:\", moment())",
 					"",
-					"  setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+					"  setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
 				]
 			}
 		},

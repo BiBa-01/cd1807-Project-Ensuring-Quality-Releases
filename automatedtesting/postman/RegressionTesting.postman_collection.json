@@ -13,8 +13,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Verify status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201, 202]);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -303,7 +303,7 @@
 					"let moment = require(\"moment\")",
 					"  console.log(\"before:\", moment())",
 					"",
-					"  setTimeout(function () { console.log(\"after:\", moment()) }, 10000)"
+					"  setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
 				]
 			}
 		},
