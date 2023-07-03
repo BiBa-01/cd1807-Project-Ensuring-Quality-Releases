@@ -256,7 +256,7 @@ stages:
                 sudo apt-get install -y chromium-browser
                 pip3 install selenium
                 cd ~/
-                DIR=/home/testuser/app
+                DIR=/home/app #home/testuser/app
                 if [ ! -d "$DIR" ]; then
                     mkdir app
                 fi
@@ -270,7 +270,7 @@ stages:
                     unzip -o chromedriver_linux64.zip
                     sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
                 fi
-                export PATH=$PATH:/home/testuser/app
+                export PATH=$PATH:/home/app #/home/testuser/app
                 echo "Starting Selenium Tests"
                 python3 add_remove_from_cart.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."
