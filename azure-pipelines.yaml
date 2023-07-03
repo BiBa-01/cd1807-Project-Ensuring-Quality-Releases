@@ -98,7 +98,7 @@ stages:
       displayName: Install Newman
       inputs:
         script: 'sudo npm install -g newman'
-        workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting
+        workingDirectory: $(System.DefaultWorkingDirectory)
     # Postman Data Validation Test Suite    
     # ToDo: Verify the working directory
     - task: CmdLine@2
@@ -161,7 +161,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive PerformanceTestSuite'
       inputs:
-        rootFolderOrFile: 'automatedtesting/jmeter/fakerestapi'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/fakerestapi/' #'automatedtesting/jmeter/fakerestapi'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
