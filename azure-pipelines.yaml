@@ -180,7 +180,7 @@ stages:
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
     pool:
-      vmImage: 'ubuntu-latest'      
+      vmImage: ubuntu-latest      
     environment: 'Test'   # ToDo
     strategy:
       runOnce:
