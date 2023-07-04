@@ -243,7 +243,7 @@ stages:
           steps:
           #- download: current
           #  artifact: drop-uitests #drop-ui-tests     # ToDo: Change/provide a name
-          - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
+          - publish: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py'
             artifact: selenium-python-file
           - download: current
             artifact: selenium-python-file  
