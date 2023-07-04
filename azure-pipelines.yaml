@@ -235,7 +235,8 @@ stages:
     displayName: Selenium Tests
     environment:
       name: 'Test'      # ToDo: Change/provide a name
-      #tags: selenium
+      resourceType: VirtualMachine
+      tags: selenium
     strategy:
       runOnce:
         deploy:
@@ -282,6 +283,7 @@ stages:
                 export PATH=$PATH:/home/app #/home/testuser/app
                 sudo mkdir -p /var/logs/seleniumlogfile.txt
                 sudo chmod 775 /var/logs/seleniumlogfile.txt
+                sudo touch /var/log/selenium/selenium.log
                 echo "Starting Selenium Tests"
                 sudo python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
                 cd $(System.DefaultWorkingDirectory)
