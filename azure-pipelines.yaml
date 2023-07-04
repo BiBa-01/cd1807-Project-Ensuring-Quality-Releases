@@ -244,15 +244,15 @@ stages:
           #  artifact: drop-uitests #drop-ui-tests     # ToDo: Change/provide a name
           - checkout: self
             persistCredentials: true
-
-          - task: PublishPipelineArtifact@1
-            inputs:
-             targetPath: 'automatedtesting/selenium/login.py'
-             artifactName: 'selenium-python-file'
           - publish: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py'
             artifact: selenium-python-file
           - download: current
             artifact: selenium-python-file  
+          - task: PublishPipelineArtifact@1
+            inputs:
+             targetPath: 'automatedtesting/selenium/login.py'
+             artifactName: 'selenium-python-file'
+          
           - task: Bash@3
             inputs:
               targetType: 'inline'
