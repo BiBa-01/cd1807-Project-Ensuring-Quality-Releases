@@ -235,8 +235,7 @@ stages:
     displayName: Selenium Tests
     environment:
       name: 'Test'      # ToDo: Change/provide a name
-      #resourceType: VirtualMachine
-      #tags: selenium
+      tags: selenium
     strategy:
       runOnce:
         deploy:
