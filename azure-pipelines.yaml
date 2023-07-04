@@ -241,9 +241,12 @@ stages:
       runOnce:
         deploy:
           steps:
+          #- download: current
+          #  artifact: drop-uitests #drop-ui-tests     # ToDo: Change/provide a name
+          - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
+            artifact: selenium-python-file
           - download: current
-            artifact: drop-uitests #drop-ui-tests     # ToDo: Change/provide a name
-            
+            artifact: selenium-python-file  
           - task: Bash@3
             inputs:
               targetType: 'inline'
@@ -271,6 +274,17 @@ stages:
                     sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
                 fi
                 export PATH=$PATH:/home/app #/home/testuser/app
+                sudo mkdir -p /var/logs/seleniumlogfile.txt
+                sudo chmod 775 /var/logs/seleniumlogfile.txt
                 echo "Starting Selenium Tests"
-                sudo python3 -u $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py >> selenium.log
+                sudo python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
+                cd $(System.DefaultWorkingDirectory)
+                mkdir -p logs/selenium
+                pwd
+                cat seleniumlog.txt
+                ls -la  
+                #sudo python3 -u $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."
+
+            
+           
