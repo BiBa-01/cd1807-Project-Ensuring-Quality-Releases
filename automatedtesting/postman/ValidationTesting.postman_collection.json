@@ -75,15 +75,10 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"id\");",
-							"});",
-							"",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							""
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Response is an array\", function () {",
+							"    pm.expect(jsonData).to.be.an('array');",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -95,7 +90,7 @@
 							"let moment = require(\"moment\")",
 							"console.log(\"before:\", moment())",
 							"",
-							"setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 30000)"
 						],
 						"type": "text/javascript"
 					}
