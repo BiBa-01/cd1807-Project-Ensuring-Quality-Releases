@@ -248,8 +248,8 @@ stages:
 
           - task: PublishPipelineArtifact@1
             inputs:
-            targetPath: 'automatedtesting/selenium/login.py'
-            artifactName: 'selenium-python-file'
+             targetPath: 'automatedtesting/selenium/login.py'
+             artifactName: 'selenium-python-file'
           - publish: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py'
             artifact: selenium-python-file
           - download: current
