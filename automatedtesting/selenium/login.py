@@ -1,4 +1,4 @@
-from selenium import webdriver
+#from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -8,7 +8,7 @@ import logging
 logging.basicConfig(filename="./seleniumlog.txt", format="%(asctime)s %(message)s",
                     filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
 # #!/usr/bin/env python
-from selenium import webdriver
+#from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 
