@@ -272,5 +272,5 @@ stages:
                 fi
                 export PATH=$PATH:/home/app #/home/testuser/app
                 echo "Starting Selenium Tests"
-                python3 $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py >> selenium.log
+                sudo python3 -u $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."
