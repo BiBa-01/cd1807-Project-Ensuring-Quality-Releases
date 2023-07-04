@@ -7,63 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Create Employee",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"let moment = require(\"moment\")",
-							"console.log(\"before:\", moment())",
-							"",
-							"setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"name\": \"{{name}}\",\n\"salary\": \"{{salary}}\",\n\"age\": \"{{age}}\"\n}\n",
-					"options": {
-						"raw": {
-							"language": "html"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/create",
-					"protocol": "https",
-					"host": [
-						"dummy",
-						"restapiexample",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get by UserID",
 			"event": [
 				{
