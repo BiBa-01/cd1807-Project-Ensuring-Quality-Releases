@@ -202,7 +202,7 @@ stages:
                 wget "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.2.1.tgz"
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o perftests.zip 
-                ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
+                ./apache-jmeter-5.2.1/bin/jmeter -n -t endurance_test.jmx -j jmeter.log -f
                 cat jmeter.log                                                                           # ToDo: Write your commands
               workingDirectory: $(Build.ArtifactStagingDirectory)/ 
           - task: Bash@3
@@ -214,7 +214,7 @@ stages:
                ls -la
                rm -rf *.csv stress-test-html-report/*
                echo "Run JMeter tests"
-               apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/Starter.jmx \
+               apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stresstest.jmx \
                -l StressTest_Results.csv -e -f -o stresstest-html-report/
                ls -la
           - task: Bash@3
@@ -279,8 +279,8 @@ stages:
                     sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
                 fi
                 export PATH=$PATH:/home/app #/home/testuser/app
-                sudo mkdir -p /var/logs/seleniumlogfile.txt
-                sudo chmod 775 /var/logs/seleniumlogfile.txt
+                sudo mkdir -p /var/log/seleniumlogfile.txt
+                sudo chmod 775 /var/log/seleniumlogfile.txt
                 sudo touch /var/log/selenium/selenium.log
                 echo "Starting Selenium Tests"
                 sudo python3 -u $(Pipeline.Workspace)/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt #selenium-python-file/
