@@ -38,6 +38,8 @@ Jmeter Tests:
 Selenium Tests:
 
 Set up email alerting for the app service.
+![image](https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/401eedd9-2578-473e-b8f1-a6974c195f75)
+
 Set up custom logging in log analytics to get logs from the VM.
 ![image](https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/cbbcf7fe-220e-44d4-aee2-af95932b9d24)
 
