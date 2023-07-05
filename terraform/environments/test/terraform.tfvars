@@ -7,7 +7,7 @@ tenant_id = "056f4b95-e7ad-457b-be95-35b3c88ebe9f"
 # Resource Group/Location
 location = "East US"
 resource_group = "project"
-application_type = "mywebappbbfinal"
+application_type = "mywebappbbfinal1"
 
 # Network
 virtual_network_name = "vn-project3"
