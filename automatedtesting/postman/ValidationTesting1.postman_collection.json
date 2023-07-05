@@ -67,10 +67,10 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = pm.response.json();",
-							"pm.test(\"Response is an array\", function () {",
-							"    pm.expect(jsonData).to.be.an('array');",
-							"});"
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
