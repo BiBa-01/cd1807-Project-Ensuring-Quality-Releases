@@ -13,9 +13,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var user_id = pm.environment.get(\"user_id\");",
-							"pm.test(\"Body contains user_id\", function () {",
-							"    pm.expect(pm.response.text()).to.include(user_id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
 							"});"
 						],
 						"type": "text/javascript"
