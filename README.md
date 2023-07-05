@@ -15,6 +15,7 @@ Tools
 
 ### Start
 Creation of a resource group and a storage account in azure.
+<img width="1385" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/aa235574-4927-4f93-ae1a-d5b655976e35">
 
 ### Utilize Terraform to apply infrastructure as Code for
 
@@ -25,50 +26,53 @@ Network security group
 Public IP address
 Virtual machine
 
-<img width="1426" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/63d1942f-fb9c-4d37-9649-c42a911f746d">
-
-<img width="1426" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/36545f7f-ec71-449e-8a8b-70e8402425b9">
-
 #### Build
-<img width="1426" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/b75e591e-6d12-48f9-ac0c-38a41a13bf25">
-<img width="1386" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/09c13ef7-3fa4-4992-a0fe-f9fb2c74bdec">
-<img width="1390" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/57c45d70-4e51-4f0d-8bb1-825ef81e5b23">
+<img width="1166" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/d9732dbb-3097-4b1e-90c9-957c67e8790f">
 
-<img width="1283" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/569d089a-f75d-47df-a7d6-bf7777b9887f">
+<img width="1254" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/be5788a5-e7a7-4d8b-9e94-6f3fb696c7eb">
+<img width="1293" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/7770cbd8-3aa6-408b-9ce9-1e5207a6b2af">
+
+<img width="1258" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/4422493d-4060-4571-907b-d7b2143cbf0f">
+
+
 
 #### Newman/Postman
 Run postman/newman data tests against the http://dummyjson.com API
 ##### Validation test
-<img width="1135" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/aba4ff44-f527-40a3-9ec5-f4e8e714878c">
+<img width="1231" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/7f7a8597-0922-49d8-a35e-6c43521ecd9b">
+
 
 ##### Regression test
-<img width="1123" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/0a0b99ab-782e-4dbb-abe1-775c88c1747e">
-
-<img width="1350" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/47696964-053a-400e-8aa0-8125a5979b7d">
+<img width="1263" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/1dc9420e-4827-408b-9dfa-0e482e06ccea">
 
 #### Archive Files
 
 ##### UI Test
-<img width="1372" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/3ce717b6-52d2-4815-9878-813887e20b81">
-
-<img width="1275" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/bb5d36f3-dd02-48ff-a350-5b916460157c">
+<img width="1226" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/9b138b31-776b-4f20-bec2-588646a40068">
 
 ##### Fakerestapi
-<img width="1258" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/bb801af8-6b13-48dd-ac3a-2dff1e4a24b9">
+
+<img width="1414" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/5dbe8de5-ca05-44e0-85e0-170aacbf6094">
 
 ##### PerformanceTest
-<img width="1321" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/af054458-9c68-477a-aafa-d1397d921202">
+<img width="1276" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/28c76af3-8482-457b-a178-bc7bd06965b9">
 
-#### Build Finished successfully
 
-<img width="891" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/aa70bc1b-93a1-4694-9cfa-aff49ef3f817">
 
 ### Deploy
+<img width="1292" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/56aa76ce-9684-4c38-9246-39e047a0a99c">
 
 #### Fakerestapi
 Deploy FakeRestAPI as an azure app service.
+<img width="758" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/a9e175c9-0376-463f-8841-dd93a7a56b68">
+
+<img width="1249" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/8d64310d-04dd-4590-a97e-0588936246bf">
+
+<img width="1249" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/16f0aa58-5ae8-424f-a26a-83110c0541e8">
+<img width="1045" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/fe260733-cbb7-4ad1-88e4-1c8ee119087a">
 
 #### Selenium
+<img width="1197" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/61e01d5c-ccac-4d8d-8768-6a2d0df1f8b7">
 
 
 
