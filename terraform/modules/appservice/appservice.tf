@@ -34,6 +34,7 @@ resource "azurerm_windows_web_app" "test1" {
   
   location            = "${var.location}"
   resource_group_name = "${var.resource_group}"
+  service_plan_id     = azurerm_service_plan.test1.id
 
   app_settings = {
      "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
