@@ -31,7 +31,7 @@ resource "azurerm_service_plan" "test1" {
 
 resource "azurerm_app_service" "test1" {
   name                = "${var.application_type}-${var.resource_type}"
-  app_service_plan_id = azurerm_app_service_plan.test1.id
+  app_service_plan_id = azurerm_service_plan.test1.id
   location            = "${var.location}"
   resource_group_name = "${var.resource_group}"
 
@@ -44,3 +44,4 @@ resource "azurerm_app_service" "test1" {
     always_on = false
   }
 }
+
