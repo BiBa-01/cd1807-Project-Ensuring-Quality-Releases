@@ -29,7 +29,7 @@ resource "azurerm_service_plan" "test1" {
   sku_name            = "F1"
 }
 
-resource "azurerm_app_service" "test1" {
+resource "azurerm_windows_web_app" "test1" {
   name                = "${var.application_type}-${var.resource_type}"
   app_service_plan_id = azurerm_service_plan.test1.id
   location            = "${var.location}"
