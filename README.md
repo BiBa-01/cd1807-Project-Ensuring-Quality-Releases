@@ -4,20 +4,38 @@ It includes creating Terraform configuration files, setting up a CI/CD Pipeline 
 
 Tools
 
-Visual Studio Code
-Azure
-Azure Devops (installing Terraform Azure Pipelines Extension from Marketplace)
-Terraform
-JMeter
-Postman
-Selenium
-Azure Monitor
+- Visual Studio Code
+- Azure
+- Azure Devops (installing Terraform Azure Pipelines Extension from Marketplace)
+- Terraform
+- JMeter
+- Postman
+- Selenium
+- Azure Monitor
 
+### Start
+Creation of a resource group and a storage account in azure.
 
-### Utilize Terraform to apply infrastructure as Code
+### Utilize Terraform to apply infrastructure as Code for
 
+App service
+App service plan
+Network interface
+Network security group
+Public IP address
+Virtual machine
 #### Build
 <img width="452" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/72c6ece5-bcaf-412a-8741-116f3a5e5c11">
 
 #### Screenshot of successful execution of pipeline build
 
+
+
+
+Deploy FakeRestAPI as an azure app service.
+Run postman/newman data tests against the http://dummyjson.com API
+Jmeter Tests:
+Selenium Tests:
+
+Set up email alerting for the app service.
+Set up custom logging in log analytics to get logs from the VM.
