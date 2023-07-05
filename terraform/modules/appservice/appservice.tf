@@ -19,3 +19,17 @@ resource "azurerm_linux_web_app" "test" {
     always_on = false
   }
 }
+
+resource "azurerm_app_service" "test" {
+  name                = "${var.application_type}-${var.resource_type}"
+  location            = "${var.location}"
+  resource_group_name = "${var.resource_group}"
+
+  app_settings = {
+     "WEBSITE_RUN_FROM_PACKAGE" = 0
+  }
+  site_config {
+    #windows_fx_version = "DOCKER|<Windows_Docker_Image>"
+    always_on = false
+  }
+}
