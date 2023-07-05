@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Get by UserID",
+			"name": "Get a single user",
 			"event": [
 				{
 					"listen": "test",
@@ -28,7 +28,7 @@
 							"let moment = require(\"moment\")",
 							"console.log(\"before:\", moment())",
 							"",
-							"setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 20000)"
 						],
 						"type": "text/javascript"
 					}
@@ -50,24 +50,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/employee/1?id=5985",
+					"raw": "https://dummyjson.com/users/1",
 					"protocol": "https",
 					"host": [
-						"dummy",
-						"restapiexample",
+						"dummyjson",
 						"com"
 					],
 					"path": [
-						"api",
-						"v1",
-						"employee",
+						"users",
 						"1"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "5985"
-						}
 					]
 				}
 			},
@@ -113,17 +104,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/employees",
+					"raw": "https://dummyjson.com/users",
 					"protocol": "https",
 					"host": [
-						"dummy",
-						"restapiexample",
+						"dummyjson",
 						"com"
 					],
 					"path": [
-						"api",
-						"v1",
-						"employees"
+						"users"
 					]
 				}
 			},
@@ -150,7 +138,7 @@
 							"let moment = require(\"moment\")",
 							"console.log(\"before:\", moment())",
 							"",
-							"setTimeout(function () { console.log(\"after:\", moment()) }, 15000)"
+							"setTimeout(function () { console.log(\"after:\", moment()) }, 20000)"
 						],
 						"type": "text/javascript"
 					}
@@ -160,24 +148,15 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/update/21?id=21",
+					"raw": "https://dummyjson.com/users/1",
 					"protocol": "https",
 					"host": [
-						"dummy",
-						"restapiexample",
+						"dummyjson",
 						"com"
 					],
 					"path": [
-						"api",
-						"v1",
-						"update",
-						"21"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "21"
-						}
+						"users",
+						"1"
 					]
 				}
 			},
@@ -214,24 +193,82 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/delete/2?id=2",
+					"raw": "https://dummyjson.com/users/1",
 					"protocol": "https",
 					"host": [
-						"dummy",
-						"restapiexample",
+						"dummyjson",
 						"com"
 					],
 					"path": [
-						"api",
-						"v1",
-						"delete",
-						"2"
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a new user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/users/add",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
 					],
-					"query": [
-						{
-							"key": "id",
-							"value": "2"
-						}
+					"path": [
+						"users",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://dummyjson.com/users/add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql(100);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/users/add",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"users",
+						"add"
 					]
 				}
 			},
