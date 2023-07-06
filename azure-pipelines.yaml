@@ -258,7 +258,6 @@ stages:
             inputs:
               targetType: 'inline'
               script: |           
-                #! /bin/bash
                 # Install necessary dependencies
                 sudo apt-get update
                 sudo apt-get install -y chromium-browser chromium-chromedriver python3-pip unzip
@@ -272,11 +271,11 @@ stages:
                # pip3 install selenium
               
 
-                # Download and extract the UI tests package
-                mkdir -p ~/app
-                mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
-                cd ~/app
-                unzip -o $(Build.BuildId)-uitests.zip
+               # Download and extract the UI tests package
+               mkdir -p ~/app
+               mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
+               cd ~/app
+               unzip -o $(Build.BuildId)-uitests.zip
 
                 # Set up ChromeDriver
                 sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/local/bin/chromedriver
