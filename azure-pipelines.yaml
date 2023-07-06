@@ -249,7 +249,7 @@ stages:
             artifact: selenium-python-file  
           - task: PublishPipelineArtifact@1
             inputs:
-             targetPath: './login.py' #/automatedtesting/selenium
+             targetPath: 'login.py' #/automatedtesting/selenium
              artifactName: 'selenium-python-file'
           
           - task: Bash@3
