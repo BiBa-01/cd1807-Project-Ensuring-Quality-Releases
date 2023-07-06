@@ -65,6 +65,7 @@ Run postman/newman data tests against the http://dummyjson.com API
 #### Fakerestapi
 Deploy FakeRestAPI as an azure app service.
 <img width="758" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/a9e175c9-0376-463f-8841-dd93a7a56b68">
+<img width="1399" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/ce7b062f-0d8b-4a3a-b074-274db8c0cca8">
 
 <img width="1249" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/8d64310d-04dd-4590-a97e-0588936246bf">
 
