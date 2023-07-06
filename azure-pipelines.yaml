@@ -262,7 +262,7 @@ stages:
                 # Install necessary dependencies
                 sudo apt-get update
                 sudo apt-get install -y chromium-browser chromium-chromedriver python3-pip unzip
-               # Install Selenium and other Python dependencies
+                # Install Selenium and other Python dependencies
                 pip3 install selenium
 
                # sudo apt-get upgrade -y
