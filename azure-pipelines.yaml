@@ -270,7 +270,7 @@ stages:
                 fi
                 mv /home/azagent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip app
                 cd app
-                unzip -o $(Build.BuildId)-uitests.zip
+                unzip -o $(Build.BuildId)-drop-uitests.zip
                 FILE=/home/app/chromedriver_linux64.zip #/testuser/app/chromedriver_linux64.zip
                 if [ ! -f "$FILE" ]; then
                     LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
@@ -289,7 +289,7 @@ stages:
                 pwd
                 cat seleniumlog.txt
                 ls -la  
-                #sudo python3 -u $(System.DefaultWorkingDirectory)/login.py >> selenium.log #/automatedtesting/selenium
+                python3 -u $(System.DefaultWorkingDirectory)/login.py >> selenium.log #/automatedtesting/selenium
                 echo "Completed Selenium Tests. Check selenium.log for results."
 
             
