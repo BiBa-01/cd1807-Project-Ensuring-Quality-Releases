@@ -272,10 +272,10 @@ stages:
               
 
                # Download and extract the UI tests package
-               mkdir -p ~/app
-               mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
-               cd ~/app
-               unzip -o $(Build.BuildId)-uitests.zip
+                mkdir -p ~/app
+                mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
+                cd ~/app
+                unzip -o $(Build.BuildId)-uitests.zip
 
                 # Set up ChromeDriver
                 sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/local/bin/chromedriver
