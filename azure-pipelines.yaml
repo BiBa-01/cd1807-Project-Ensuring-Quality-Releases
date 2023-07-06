@@ -268,7 +268,7 @@ stages:
                 if [ ! -d "$DIR" ]; then
                     mkdir app
                 fi
-                mv /home/azagent/_work/1/drop-uitests/$(Build.BuildId)-uitests.zip app
+                mv /home/azagent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip app
                 cd app
                 unzip -o $(Build.BuildId)-uitests.zip
                 FILE=/home/app/chromedriver_linux64.zip #/testuser/app/chromedriver_linux64.zip
@@ -281,9 +281,9 @@ stages:
                 export PATH=$PATH:/home/app #/home/testuser/app
                 sudo mkdir -p ./seleniumlogfile.txt
                 sudo chmod 775 ./seleniumlogfile.txt
-                sudo touch /var/log/selenium/selenium.log
+                sudo touch ./selenium/selenium.log
                 echo "Starting Selenium Tests"
-                sudo python3 -u $(Pipeline.Workspace)/login.py 2>&1 | sudo tee -a ./seleniumlogfile.txt #selenium-python-file/
+                python3 -u $(Pipeline.Workspace)/login.py 2>&1 | tee -a ./seleniumlogfile.txt #selenium-python-file/
                 cd $(System.DefaultWorkingDirectory)
                 mkdir -p logs/selenium
                 pwd
