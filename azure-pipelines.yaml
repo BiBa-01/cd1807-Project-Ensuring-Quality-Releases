@@ -260,24 +260,24 @@ stages:
               script: |           
                 #! /bin/bash
                 # Install necessary dependencies
-               sudo apt-get update
-               sudo apt-get install -y chromium-browser chromium-chromedriver python3-pip unzip
+                sudo apt-get update
+                sudo apt-get install -y chromium-browser chromium-chromedriver python3-pip unzip
 
                # sudo apt-get upgrade -y
                # sudo apt-get install python3-pip -y
-                # sudo apt-get install unzip -y
-                #sudo apt-get install -y chromium-browser
+               # sudo apt-get install unzip -y
+               # sudo apt-get install -y chromium-browser
                # pip3 install selenium
-                # Install Selenium and other Python dependencies
+               # Install Selenium and other Python dependencies
                 pip3 install selenium
 
-               # Download and extract the UI tests package
+                # Download and extract the UI tests package
                 mkdir -p ~/app
                 mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
                 cd ~/app
                 unzip -o $(Build.BuildId)-uitests.zip
 
-                 # Set up ChromeDriver
+                # Set up ChromeDriver
                 sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/local/bin/chromedriver
 
                 # Run the Selenium tests
