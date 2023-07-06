@@ -260,8 +260,8 @@ stages:
               script: |           
                 #! /bin/bash
                 # Install necessary dependencies
-                sudo apt-get update
-                sudo apt-get install -y chromium-browser chromium-chromedriver python3-pip unzip
+               sudo apt-get update
+               sudo apt-get install -y chromium-browser chromium-chromedriver python3-pip unzip
 
                # sudo apt-get upgrade -y
                # sudo apt-get install python3-pip -y
