@@ -258,60 +258,56 @@ stages:
             inputs:
               targetType: 'inline'
               script: |           
-                # Install necessary dependencies
                  sudo apt-get update
                  sudo apt-get install -y chromium-browser chromium-chromedriver python3-pip unzip
-                # Install Selenium and other Python dependencies
                  pip3 install selenium
 
-               # sudo apt-get upgrade -y
-               # sudo apt-get install python3-pip -y
-               # sudo apt-get install unzip -y
-               # sudo apt-get install -y chromium-browser
-               # pip3 install selenium
-              
+                 # sudo apt-get upgrade -y
+                 # sudo apt-get install python3-pip -y
+                 # sudo apt-get install unzip -y
+                 # sudo apt-get install -y chromium-browser
+                 # pip3 install selenium
+            
+                 mkdir -p ~/app
+                 mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
+                 cd ~/app
+                 unzip -o $(Build.BuildId)-uitests.zip
 
-               # Download and extract the UI tests package
-                mkdir -p ~/app
-                mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
-                cd ~/app
-                unzip -o $(Build.BuildId)-uitests.zip
+                 # Set up ChromeDriver
+                 sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/local/bin/chromedriver
 
-                # Set up ChromeDriver
-                sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/local/bin/chromedriver
-
-                # Run the Selenium tests
-                python3 -u login.py
+                 # Run the Selenium tests
+                 python3 -u login.py
                 
-                cd ~/
-                DIR=/home/app #home/testuser/app
-                if [ ! -d "$DIR" ]; then
+                 cd ~/
+                 DIR=/home/app #home/testuser/app
+                 if [ ! -d "$DIR" ]; then
                     mkdir app
-                fi
-                mv /home/azagent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip app
-                cd app
-                unzip -o $(Build.BuildId)-drop-uitests.zip
-                FILE=/home/app/chromedriver_linux64.zip #/testuser/app/chromedriver_linux64.zip
-                if [ ! -f "$FILE" ]; then
+                 fi
+                 mv /home/azagent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip app
+                 cd app
+                 unzip -o $(Build.BuildId)-drop-uitests.zip
+                 FILE=/home/app/chromedriver_linux64.zip #/testuser/app/chromedriver_linux64.zip
+                 if [ ! -f "$FILE" ]; then
                     LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
                     wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
                     unzip -o chromedriver_linux64.zip
                     sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
-                fi
-                export PATH=$PATH:/home/app #/home/testuser/app
-                sudo mkdir -p /selenium/seleniumlogfile.txt
-                sudo chmod 775 /selenium/seleniumlogfile.txt
-                sudo touch /selenium/selenium.log
-                echo "Starting Selenium Tests"
-                python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | tee -a ./selenium/seleniumlogfile.txt #selenium-python-file/
-                cd $(System.DefaultWorkingDirectory)
-                mkdir -p logs/selenium
-                pwd
-                cat ./selenium/seleniumlog.txt
-                cat ./selenium/selenium.log
-                ls -la  
-                python3 -u $(System.DefaultWorkingDirectory)/login.py >> selenium.log #/automatedtesting/selenium
-                echo "Completed Selenium Tests. Check selenium.log for results."
+                 fi
+                 export PATH=$PATH:/home/app #/home/testuser/app
+                 sudo mkdir -p /selenium/seleniumlogfile.txt
+                 sudo chmod 775 /selenium/seleniumlogfile.txt
+                 sudo touch /selenium/selenium.log
+                 echo "Starting Selenium Tests"
+                 python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | tee -a ./selenium/seleniumlogfile.txt #selenium-python-file/
+                 cd $(System.DefaultWorkingDirectory)
+                 mkdir -p logs/selenium
+                 pwd
+                 cat ./selenium/seleniumlog.txt
+                 cat ./selenium/selenium.log
+                 ls -la  
+                 python3 -u $(System.DefaultWorkingDirectory)/login.py >> selenium.log #/automatedtesting/selenium
+                 echo "Completed Selenium Tests. Check selenium.log for results."
 
             
            
