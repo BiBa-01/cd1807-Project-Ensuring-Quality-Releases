@@ -279,15 +279,16 @@ stages:
                     sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
                 fi
                 export PATH=$PATH:/home/app #/home/testuser/app
-                sudo mkdir -p seleniumlogfile.txt
-                sudo chmod 775 seleniumlogfile.txt
-                sudo touch selenium/selenium.log
+                sudo mkdir -p /selenium/seleniumlogfile.txt
+                sudo chmod 775 /selenium/seleniumlogfile.txt
+                sudo touch /selenium/selenium.log
                 echo "Starting Selenium Tests"
-                python3 -u $(Pipeline.Workspace)/login.py 2>&1 | tee -a ./seleniumlogfile.txt #selenium-python-file/
+                python3 -u $(Pipeline.Workspace)/login.py 2>&1 | tee -a ./selenium/seleniumlogfile.txt #selenium-python-file/
                 cd $(System.DefaultWorkingDirectory)
                 mkdir -p logs/selenium
                 pwd
-                cat seleniumlog.txt
+                cat ./selenium/seleniumlog.txt
+                cat ./selenium/selenium.log
                 ls -la  
                 python3 -u $(System.DefaultWorkingDirectory)/login.py >> selenium.log #/automatedtesting/selenium
                 echo "Completed Selenium Tests. Check selenium.log for results."
