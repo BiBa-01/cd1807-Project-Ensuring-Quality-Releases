@@ -245,7 +245,7 @@ stages:
           #  artifact: drop-uitests #drop-ui-tests     # ToDo: Change/provide a name
           - checkout: self
             persistCredentials: true
-          - publish: '$(System.DefaultWorkingDirectory)/login.py' #/automatedtesting/selenium
+          - publish: '$(System.DefaultWorkingDirectory)/login.py'
             artifact: selenium-python-file
           - download: current
             artifact: selenium-python-file  
@@ -267,7 +267,7 @@ stages:
                  # sudo apt-get install unzip -y
                  # sudo apt-get install -y chromium-browser
                  # pip3 install selenium
-            
+                 
                  mkdir -p ~/app
                  mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
                  cd ~/app
@@ -295,11 +295,11 @@ stages:
                     sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
                  fi
                  export PATH=$PATH:/home/app #/home/testuser/app
-                 sudo mkdir -p /selenium/seleniumlogfile.txt
-                 sudo chmod 775 /selenium/seleniumlogfile.txt
+                 sudo mkdir -p /selenium/seleniumlog.txt
+                 sudo chmod 775 /selenium/seleniumlog.txt
                  sudo touch /selenium/selenium.log
                  echo "Starting Selenium Tests"
-                 python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | tee -a ./selenium/seleniumlogfile.txt #selenium-python-file/
+                 python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | tee -a ./selenium/seleniumlog.txt #selenium-python-file/
                  cd $(System.DefaultWorkingDirectory)
                  mkdir -p logs/selenium
                  pwd
