@@ -46,6 +46,8 @@ Run postman/newman data tests against the http://dummyjson.com API
 <img width="1263" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/1dc9420e-4827-408b-9dfa-0e482e06ccea">
 <img width="1282" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/c0c85cf6-c3cc-48a4-8ab1-b58397fb0334">
 
+<img width="1280" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/56bd4644-7cf3-4afb-b384-7331ccd1d5b8">
+
 #### Archive Files
 
 ##### UI Test
