@@ -199,10 +199,11 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                wget "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.2.1.tgz"
+                mkdir -p log/jmeter
+                wget "https://archive.apache.org/dist/jmeter/bin/apache-jmeter-5.2.1.tgz"
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o drop-perftests.zip 
-                ./apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx -j automatedtesting/jmeter/jmeter.log -f
+                ./apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
                 cat automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
               workingDirectory: $(Build.ArtifactStagingDirectory)/ 
           - task: Bash@3
@@ -214,7 +215,7 @@ stages:
                ls -la
                rm -rf *.csv stresstest-html-report/*
                echo "Run JMeter tests"
-               apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stresstest.jmx \
+               apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stress_test.jmx \
                -l stresstest-html-report/stress-test-result.csv \
                -e -f -o stresstest-html-report/stress-test-report.html \
                -j stresstest-html-report/jmeter-stress-test.log
@@ -232,6 +233,7 @@ stages:
               -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
     
               ls -la test-html-report/
+
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
   # ToDo: 
