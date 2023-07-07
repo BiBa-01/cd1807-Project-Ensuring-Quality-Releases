@@ -24,7 +24,7 @@ def login(user, password):
     print('Logging in...')
     logging.info('Logging in...')
     login_user = driver.find_element("id","user-name")
-    login_password = driver.find_element("password")
+    login_password = driver.find_element("id","password")
     login_user.send_keys(user)
     login_password.send_keys(password)
     driver.find_element_by_id("login-button").click()
