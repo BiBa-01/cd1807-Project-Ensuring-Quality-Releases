@@ -226,7 +226,7 @@ stages:
               mkdir test-html-report
               ls -la 
               rm -rf *.csv endurancetest-html-report/*
-              apache-jmeter-5.6/bin/jmeter -n -t /home/vsts/work/1/a/automatedtesting/jmeter/endurance_test.jmx \
+              apache-jmeter-5.6/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
               -l EnduranceTest_Results.csv -e -f -o endurancetest-html-report/ # automatedtesting/jmeter/endurance_test.jmx
               ls -la
               ls -la endurancetest-html-report/
@@ -303,10 +303,10 @@ stages:
                  cd $(System.DefaultWorkingDirectory)
                  mkdir -p logs/selenium
                  pwd
-                 cat ./selenium/seleniumlog.txt
-                 cat ./selenium/selenium.log
+                 cat automatedtesting/selenium/seleniumlog.txt
+                 cat automatedtesting/selenium/selenium.log
                  ls -la  
-                 python3 -u $(System.DefaultWorkingDirectory)/login.py >> selenium.log #/automatedtesting/selenium
+                 python3 -u $(System.DefaultWorkingDirectory)/selenium-python-file/login.py >> selenium.log #/automatedtesting/selenium
                  echo "Completed Selenium Tests. Check selenium.log for results."
 
             
