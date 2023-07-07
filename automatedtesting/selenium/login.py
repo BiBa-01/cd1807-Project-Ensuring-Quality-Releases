@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from datetime import datetime
 import logging
-logging.basicConfig(filename="./seleniumlog.txt", format="%(asctime)s %(message)s",
+logging.basicConfig(filename="./automatedtesting/selenium/seleniumlog.txt", format="%(asctime)s %(message)s",
                     filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
 # #!/usr/bin/env python
 from selenium import webdriver
