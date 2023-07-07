@@ -19,9 +19,9 @@ def login(user, password):
     driver.get('https://www.saucedemo.com/')
     # login
     driver.get("https://www.saucedemo.com");
-    driver.findElement(By.id("user-name")).sendKeys("standard_user");
-    driver.findElement(By.id("password")).sendKeys("secret_sauce");
-    driver.findElement(By.id("login-button")).click();
+    driver.find_element(By.id,"user-name").sendKeys("standard_user");
+    driver.find_element(By.id,"password").sendKeys("secret_sauce");
+    driver.find_element(By.id,"login-button").click();
     assert "Products" in product_label
     print(timestamp() + 'Login with username {:s} and password {:s} successfully.'.format(user, password))
     return driver
@@ -29,8 +29,8 @@ def login(user, password):
 def add_cart(driver, n_items):
     for i in range(n_items):
         element = "a[id='item_" + str(i) + "_title_link']"  # Get the URL of the product
-        driver.find_element_by_css_selector(element).click()  # Click the URL
-        driver.find_element_by_css_selector("button.btn_primary.btn_inventory").click()  # Add the product to the cart
+        driver.find_element(By.Class_Name, element).click()  # Click the URL
+        driver.find_element(By.Class_Name, "button.btn_primary.btn_inventory").click()  # Add the product to the cart
         product = driver.find_element_by_css_selector("div[class='inventory_details_name']").text  # Get the name of the product from the page
         print(timestamp() + product + " added to shopping cart.")  # Display message saying which product was added
         driver.find_element_by_css_selector("button.inventory_details_back_button").click()  # Click the Back button
