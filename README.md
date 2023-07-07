@@ -44,6 +44,7 @@ Run postman/newman data tests against the http://dummyjson.com API
 
 ##### Regression test
 <img width="1263" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/1dc9420e-4827-408b-9dfa-0e482e06ccea">
+<img width="1282" alt="image" src="https://github.com/BiBa-01/cd1807-Project-Ensuring-Quality-Releases/assets/78079178/c0c85cf6-c3cc-48a4-8ab1-b58397fb0334">
 
 #### Archive Files
 
