@@ -311,7 +311,7 @@ stages:
                  cat automatedtesting/selenium/seleniumlog.txt
                  cat automatedtesting/selenium/selenium.log
                  ls -la  
-                 python3 -u $(System.DefaultWorkingDirectory)/selenium-python-file/login.py >> selenium.log #/automatedtesting/selenium
+                 python3 -u $(System.DefaultWorkingDirectory)/login.py >> selenium.log #/automatedtesting/selenium
                  echo "Completed Selenium Tests. Check selenium.log for results."
 
             
