@@ -16,6 +16,9 @@ options.add_experimental_option("excludeSwitches", ["enable-logging"])
 print("testing started")
 driver = webdriver.Chrome(options=options)
 
+driver.get("https://www.saucedemo.com/")
+sleep(3)
+
 # Start the browser and login with standard_user
 def login(user, password):
     print(timestamp() + 'Starting the browser...')
