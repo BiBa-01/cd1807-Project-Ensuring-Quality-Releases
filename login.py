@@ -18,10 +18,10 @@ def login(user, password):
     print(timestamp() + 'Browser started successfully. Navigating to the demo page to login.')
     driver.get('https://www.saucedemo.com/')
     # login
-    driver.find_element_by_css_selector("input[id='user-name']").send_keys(user)
-    driver.find_element_by_css_selector("input[id='password']").send_keys(password)
-    driver.find_element_by_id("login-button").click()
-    product_label = driver.find_element_by_css_selector("div[class='product_label']").text
+    driver.get("https://www.saucedemo.com");
+    driver.findElement(By.id("user-name")).sendKeys("standard_user");
+    driver.findElement(By.id("password")).sendKeys("secret_sauce");
+    driver.findElement(By.id("login-button")).click();
     assert "Products" in product_label
     print(timestamp() + 'Login with username {:s} and password {:s} successfully.'.format(user, password))
     return driver
