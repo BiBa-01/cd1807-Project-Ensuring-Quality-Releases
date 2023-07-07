@@ -47,6 +47,13 @@ def add_cart(driver, n_items):
         driver.find_element_by_css_selector("button.inventory_details_back_button").click()  # Click the Back button
     print(timestamp() + '{:d} items are all added to shopping cart successfully.'.format(n_items))
 
+print("testing add to cart")
+add_to_cart_btns = driver.find_elements(By.CLASS_NAME, "btn_inventory")
+
+# Click three buttons to make the cart_value 6
+for btns in add_to_cart_btns[:6]:
+    btns.click()
+
 def remove_cart(driver, n_items):
     for i in range(n_items):
         element = "a[id='item_" + str(i) + "_title_link']"
