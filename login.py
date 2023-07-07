@@ -27,7 +27,7 @@ def login(user, password):
     login_password = driver.find_element("id","password")
     login_user.send_keys(user)
     login_password.send_keys(password)
-    driver.find_element_by_id("login-button").click()
+    driver.find_element("id","login-button").click()
     if WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "inventory_container"))):
         print('The Login was successful by the user name: ' + user)
         logging.info('The Login was successful by the user name: ' + user)
