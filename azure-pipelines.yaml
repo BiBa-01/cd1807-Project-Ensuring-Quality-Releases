@@ -215,9 +215,14 @@ stages:
                rm -rf *.csv stress-test-html-report/*
                echo "Run JMeter tests"
                apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stresstest.jmx \  
-               -l StressTest_Results.csv -e -f -o stresstest-html-report/
-               ls -la
-               ls -la stresstest-html-report/
+                -l log/jmeter/stress-test-result.csv \
+                                     -e -f -o log/jmeter/stress-test-report.html \
+                                     -j log/jmeter/jmeter-stress-test.log
+              # -l StressTest_Results.csv -e -f -o stresstest-html-report/
+               #ls -la
+               #ls -la stresstest-html-report/
+
+               
           - task: Bash@3
             displayName: Endurance Test
             inputs:
