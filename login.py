@@ -36,11 +36,11 @@ def login(user, password):
         logging.info('The login was unsuccessful')
         driver.close()
     # List of inventory
-    productList = driver.find_elements_by_class_name("inventory_list")
-    items = driver.find_elements_by_class_name("inventory_item_name")
-    addList = driver.find_elements_by_css_selector(
+    productList = driver.find_elements("name","inventory_list")
+    items = driver.find_elements("name","inventory_item_name")
+    addList = driver.find_elements("css_selector",
         "button[class='btn_primary btn_inventory']")
-    removeList = driver.find_elements_by_css_selector(
+    removeList = driver.find_elements("css_selector",
         "button[class='btn_secondary btn_inventory']")
     # Add items to cart
     print("Adding all products to cart")
