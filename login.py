@@ -3,23 +3,30 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 import datetime
 import logging
-logging.basicConfig(filename="./automatedtesting/selenium/seleniumlog.txt", format="%(asctime)s %(message)s",
-                    filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
+
+logging.basicConfig(
+    filename="./automatedtesting/selenium/seleniumlog.txt",
+    format="%(asctime)s %(message)s",
+    filemode="w",
+    level=logging.INFO,
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+
 # Create the timestamp
-def date ():
+def date():
     return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Start the browser and login with standard_user
-def login (user, password):
-    print (date() + ' Starting the browser...')
+def login(user, password):
+    print(date() + ' Starting the browser...')
     # --uncomment when running in Azure DevOps.
     options = ChromeOptions()
     options.add_argument("--headless")
     options.add_argument("--remote-debugging-port=9222")
     options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(options=options)
-    #driver = webdriver.Chrome()
-    print (date() + ' Browser started successfully. Navigating to the demo page to login.')
+    # driver = webdriver.Chrome()
+    print(date() + ' Browser started successfully. Navigating to the demo page to login.')
     driver.get('https://www.saucedemo.com/')
     driver.find_element_by_css_selector("input[id='user-name']").send_keys(user)
     driver.find_element_by_css_selector("input[id='password']").send_keys(password)
@@ -32,12 +39,12 @@ def login (user, password):
 
     # Add 6 items to cart
     for i in range(5):
-        element = "a[id='item_" + str(i) + "_title_link']" # Get the URL of the product
-        driver.find_element_by_css_selector(element).click() # Click the URL
-        driver.find_element_by_css_selector("button.btn_primary.btn_inventory").click() # Add the product to the cart
-        product = driver.find_element_by_css_selector("div[class='inventory_details_name']").text # Get the name of the product from the page
-        print(date() + " " + product + " added to shopping cart!") # Display message saying which product was added
-        driver.find_element_by_css_selector("button.inventory_details_back_button").click() # Click the Back button
+        element = "a[id='item_" + str(i) + "_title_link']"  # Get the URL of the product
+        driver.find_element_by_css_selector(element).click()  # Click the URL
+        driver.find_element_by_css_selector("button.btn_primary.btn_inventory").click()  # Add the product to the cart
+        product = driver.find_element_by_css_selector("div[class='inventory_details_name']").text  # Get the name of the product from the page
+        print(date() + " " + product + " added to shopping cart!")  # Display message saying which product was added
+        driver.find_element_by_css_selector("button.inventory_details_back_button").click()  # Click the Back button
 
     # Remove 6 items from cart
     for i in range(5):
@@ -45,7 +52,7 @@ def login (user, password):
         driver.find_element_by_css_selector(element).click()
         driver.find_element_by_css_selector("button.btn_secondary.btn_inventory").click()
         product = driver.find_element_by_css_selector("div[class='inventory_details_name']").text
-        print(date() + " " + product + " removed from shopping cart!") # Display message saying which product was added
+        print(date() + " " + product + " removed from shopping cart!")  # Display message saying which product was added
         driver.find_element_by_css_selector("button.inventory_details_back_button").click()
 
 login('standard_user', 'secret_sauce')
