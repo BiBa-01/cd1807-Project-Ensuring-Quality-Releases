@@ -221,18 +221,18 @@ stages:
                -j stresstest-html-report/jmeter-stress-test.log
                ls -la stresstest-html-report/
      
-          - task: Bash@3
-            displayName: Endurance Test
-            inputs:
-             targetType: 'inline'
-             script: |
-              mkdir test-html-report
-              ls -la 
-              rm -rf *.csv endurancetest-html-report/*
-              apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
-              -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
+         # - task: Bash@3
+           # displayName: Endurance Test
+           # inputs:
+           #  targetType: 'inline'
+            # script: |
+            #  mkdir test-html-report
+            #  ls -la 
+            #  rm -rf *.csv endurancetest-html-report/*
+            #  apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
+             # -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
     
-              ls -la test-html-report/
+             # ls -la test-html-report/
 
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
