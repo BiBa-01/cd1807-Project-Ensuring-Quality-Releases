@@ -299,7 +299,7 @@ stages:
                  sudo chmod 775 /selenium/seleniumlog.txt
                  sudo touch /selenium/selenium.log
                  echo "Starting Selenium Tests"
-                 python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | tee -a ./selenium/seleniumlog.txt #selenium-python-file/
+                 python3 -u $(Pipeline.Workspace)/login.py 2>&1 | tee -a /selenium/seleniumlog.txt #selenium-python-file/
                  cd $(System.DefaultWorkingDirectory)
                  mkdir -p logs/selenium
                  pwd
