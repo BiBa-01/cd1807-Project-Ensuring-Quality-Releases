@@ -23,7 +23,7 @@ def login(user, password):
     # login
     print('Logging in...')
     logging.info('Logging in...')
-    login_user = driver.find_element_by_id("user-name")
+    login_user = driver.find_element_by_id("user-name").send_keys(user)
     login_password = driver.find_element_by_id("password")
     login_user.send_keys(user)
     login_password.send_keys(password)
