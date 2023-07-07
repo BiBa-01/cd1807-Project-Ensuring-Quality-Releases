@@ -3,12 +3,18 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 import datetime
 from selenium.webdriver.common.by import By
-
 from time import sleep
 
 def timestamp():
     ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return (ts + '\t')
+
+# Set options for not prompting DevTools information
+options = Options()
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+
+print("testing started")
+driver = webdriver.Chrome(options=options)
 
 # Start the browser and login with standard_user
 def login(user, password):
