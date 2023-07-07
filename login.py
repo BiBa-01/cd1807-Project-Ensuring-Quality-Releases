@@ -2,7 +2,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 import datetime
-
+import logging
+logging.basicConfig(filename="./automatedtesting/selenium/seleniumlog.txt", format="%(asctime)s %(message)s",
+                    filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
 # Create the timestamp
 def date ():
     return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
