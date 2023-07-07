@@ -1,8 +1,10 @@
-# #!/usr/bin/env python
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 import datetime
+from selenium.webdriver.common.by import By
 
+from time import sleep
 
 def timestamp():
     ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -19,9 +21,9 @@ def login(user, password):
     driver.get('https://www.saucedemo.com/')
     # login
     driver.get("https://www.saucedemo.com");
-    driver.find_element(By.id,"user-name").sendKeys("standard_user");
-    driver.find_element(By.id,"password").sendKeys("secret_sauce");
-    driver.find_element(By.id,"login-button").click();
+    driver.find_element(By.ID,"user-name").sendKeys("standard_user");
+    driver.find_element(By.ID,"password").sendKeys("secret_sauce");
+    driver.find_element(By.ID,"login-button").click();
     assert "Products" in product_label
     print(timestamp() + 'Login with username {:s} and password {:s} successfully.'.format(user, password))
     return driver
