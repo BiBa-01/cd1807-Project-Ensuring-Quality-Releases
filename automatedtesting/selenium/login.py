@@ -4,6 +4,11 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 import datetime
 from selenium.webdriver.common.by import By
 from time import sleep
+import chromedriver_autoinstaller
+
+chromedriver_autoinstaller.install()  # Install Chrome driver
+
+driver = webdriver.Chrome()
 
 def timestamp():
     ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
