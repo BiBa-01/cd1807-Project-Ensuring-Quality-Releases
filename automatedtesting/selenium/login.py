@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 import datetime
@@ -8,25 +7,6 @@ import chromedriver_autoinstaller
 
 chromedriver_autoinstaller.install()  # Install Chrome driver
 
-driver = webdriver.Chrome()
-
-driver = login(TEST_USERNAME, TEST_PASSWORD)
-
-def timestamp():
-    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    return (ts + '\t')
-
-# Set options for not prompting DevTools information
-options = Options()
-options.add_experimental_option("excludeSwitches", ["enable-logging"])
-
-print("testing started")
-driver = webdriver.Chrome(options=options)
-
-driver.get("https://www.saucedemo.com/")
-sleep(3)
-
-# Start the browser and login with standard_user
 def login(user, password):
     print(timestamp() + 'Starting the browser...')
     options = ChromeOptions()
@@ -54,13 +34,6 @@ def add_cart(driver, n_items):
         driver.find_element_by_css_selector("button.inventory_details_back_button").click()  # Click the Back button
     print(timestamp() + '{:d} items are all added to shopping cart successfully.'.format(n_items))
 
-print("testing add to cart")
-add_to_cart_btns = driver.find_elements(By.CLASS_NAME, "btn_inventory")
-
-# Click three buttons to make the cart_value 6
-for btns in add_to_cart_btns[:6]:
-    btns.click()
-
 def remove_cart(driver, n_items):
     for i in range(n_items):
         element = "a[id='item_" + str(i) + "_title_link']"
@@ -71,6 +44,32 @@ def remove_cart(driver, n_items):
         driver.find_element_by_css_selector("button.inventory_details_back_button").click()
     print(timestamp() + '{:d} items are all removed from shopping cart successfully.'.format(n_items))
 
+def timestamp():
+    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return (ts + '\t')
+
+chromedriver_autoinstaller.install()  # Install Chrome driver
+
+driver = webdriver.Chrome()
+
+driver = login(TEST_USERNAME, TEST_PASSWORD)
+
+# Set options for not prompting DevTools information
+options = Options()
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+
+print("testing started")
+driver = webdriver.Chrome(options=options)
+
+driver.get("https://www.saucedemo.com/")
+sleep(3)
+
+print("testing add to cart")
+add_to_cart_btns = driver.find_elements(By.CLASS_NAME, "btn_inventory")
+
+# Click three buttons to make the cart_value 6
+for btns in add_to_cart_btns[:6]:
+     btns.click()
 
 if __name__ == "__main__":
     N_ITEMS = 6
