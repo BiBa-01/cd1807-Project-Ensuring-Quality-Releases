@@ -10,6 +10,8 @@ chromedriver_autoinstaller.install()  # Install Chrome driver
 
 driver = webdriver.Chrome()
 
+driver = login(TEST_USERNAME, TEST_PASSWORD)
+
 def timestamp():
     ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return (ts + '\t')
