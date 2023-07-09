@@ -17,9 +17,9 @@ def login(user, password):
     driver.get('https://www.saucedemo.com/')
     # login
     driver.get("https://www.saucedemo.com");
-    driver.find_element(By.ID,"user-name").sendKeys("standard_user");
-    driver.find_element(By.ID,"password").sendKeys("secret_sauce");
-    driver.find_element(By.ID,"login-button").click();
+    driver.find_element(By.ID, "user-name").send_keys("standard_user")
+    driver.find_element(By.ID, "password").send_keys("secret_sauce");
+    driver.find_element(By.ID, "login-button").click();
     assert "Products" in product_label
     print(timestamp() + 'Login with username {:s} and password {:s} successfully.'.format(user, password))
     return driver
