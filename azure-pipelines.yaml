@@ -244,6 +244,8 @@ stages:
     displayName: Selenium Tests
     environment:
       name: 'Test'      # ToDo: Change/provide a name
+      resourceType: VirtualMachine
+      tags: selenium
     strategy:
       runOnce:
         deploy:
@@ -278,8 +280,9 @@ stages:
                   sudo mkdir /var/log/selenium
                   sudo chmod 777 /var/log/selenium
                 fi
-                unzip -o $(Pipeline.Workspace)/drop-uitest/$(Build.BuildId)-uitest.zip -d .
-                python3 '$(System.DefaultWorkingDirectory)/automatedtesting/selenium'
+                unzip -o $(Pipeline.Workspace)/selenium/$(Build.BuildId)-uitest.zip -d .
+                
+                python3 '$(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py'
             #displayName: 'Run UI Test'
              #    echo "Completed Selenium Tests. Check selenium.log for results."
 
