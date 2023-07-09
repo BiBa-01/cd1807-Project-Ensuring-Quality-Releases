@@ -229,7 +229,7 @@ stages:
             displayName: 'Publish JMeter Test Results'
             inputs:
              targetPath: '$(Build.SourcesDirectory)/automatedtesting/jmeter'
-             artifact: 'jmeter-test-results'
+             artifact: 'jmeter-test-results.csv'
      
           - task: Bash@3
             displayName: Endurance Test
@@ -279,7 +279,7 @@ stages:
                  chromedriver --version
                  sudo mkdir -p $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
                  sudo chmod 775 $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
-                 sudo python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | sudo tee -a $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
+                 sudo python3 -u $(Build.SourcesDirectory)/automatedtesting/selenium/login.py 2>&1 | sudo tee -a $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
                  
                  cd $(Build.SourcesDirectory)
                  mkdir -p $(Build.SourcesDirectory)/selenium
