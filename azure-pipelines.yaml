@@ -14,7 +14,7 @@ variables:
   python.version: '3.7.6'
   # ToDo: Replace the service connection name as used in the DevOps project settings
   azureServiceConnectionId: 'myserviceconnection'
-  # Project root folder. Point to the folder containing manage.py file.
+  # Project root folder. Point to the folder containing login.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
   # Environment name
   environmentName: 'test'
@@ -132,7 +132,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive UI Tests'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/selenium'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-uitests.zip'
@@ -202,7 +202,7 @@ stages:
                 mkdir -p log/jmeter
                 wget "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.2.1.tgz"
                 tar -xf apache-jmeter-5.2.1.tgz
-                unzip -o drop-perftests #.zip
+                unzip -o drop-perftests.zip
                 # ./apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
                 cat automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
               workingDirectory: $(Build.ArtifactStagingDirectory)/ 
@@ -221,18 +221,18 @@ stages:
                -j stresstest-html-report/jmeter-stress-test.log
                ls -la stresstest-html-report/
      
-         # - task: Bash@3
-           # displayName: Endurance Test
-           # inputs:
-           #  targetType: 'inline'
-            # script: |
-            #  mkdir test-html-report
-            #  ls -la 
-            #  rm -rf *.csv endurancetest-html-report/*
-            #  apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
-             # -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
+          - task: Bash@3
+            displayName: Endurance Test
+            inputs:
+             targetType: 'inline'
+             script: |
+              mkdir test-html-report
+              ls -la 
+              rm -rf *.csv endurancetest-html-report/*
+              apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
+              -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
     
-             # ls -la test-html-report/
+              ls -la test-html-report/
 
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
@@ -247,70 +247,51 @@ stages:
           steps:
           #- download: current
           #  artifact: drop-uitests #drop-ui-tests     # ToDo: Change/provide a name
-          - checkout: self
-            persistCredentials: true
-          - publish: '$(System.DefaultWorkingDirectory)/login.py'
-            artifact: selenium-python-file
-          - download: current
-            artifact: selenium-python-file  
-          - task: PublishPipelineArtifact@1
-            inputs:
-             targetPath: 'login.py' #/automatedtesting/selenium
-             artifactName: 'selenium-python-file'
+        #  - checkout: self
+        #    persistCredentials: true
+        #  - publish: '$(System.DefaultWorkingDirectory)/login.py'
+        #    artifact: selenium-python-file
+         # - download: current
+         #   artifact: selenium-python-file  
+         # - task: PublishPipelineArtifact@1
+         #   inputs:
+          #   targetPath: 'login.py' #/automatedtesting/selenium
+          #   artifactName: 'selenium-python-file'
+         
           
           - task: Bash@3
             inputs:
               targetType: 'inline'
               script: |           
-                 sudo apt-get update
-                 sudo apt-get install -y chromium-browser chromium-chromedriver python3-pip unzip
-                 pip3 install selenium
-
-                 # sudo apt-get upgrade -y
-                 # sudo apt-get install python3-pip -y
-                 # sudo apt-get install unzip -y
-                 # sudo apt-get install -y chromium-browser
-                 # pip3 install selenium
-                 
-                 mkdir -p ~/app
-                 mv $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip ~/app
-                 cd ~/app
-                 unzip -o $(Build.BuildId)-uitests.zip
-
-                 # Set up ChromeDriver
-                 sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/local/bin/chromedriver
-
-                 # Run the Selenium tests
-                 python3 -u login.py
-                
-                 cd ~/
-                 DIR=/home/app #home/testuser/app
-                 if [ ! -d "$DIR" ]; then
-                    mkdir app
-                 fi
-                 mv /home/azagent/_work/1/drop-uitests/$(Build.BuildId)-drop-uitests.zip app
-                 cd app
-                 unzip -o $(Build.BuildId)-drop-uitests.zip
-                 FILE=/home/app/chromedriver_linux64.zip #/testuser/app/chromedriver_linux64.zip
-                 if [ ! -f "$FILE" ]; then
-                    LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-                    wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
-                    unzip -o chromedriver_linux64.zip
-                    sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
-                 fi
-                 export PATH=$PATH:/home/app #/home/testuser/app
-                 sudo mkdir -p /selenium/seleniumlog.txt
-                 sudo chmod 775 /selenium/seleniumlog.txt
-                 sudo touch /selenium/selenium.log
-                 echo "Starting Selenium Tests"
-                 python3 -u $(Pipeline.Workspace)/login.py 2>&1 | tee -a /selenium/seleniumlog.txt #selenium-python-file/
-                 cd $(System.DefaultWorkingDirectory)
-                 mkdir -p logs/selenium
-                 pwd
-                 cat automatedtesting/selenium/seleniumlog.txt
-                 cat automatedtesting/selenium/selenium.log
-                 ls -la  
-                 python3 -u $(System.DefaultWorkingDirectory)/login.py >> selenium.log #/automatedtesting/selenium
+               sudo apt-get update
+               sudo apt-get install unzip -y
+               sudo apt-get install -y chromium-browser	
+               if [ ! -f /usr/bin/chromedriver ]; then
+                  wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+                  unzip chromedriver_linux64.zip
+                  sudo mv chromedriver /usr/bin/chromedriver
+                  sudo chown root.root /usr/bin/chromedriver
+                  sudo chmod +x /usr/bin/chromedriver
+               fi	
+               sudo apt-get install python3-pip -y	
+               sudo pip3 install selenium==3.14.0
+               Log Analytics Agent
+               wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w '$(workspaceid)' -s '$(storage_key)' -d opinsights.azure.com	
+            displayName: 'Setup VM'
+          - download: current
+            displayName: 'Download py file'
+            artifact: Selenium
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                if [ ! -d /var/log/selenium ]; then
+                  sudo mkdir /var/log/selenium
+                  sudo chmod 777 /var/log/selenium
+                fi
+                unzip -o $(Pipeline.Workspace)/Selenium/uitest.zip -d .
+                python3 log.py
+            displayName: 'Run UI Test'
                  echo "Completed Selenium Tests. Check selenium.log for results."
 
             
