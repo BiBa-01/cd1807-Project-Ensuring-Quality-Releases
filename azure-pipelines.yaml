@@ -266,7 +266,7 @@ stages:
                sudo apt-get install python3-pip -y	
                sudo pip3 install selenium==3.14.0
                
-            displayName: 'Setup VM'
+          
           - download: current
             displayName: 'Download py file'
             artifact: drop-uitests
