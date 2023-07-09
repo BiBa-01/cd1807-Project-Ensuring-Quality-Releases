@@ -240,7 +240,7 @@ stages:
               rm -rf *.csv $(Build.SourcesDirectory)/endurancetest-html-report/*
               #apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
               # -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
-              jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test.jmx -l $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test_result.csv -e -o $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test_html_report/ -j ./automatedtesting/jmeter/jmeter_endurance_test.log
+              jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test.jmx -l $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test_result.csv -e -o $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test_html_report/ -j $(Build.SourcesDirectory)/automatedtesting/jmeter/jmeter_endurance_test.log
               displayName: 'Jmeter Endurance Test' 
               ls -la test-html-report/
 
@@ -292,16 +292,16 @@ stages:
                 unzip -o $(Pipeline.Workspace)/$(Build.BuildId)-uitest.zip -d .
                 #sudo touch $(Build.SourcesDirectory)/selenium/selenium.log
                 echo "Starting Selenium Tests"
-                python3 -u $(Build.SourcesDirectory)/automatedtesting/selenium/login.py 2>&1 | tee -a $(Build.SourcesDirectory)/seleniumlog.txt #selenium-python-file/
+                python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | tee -a $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt #selenium-python-file/
                 cd $(Build.SourcesDirectory)
-                mkdir -p $(Build.SourcesDirectory)/automatedtesting/jmeter/logs/selenium
+                mkdir -p $(Build.SourcesDirectory)/automatedtesting/selenium/logs/selenium
                 pwd
                 cat $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
                 cat $(Build.SourcesDirectory)/automatedtesting/selenium/selenium.log
                 ls -la  
 
                 
-                python3 -u $(Build.SourcesDirectory)/automatedtesting/selenium/login.py
+                python3 -u $(Build.SourcesDirectory)/login.py
             #displayName: 'Run UI Test'
              #    echo "Completed Selenium Tests. Check selenium.log for results."
 
