@@ -206,8 +206,8 @@ stages:
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o $(Pipeline.Workspace)/drop-perftests/$(Build.BuildId)-perftests.zip
               
-               # ./apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
-              #  cat automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
+                $(Build.SourcesDirectory)/apache-jmeter-5.2.1/bin/jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
+                cat $(Build.SourcesDirectory)/automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
               workingDirectory: $(Build.ArtifactStagingDirectory)/ 
           - task: Bash@3
             displayName: Stress Test
@@ -218,8 +218,8 @@ stages:
                ls -la
                rm -rf *.csv stresstest-html-report/*
                echo "Run JMeter tests"
-               apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stress_test.jmx \
-               jmeter -n -t ./automatedtesting/jmeter/stress_test.jmx -l ./automatedtesting/jmeter/stress_test_result.csv -e -o ./automatedtesting/jmeter/stress_test_html_report/ -
+               apache-jmeter-5.2.1/bin/jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/stress_test.jmx \
+               jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/stress_test.jmx -l $(Build.SourcesDirectory)/automatedtesting/jmeter/stress_test_result.csv -e -o $(Build.SourcesDirectory)/automatedtesting/jmeter/stress_test_html_report/ -
                # -l stresstest-html-report/stress-test-result.csv \
                # -e -f -o stresstest-html-report/stress-test-report.html \
                # -j stresstest-html-report/jmeter-stress-test.log
@@ -290,10 +290,10 @@ stages:
                   sudo mkdir /var/log/selenium
                   sudo chmod 777 /var/log/selenium
                 fi
-                unzip -o $(Pipeline.Workspace)/selenium/$(Build.BuildId)-uitest.zip -d .
-                sudo touch /selenium/selenium.log
+                unzip -o $(Pipeline.Workspace)/$(Build.BuildId)-uitest.zip -d .
+                #sudo touch /selenium/selenium.log
                 echo "Starting Selenium Tests"
-                python3 -u '$(Build.SourcesDirectory)/automatedtesting/selenium/login.py' 2>&1 | tee -a /selenium/seleniumlog.txt #selenium-python-file/
+                python3 -u $(Build.SourcesDirectory)/automatedtesting/selenium/login.py 2>&1 | tee -a /selenium/seleniumlog.txt #selenium-python-file/
                 cd $(System.DefaultWorkingDirectory)
                 mkdir -p logs/selenium
                 pwd
@@ -302,7 +302,7 @@ stages:
                 ls -la  
 
                 
-                python3 -u '$(Build.SourcesDirectory)/automatedtesting/selenium/login.py'
+                python3 -u $(Build.SourcesDirectory)/automatedtesting/selenium/login.py
             #displayName: 'Run UI Test'
              #    echo "Completed Selenium Tests. Check selenium.log for results."
 
