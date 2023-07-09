@@ -16,7 +16,7 @@ variables:
   azureServiceConnectionId: 'myserviceconnection'
   # Project root folder. Point to the folder containing login.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
-  echo $(System.DefaultWorkingDirectory)
+  
   # Environment name
   environmentName: 'test'
 
@@ -293,16 +293,16 @@ stages:
                 unzip -o $(Pipeline.Workspace)/selenium/$(Build.BuildId)-uitest.zip -d .
                 sudo touch /selenium/selenium.log
                 echo "Starting Selenium Tests"
-                python3 -u '$(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py' 2>&1 | tee -a /selenium/seleniumlog.txt #selenium-python-file/
+                python3 -u '$(Build.SourcesDirectory)/automatedtesting/selenium/login.py' 2>&1 | tee -a /selenium/seleniumlog.txt #selenium-python-file/
                 cd $(System.DefaultWorkingDirectory)
                 mkdir -p logs/selenium
                 pwd
-                cat automatedtesting/selenium/seleniumlog.txt
-                cat automatedtesting/selenium/selenium.log
+                cat $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
+                cat $(Build.SourcesDirectory)/automatedtesting/selenium/selenium.log
                 ls -la  
 
                 
-                python3 -u '$(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py'
+                python3 -u '$(Build.SourcesDirectory)/automatedtesting/selenium/login.py'
             #displayName: 'Run UI Test'
              #    echo "Completed Selenium Tests. Check selenium.log for results."
 
