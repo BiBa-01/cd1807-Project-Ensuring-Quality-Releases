@@ -242,6 +242,8 @@ stages:
   # ToDo: 
   - deployment: VMDeploy
     displayName: Selenium Tests
+    pool:
+      vmImage: ubuntu-latest  
     environment:
       name: 'Test'      # ToDo: Change/provide a name
       resourceType: VirtualMachine
