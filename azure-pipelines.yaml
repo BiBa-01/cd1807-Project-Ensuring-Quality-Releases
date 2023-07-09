@@ -205,7 +205,7 @@ stages:
                 wget "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.2.1.tgz"
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o $(Pipeline.Workspace)/drop-perftests/$(Build.BuildId)-perftests.zip
-                $(Build.SourcesDirectory)/apache-jmeter-5.2.1/bin/jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
+                $(Build.SourcesDirectory)/apache-jmeter-5.2.1/bin/jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test.jmx -j $(Build.SourcesDirectory)/automatedtesting/jmeter/jmeter.log -f
                 cat $(Build.SourcesDirectory)/automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
               workingDirectory: $(Build.SourcesDirectory)/
           - task: Bash@3
@@ -294,7 +294,7 @@ stages:
                 echo "Starting Selenium Tests"
                 python3 -u $(Build.SourcesDirectory)/automatedtesting/selenium/login.py 2>&1 | tee -a $(Build.SourcesDirectory)/seleniumlog.txt #selenium-python-file/
                 cd $(Build.SourcesDirectory)
-                mkdir -p logs/selenium
+                mkdir -p $(Build.SourcesDirectory)/automatedtesting/jmeter/logs/selenium
                 pwd
                 cat $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
                 cat $(Build.SourcesDirectory)/automatedtesting/selenium/selenium.log
