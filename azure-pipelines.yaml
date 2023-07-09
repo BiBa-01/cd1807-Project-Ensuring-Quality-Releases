@@ -123,7 +123,7 @@ stages:
       inputs:
         testResultsFormat: 'JUnit'
         testResultsFiles: '**/TEST-*.xml'
-        searchFolder:       '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
+        searchFolder:       '$(Build.SourcesDirectory)/automatedtesting/postman'
         mergeTestResults: true
         testRunTitle:       Postmann tests
 
@@ -279,7 +279,7 @@ stages:
                  sudo mkdir -p $(Build.SourcesDirectory)/seleniumlog.txt
                  sudo chmod 775 $(Build.SourcesDirectory)/seleniumlog.txt
                  sudo python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | sudo tee -a $(Build.SourcesDirectory)/seleniumlog.txt
-                 cd $(System.DefaultWorkingDirectory)
+                 cd $(Build.SourcesDirectory)
                  mkdir -p $(Build.SourcesDirectory)/selenium
                  pwd
                  cat $(Build.SourcesDirectory)/selenium/seleniumlog.txt
