@@ -221,7 +221,7 @@ stages:
               # -l stresstest-html-report/stress-test-result.csv \
               # -e -f -o stresstest-html-report/stress-test-report.html \
               # -j stresstest-html-report/jmeter-stress-test.log
-               ls -la stresstest-html-report/
+                ls -la stresstest-html-report/
      
           - task: Bash@3
             displayName: Endurance Test
