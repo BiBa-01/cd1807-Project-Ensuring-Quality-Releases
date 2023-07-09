@@ -250,7 +250,7 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     pool:
-      vmImage: ubuntu-latest  
+      vmImage: 'ubuntu-latest'  
     environment:
       name: 'Test'      # ToDo: Change/provide a name
       #resourceType: VirtualMachine
@@ -259,29 +259,28 @@ stages:
       runOnce:
         deploy:
           steps:
-           - job: SeleniumTest
            - task: Bash@3
              displayName: 'Running Selenium Test'
              inputs:
-             targetType: 'inline'
-             script: |
-              pwd
-              sudo apt-get update -y
-              sudo apt-get install python3-pip -y
-              sudo apt-get install unzip -y
-              sudo apt-get install -y chromium-browser
-              sudo apt-get install -y chromium-chromedriver
-              sudo pip3 install -U selenium
-              wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
-              unzip chromedriver_linux64.zip
-              rm -rf chromedriver_linux.zip
-              chromium-browser -version
-              chromedriver --version
-              sudo mkdir -p /var/logs/seleniumlogfile.txt
-              sudo chmod 775 /var/logs/seleniumlogfile.txt
-              sudo python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
-              cd $(System.DefaultWorkingDirectory)
-              mkdir -p logs/selenium
-              pwd
-              cat seleniumlog.txt
-              ls -la  
+               targetType: 'inline'
+               script: |
+                 pwd
+                 sudo apt-get update -y
+                 sudo apt-get install python3-pip -y
+                 sudo apt-get install unzip -y
+                 sudo apt-get install -y chromium-browser
+                 sudo apt-get install -y chromium-chromedriver
+                 sudo pip3 install -U selenium
+                 wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
+                 unzip chromedriver_linux64.zip
+                 rm -rf chromedriver_linux.zip
+                 chromium-browser -version
+                 chromedriver --version
+                 sudo mkdir -p /var/logs/seleniumlogfile.txt
+                 sudo chmod 775 /var/logs/seleniumlogfile.txt
+                 sudo python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
+                 cd $(System.DefaultWorkingDirectory)
+                 mkdir -p logs/selenium
+                 pwd
+                 cat seleniumlog.txt
+                 ls -la  
