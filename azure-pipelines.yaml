@@ -204,7 +204,7 @@ stages:
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o $(Pipeline.Workspace)/drop-perftests/$(Build.BuildId)-perftests.zip
               
-                # ./apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
+               # ./apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
               #  cat automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
               workingDirectory: $(Build.ArtifactStagingDirectory)/ 
           - task: Bash@3
@@ -216,10 +216,11 @@ stages:
                ls -la
                rm -rf *.csv stresstest-html-report/*
                echo "Run JMeter tests"
-               apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stress_test.jmx \
-               -l stresstest-html-report/stress-test-result.csv \
-               -e -f -o stresstest-html-report/stress-test-report.html \
-               -j stresstest-html-report/jmeter-stress-test.log
+               #apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stress_test.jmx \
+               jmeter -n -t ./automatedtesting/jmeter/stress_test.jmx -l ./automatedtesting/jmeter/stress_test_result.csv -e -o ./automatedtesting/jmeter/stress_test_html_report/ -
+              # -l stresstest-html-report/stress-test-result.csv \
+              # -e -f -o stresstest-html-report/stress-test-report.html \
+              # -j stresstest-html-report/jmeter-stress-test.log
                ls -la stresstest-html-report/
      
           - task: Bash@3
@@ -230,9 +231,10 @@ stages:
               mkdir test-html-report
               ls -la 
               rm -rf *.csv endurancetest-html-report/*
-              apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
-              -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
-    
+              #apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
+             # -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
+              jmeter -n -t ./automatedtesting/jmeter/endurance_test.jmx -l ./automatedtesting/jmeter/endurance_test_result.csv -e -o ./automatedtesting/jmeter/endurance_test_html_report/ -j ./automatedtesting/jmeter/jmeter_endurance_test.log
+              displayName: 'Jmeter Endurance Test' 
               ls -la test-html-report/
 
   #--------------------------------------------#  
@@ -290,7 +292,7 @@ stages:
                   sudo chmod 777 /var/log/selenium
                 fi
                 unzip -o $(Pipeline.Workspace)/drop-uitest/$(Build.BuildId)-uitest.zip -d .
-                python3 $(System.DefaultWorkingDirectory)/login.py
+                python3 $(System.DefaultWorkingDirectory)/automatedtesting/selenium/login.py
             #displayName: 'Run UI Test'
              #    echo "Completed Selenium Tests. Check selenium.log for results."
 
