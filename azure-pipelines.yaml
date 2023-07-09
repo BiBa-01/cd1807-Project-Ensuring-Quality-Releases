@@ -204,7 +204,7 @@ stages:
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o drop-perftests.zip
                 # ./apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
-                cat automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
+              #  cat automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
               workingDirectory: $(Build.ArtifactStagingDirectory)/ 
           - task: Bash@3
             displayName: Stress Test
