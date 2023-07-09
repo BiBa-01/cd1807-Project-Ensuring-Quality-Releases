@@ -278,9 +278,9 @@ stages:
                  chromedriver --version
                  sudo mkdir -p /var/logs/seleniumlogfile.txt
                  sudo chmod 775 /var/logs/seleniumlogfile.txt
-                 sudo python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
+                 sudo python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
                  cd $(System.DefaultWorkingDirectory)
                  mkdir -p logs/selenium
                  pwd
-                 cat seleniumlog.txt
+                 cat $(Build.SourcesDirectory)/selenium/seleniumlog.txt
                  ls -la  
