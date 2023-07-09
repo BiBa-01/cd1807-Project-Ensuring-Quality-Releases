@@ -167,9 +167,9 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
 
     # JMeter Test Suite - Publish    
-    - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
-      displayName: 'Upload Package'
-      artifact: drop-perftests
+     - publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-perftests.zip'
+       displayName: 'Upload Package'
+       artifact: drop-perftests
 
 #--------------------------------------------#  
 # DEPLOYMENT STAGE
@@ -288,7 +288,7 @@ stages:
                   sudo mkdir /var/log/selenium
                   sudo chmod 777 /var/log/selenium
                 fi
-                unzip -o $(Pipeline.Workspace)/Selenium/uitest.zip -d .
+                unzip -o $(Pipeline.Workspace)/drop-uitest/$(Build.BuildId)-uitest.zip -d .
                 python3 log.py
             #displayName: 'Run UI Test'
              #    echo "Completed Selenium Tests. Check selenium.log for results."
