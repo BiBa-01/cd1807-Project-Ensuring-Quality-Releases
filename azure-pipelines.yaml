@@ -292,7 +292,7 @@ stages:
                 unzip -o $(Pipeline.Workspace)/$(Build.BuildId)-uitest.zip -d .
                 #sudo touch $(Build.SourcesDirectory)/selenium/selenium.log
                 echo "Starting Selenium Tests"
-                python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | tee -a $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt #selenium-python-file/
+                #python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | tee -a $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt #selenium-python-file/
                 cd $(Build.SourcesDirectory)
                 mkdir -p $(Build.SourcesDirectory)/automatedtesting/selenium/logs/selenium
                 pwd
@@ -301,7 +301,7 @@ stages:
                 ls -la  
 
                 
-                python3 -u $(Build.SourcesDirectory)/login.py
+                python3 -u '$(Build.SourcesDirectory)/login.py'
             #displayName: 'Run UI Test'
              #    echo "Completed Selenium Tests. Check selenium.log for results."
 
