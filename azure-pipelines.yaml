@@ -290,7 +290,7 @@ stages:
                   sudo chmod 777 /var/log/selenium
                 fi
                 unzip -o $(Pipeline.Workspace)/drop-uitest/$(Build.BuildId)-uitest.zip -d .
-                python3 log.py
+                python3 $(System.DefaultWorkingDirectory)/login.py
             #displayName: 'Run UI Test'
              #    echo "Completed Selenium Tests. Check selenium.log for results."
 
