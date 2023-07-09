@@ -201,7 +201,7 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                mkdir -p log/jmeter
+                mkdir -p $(Build.SourcesDirectory)/jmeter/ # log/jmeter
                 wget "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.2.1.tgz"
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o $(Pipeline.Workspace)/drop-perftests/$(Build.BuildId)-perftests.zip
@@ -276,11 +276,11 @@ stages:
                  rm -rf chromedriver_linux.zip
                  chromium-browser -version
                  chromedriver --version
-                 sudo mkdir -p /var/logs/seleniumlogfile.txt
-                 sudo chmod 775 /var/logs/seleniumlogfile.txt
-                 sudo python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
+                 sudo mkdir -p $(Build.SourcesDirectory)/seleniumlog.txt
+                 sudo chmod 775 $(Build.SourcesDirectory)/seleniumlog.txt
+                 sudo python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | sudo tee -a $(Build.SourcesDirectory)/seleniumlog.txt
                  cd $(System.DefaultWorkingDirectory)
-                 mkdir -p logs/selenium
+                 mkdir -p $(Build.SourcesDirectory)/selenium
                  pwd
                  cat $(Build.SourcesDirectory)/selenium/seleniumlog.txt
                  ls -la  
