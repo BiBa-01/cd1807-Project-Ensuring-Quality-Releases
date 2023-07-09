@@ -218,9 +218,9 @@ stages:
                echo "Run JMeter tests"
                #apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/stress_test.jmx \
                jmeter -n -t ./automatedtesting/jmeter/stress_test.jmx -l ./automatedtesting/jmeter/stress_test_result.csv -e -o ./automatedtesting/jmeter/stress_test_html_report/ -
-              # -l stresstest-html-report/stress-test-result.csv \
-              # -e -f -o stresstest-html-report/stress-test-report.html \
-              # -j stresstest-html-report/jmeter-stress-test.log
+               # -l stresstest-html-report/stress-test-result.csv \
+               # -e -f -o stresstest-html-report/stress-test-report.html \
+               # -j stresstest-html-report/jmeter-stress-test.log
                 ls -la stresstest-html-report/
      
           - task: Bash@3
