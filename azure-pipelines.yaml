@@ -279,7 +279,7 @@ stages:
             displayName: 'Setup VM'
           - download: current
             displayName: 'Download py file'
-            artifact: Selenium
+            artifact: drop-uitests
           - task: Bash@3
             inputs:
               targetType: 'inline'
