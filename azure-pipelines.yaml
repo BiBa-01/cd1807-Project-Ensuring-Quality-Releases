@@ -205,30 +205,29 @@ stages:
                 wget "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.2.1.tgz"
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o $(Pipeline.Workspace)/drop-perftests/$(Build.BuildId)-perftests.zip
-              
                 $(Build.SourcesDirectory)/apache-jmeter-5.2.1/bin/jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test.jmx -j jmeter.log -f
                 cat $(Build.SourcesDirectory)/automatedtesting/jmeter/jmeter.log                                                                           # ToDo: Write your commands
-              workingDirectory: $(Build.ArtifactStagingDirectory)/ 
+              workingDirectory: $(Build.SourcesDirectory)/
           - task: Bash@3
             displayName: Stress Test
             inputs:
              targetType: 'inline'
              script: |
-               mkdir stresstest-html-report
+               mkdir $(Build.SourcesDirectory)/stresstest-html-report
                ls -la
-               rm -rf *.csv stresstest-html-report/*
+               rm -rf *.csv $(Build.SourcesDirectory)/stresstest-html-report/*
                echo "Run JMeter tests"
                apache-jmeter-5.2.1/bin/jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/stress_test.jmx \
                jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/stress_test.jmx -l $(Build.SourcesDirectory)/automatedtesting/jmeter/stress_test_result.csv -e -o $(Build.SourcesDirectory)/automatedtesting/jmeter/stress_test_html_report/ -
                # -l stresstest-html-report/stress-test-result.csv \
                # -e -f -o stresstest-html-report/stress-test-report.html \
                # -j stresstest-html-report/jmeter-stress-test.log
-                ls -la stresstest-html-report/
+                ls -la $(Build.SourcesDirectory)/stresstest-html-report/
 
           - task: PublishPipelineArtifact@1
             displayName: 'Publish JMeter Test Results'
             inputs:
-             targetPath: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter'
+             targetPath: '$(Build.SourcesDirectory)/automatedtesting/jmeter'
              artifact: 'jmeter-test-results'
      
           - task: Bash@3
@@ -236,12 +235,12 @@ stages:
             inputs:
              targetType: 'inline'
              script: |
-              mkdir test-html-report
+              mkdir $(Build.SourcesDirectory)/test-html-report
               ls -la 
-              rm -rf *.csv endurancetest-html-report/*
+              rm -rf *.csv $(Build.SourcesDirectory)/endurancetest-html-report/*
               #apache-jmeter-5.2.1/bin/jmeter -n -t automatedtesting/jmeter/endurance_test.jmx \
               # -l EnduranceTest_Results.csv -e -f -o test-html-report/ # automatedtesting/jmeter/endurance_test.jmx
-              jmeter -n -t ./automatedtesting/jmeter/endurance_test.jmx -l ./automatedtesting/jmeter/endurance_test_result.csv -e -o ./automatedtesting/jmeter/endurance_test_html_report/ -j ./automatedtesting/jmeter/jmeter_endurance_test.log
+              jmeter -n -t $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test.jmx -l $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test_result.csv -e -o $(Build.SourcesDirectory)/automatedtesting/jmeter/endurance_test_html_report/ -j ./automatedtesting/jmeter/jmeter_endurance_test.log
               displayName: 'Jmeter Endurance Test' 
               ls -la test-html-report/
 
@@ -291,10 +290,10 @@ stages:
                   sudo chmod 777 /var/log/selenium
                 fi
                 unzip -o $(Pipeline.Workspace)/$(Build.BuildId)-uitest.zip -d .
-                #sudo touch /selenium/selenium.log
+                #sudo touch $(Build.SourcesDirectory)/selenium/selenium.log
                 echo "Starting Selenium Tests"
-                python3 -u $(Build.SourcesDirectory)/automatedtesting/selenium/login.py 2>&1 | tee -a /selenium/seleniumlog.txt #selenium-python-file/
-                cd $(System.DefaultWorkingDirectory)
+                python3 -u $(Build.SourcesDirectory)/automatedtesting/selenium/login.py 2>&1 | tee -a $(Build.SourcesDirectory)/seleniumlog.txt #selenium-python-file/
+                cd $(Build.SourcesDirectory)
                 mkdir -p logs/selenium
                 pwd
                 cat $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
