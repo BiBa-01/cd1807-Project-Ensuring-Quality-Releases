@@ -291,8 +291,8 @@ stages:
                 fi
                 unzip -o $(Pipeline.Workspace)/Selenium/uitest.zip -d .
                 python3 log.py
-            displayName: 'Run UI Test'
-                 echo "Completed Selenium Tests. Check selenium.log for results."
+            #displayName: 'Run UI Test'
+             #    echo "Completed Selenium Tests. Check selenium.log for results."
 
             
            
