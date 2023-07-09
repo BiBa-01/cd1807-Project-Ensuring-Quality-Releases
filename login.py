@@ -1,14 +1,12 @@
-# #!/usr/bin/env python
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 import datetime
+from selenium.webdriver.common.by import By
+from time import sleep
+import chromedriver_autoinstaller
 
+chromedriver_autoinstaller.install()  # Install Chrome driver
 
-def timestamp():
-    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    return (ts + '\t')
-
-# Start the browser and login with standard_user
 def login(user, password):
     print(timestamp() + 'Starting the browser...')
     options = ChromeOptions()
@@ -19,9 +17,9 @@ def login(user, password):
     driver.get('https://www.saucedemo.com/')
     # login
     driver.get("https://www.saucedemo.com");
-    driver.find_element(By.id,"user-name").sendKeys("standard_user");
-    driver.find_element(By.id,"password").sendKeys("secret_sauce");
-    driver.find_element(By.id,"login-button").click();
+    driver.find_element(By.ID, "user-name").send_keys("standard_user")
+    driver.find_element(By.ID, "password").send_keys("secret_sauce");
+    driver.find_element(By.ID, "login-button").click();
     assert "Products" in product_label
     print(timestamp() + 'Login with username {:s} and password {:s} successfully.'.format(user, password))
     return driver
@@ -46,6 +44,32 @@ def remove_cart(driver, n_items):
         driver.find_element_by_css_selector("button.inventory_details_back_button").click()
     print(timestamp() + '{:d} items are all removed from shopping cart successfully.'.format(n_items))
 
+def timestamp():
+    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return (ts + '\t')
+
+chromedriver_autoinstaller.install()  # Install Chrome driver
+
+driver = webdriver.Chrome()
+
+driver = login(TEST_USERNAME, TEST_PASSWORD)
+
+# Set options for not prompting DevTools information
+options = Options()
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+
+print("testing started")
+driver = webdriver.Chrome(options=options)
+
+driver.get("https://www.saucedemo.com/")
+sleep(3)
+
+print("testing add to cart")
+add_to_cart_btns = driver.find_elements(By.CLASS_NAME, "btn_inventory")
+
+# Click three buttons to make the cart_value 6
+for btns in add_to_cart_btns[:6]:
+     btns.click()
 
 if __name__ == "__main__":
     N_ITEMS = 6
