@@ -259,51 +259,29 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: Bash@3
-            displayName: 'Run UI Test'
-            inputs:
-              targetType: 'inline'
-              script: |           
-               sudo apt-get update
-               sudo apt-get install unzip -y
-               sudo apt-get install -y chromium-browser	
-               if [ ! -f /usr/bin/chromedriver ]; then
-                  wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
-                  unzip chromedriver_linux64.zip
-                  sudo mv chromedriver /usr/bin/chromedriver
-                  sudo chown root.root /usr/bin/chromedriver
-                  sudo chmod +x /usr/bin/chromedriver
-               fi	
-               sudo apt-get install python3-pip -y	
-               sudo pip3 install selenium==3.14.0
-               
-          
-          - download: current
-            displayName: 'Download py file'
-            artifact: drop-uitests
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: |
-                if [ ! -d /var/log/selenium ]; then
-                  sudo mkdir /var/log/selenium
-                  sudo chmod 777 /var/log/selenium
-                fi
-                unzip -o $(Pipeline.Workspace)/$(Build.BuildId)-uitest.zip -d .
-                #sudo touch $(Build.SourcesDirectory)/selenium/selenium.log
-                echo "Starting Selenium Tests"
-                #python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | tee -a $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt #selenium-python-file/
-                cd $(Build.SourcesDirectory)
-                mkdir -p $(Build.SourcesDirectory)/automatedtesting/selenium/logs/selenium
-                pwd
-                cat $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
-                cat $(Build.SourcesDirectory)/automatedtesting/selenium/selenium.log
-                ls -la  
-
-                
-                python3 -u '$(Build.SourcesDirectory)/login.py'
-            #displayName: 'Run UI Test'
-             #    echo "Completed Selenium Tests. Check selenium.log for results."
-
-            
-           
+           - job: SeleniumTest
+           - task: Bash@3
+             displayName: 'Running Selenium Test'
+             inputs:
+             targetType: 'inline'
+             script: |
+              pwd
+              sudo apt-get update -y
+              sudo apt-get install python3-pip -y
+              sudo apt-get install unzip -y
+              sudo apt-get install -y chromium-browser
+              sudo apt-get install -y chromium-chromedriver
+              sudo pip3 install -U selenium
+              wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
+              unzip chromedriver_linux64.zip
+              rm -rf chromedriver_linux.zip
+              chromium-browser -version
+              chromedriver --version
+              sudo mkdir -p /var/logs/seleniumlogfile.txt
+              sudo chmod 775 /var/logs/seleniumlogfile.txt
+              sudo python3 -u $(Pipeline.Workspace)/selenium-python-file/login.py 2>&1 | sudo tee -a /var/logs/seleniumlogfile.txt
+              cd $(System.DefaultWorkingDirectory)
+              mkdir -p logs/selenium
+              pwd
+              cat seleniumlog.txt
+              ls -la  
