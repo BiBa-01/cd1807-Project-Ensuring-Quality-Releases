@@ -171,6 +171,7 @@ stages:
       displayName: 'Upload Package'
       artifact: drop-perftests
 
+
 #--------------------------------------------#  
 # DEPLOYMENT STAGE
 #--------------------------------------------#    
@@ -222,6 +223,12 @@ stages:
                # -e -f -o stresstest-html-report/stress-test-report.html \
                # -j stresstest-html-report/jmeter-stress-test.log
                 ls -la stresstest-html-report/
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish JMeter Test Results'
+            inputs:
+             targetPath: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter'
+             artifact: 'jmeter-test-results'
      
           - task: Bash@3
             displayName: Endurance Test
