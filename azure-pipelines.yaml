@@ -277,12 +277,12 @@ stages:
                  rm -rf chromedriver_linux.zip
                  chromium-browser -version
                  chromedriver --version
-                 sudo mkdir -p $(Build.SourcesDirectory)/seleniumlog.txt
-                 sudo chmod 775 $(Build.SourcesDirectory)/seleniumlog.txt
-                 sudo python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | sudo tee -a $(Build.SourcesDirectory)/selenium/seleniumlog.txt
+                 sudo mkdir -p $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
+                 sudo chmod 775 $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
+                 sudo python3 -u $(Build.SourcesDirectory)/login.py 2>&1 | sudo tee -a $(Build.SourcesDirectory)/automatedtesting/selenium/seleniumlog.txt
                  
                  cd $(Build.SourcesDirectory)
                  mkdir -p $(Build.SourcesDirectory)/selenium
                  pwd
-                 cat $(Build.SourcesDirectory)/selenium/seleniumlog.txt
+                 cat $(Build.SourcesDirectory)/automatedtesting/selenium/l/seleniumlog.txt
                  ls -la  
