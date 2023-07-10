@@ -1,23 +1,13 @@
 data "azurerm_resource_group" "existing" {
   name = "Azuredevops" # Replace with the name of your existing resource group
 }
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=3.0.0"
-    }
-  }
-}
+
 
 provider "azurerm" {
   version = ">=2.0"
 
   # Use the environmentServiceNameAzureRM variable as the service connection name
   subscription_id = var.environmentServiceNameAzureRM
-}
-
-provider "azurerm" {
   tenant_id       = "${var.tenant_id}"
   subscription_id = var.environmentServiceNameAzureRM #"${var.subscription_id}"
   client_id       = "${var.client_id}"
