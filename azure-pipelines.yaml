@@ -23,6 +23,7 @@ variables:
   #VMImage:
   vmimage: 'myImage'
 
+  environmentServiceNameAzureRM: 'myserviceconnection'
 stages:
 #--------------------------------------------#  
 # BUILD STAGE
