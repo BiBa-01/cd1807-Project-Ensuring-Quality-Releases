@@ -1,6 +1,14 @@
 data "azurerm_resource_group" "existing" {
   name = "Azuredevops" # Replace with the name of your existing resource group
 }
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.0.0"
+    }
+  }
+}
 
 provider "azurerm" {
   tenant_id       = "${var.tenant_id}"
@@ -13,14 +21,7 @@ provider "azurerm" {
         }
       }
  }
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "2.63"
-    }
-  }
-  }
+
 
 terraform {
   backend "azurerm" {
