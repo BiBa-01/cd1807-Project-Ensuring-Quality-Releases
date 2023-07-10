@@ -46,6 +46,8 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        terraform plan -out=tfplan
+        terraform apply -auto-approve tfplan
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         backendServiceArm: '$(azureServiceConnectionId)'
         backendAzureRmResourceGroupName: 'Azuredevops'
