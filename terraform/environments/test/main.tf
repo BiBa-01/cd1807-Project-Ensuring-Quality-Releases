@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "test" {
   location = "eastus"
   source               = "../../modules/resource_group"
   resource_group       = "${var.resource_group}"
-  location             = "${var.location}"
+  #location             = "${var.location}"
 }
 
 #module "resource_group" {
