@@ -21,8 +21,8 @@ resource "azurerm_linux_virtual_machine" "test" {
   network_interface_ids = [azurerm_network_interface.test.id]
 
   admin_ssh_key {
-    username = var.vm_admin_username
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC3cNDJ7MUZw/iaeXBW2fHRXkqNeqNL+bFTsjjMYH48T2VFpEO6WRajpSE7BbQwMCUIhRb2njuREoj1X7OMvoJlS6VUI6SF7aamPQMi7rbHn69N7PNmcqHKBau4CLIcGcSksNEa2mT6LEYaAZXjSj4whhJKdxvZ0UO/hUScVUU/ji4zd4Nd61f7SadKBRJTIgh79wAE3hvAoY3M4pUAdILbpZeeoup7EVr4h1TMh3dUzHFxvcAPoE8A0NxLtsbKKXlHecMiRSClvdXQ/uI3kINkpZgSD7Z2JGQDNKulFt+VQEwkghLhvO37mSoDZcGdMp7OHPad1NVSGEJhTFLLmkr7EtVzHgulF9YPu5u4EL6zsS02mJcbaIW29AlgrLBoJMCfgxM/PqFETKnt9HWg1Tynd6HjEfg5qvhYVGr+e+Pfk6lHAhRDp1bRbEDtP0B6NmXPKbpERVLq7n8lBKYIPQPXwbxEJBqPzxi4frNhGwQe7N9ZiwnXnE/yMIG7bkmJVEM= birte@cc-20ab936-7c5cfcbf7f-ctwnw"
+  username = "adminuser"
+  public_key = file("~/.ssh/id_rsa.pub")
 }
 
   os_disk {
