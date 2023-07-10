@@ -1,4 +1,7 @@
-﻿provider "azurerm" {
+data "azurerm_resource_group" "existing" {
+  name = "Azuredevops" # Replace with the name of your existing resource group
+}
+provider "azurerm" {
   tenant_id       = "${var.tenant_id}"
   subscription_id = "${var.subscription_id}"
   client_id       = "${var.client_id}"
@@ -27,13 +30,11 @@ terraform {
   #resource_group       = "${var.resource_group}"
   #location             = "${var.location}"
 #}
-data "azurerm_resource_group" "existing" {
-  name = "Azuredevops" # Replace with the name of your existing resource group
-}
-resource_group = data.azurerm_resource_group.existing.name
-#module "resource_group" {
+
+
+module "resource_group" {
 #  source               = "../../modules/resource_group"
- # resource_group       = "${var.resource_group}"
+ resource_group = data.azurerm_resource_group.existing.azuredevops
  # location             = "${var.location}"
 #}
 module "network" {
