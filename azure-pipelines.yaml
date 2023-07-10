@@ -18,7 +18,10 @@ variables:
   projectRoot: $(System.DefaultWorkingDirectory)
   
   # Environment name
-  environmentName: 'test'
+  environmentName: 'test_new'
+
+  #VMImage:
+  vmimage: 'myImage'
 
 stages:
 #--------------------------------------------#  
