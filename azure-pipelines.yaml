@@ -48,10 +48,10 @@ stages:
         command: 'init'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         backendServiceArm: '$(azureServiceConnectionId)'
-        backendAzureRmResourceGroupName: 'tfstatebb8'
-        backendAzureRmStorageAccountName: 'tfstatebb8'
-        backendAzureRmContainerName: 'tfstatebb8'
-        backendAzureRmKey: 'test.terraform.tfstate'
+        backendAzureRmResourceGroupName: 'Azuredevops'
+        backendAzureRmStorageAccountName: 'tfstatebb01'
+        backendAzureRmContainerName: 'tfstatebb01c'
+        backendAzureRmKey: 'test.terraform.tfstatebb01'
 
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
       displayName: Terraform validate
