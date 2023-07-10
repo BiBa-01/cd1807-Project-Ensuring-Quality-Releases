@@ -20,10 +20,10 @@ resource "azurerm_linux_virtual_machine" "test" {
   admin_username      =  var.vm_admin_username #"${var.vm_admin_username}"
   network_interface_ids = [azurerm_network_interface.test.id]
 
-  #admin_ssh_key {
-#  username = "azureuser"
-#  public_key = "AAAAB3NzaC1yc2EAAAADAQABAAABgQDfJRlaoTLF6zA7MEwhM72RwNjCw9B+ZaQTkDItOPabdE+dyy9Qp88tHu/A1PZwxcZejr814k0Aey8EE8PnvUc6CtvE99hUpk54Jqk7/y0FMVh9oSoQfKxl4t2YZuUhhMB1x9fAWzxunCUQzkCfTM9H7H0WiZF9Jj+bF1Y83oRFMIDaV4avdNH3giyYGbzWiGZwnFrbrVOdhQXRDKQh2QIdSr5j3VtZ2INSv2ytjLFw22rjqPh7MoEYkn6Ald6IxZqi0aCKRf/kZL4oIW9GWxVThk/9e+iqbTbZ4mNu6WVieyfhJ/SJFBWC4m7pHBAb9BHxDDZ0bpSAZK+rrOpLf8z99FE9R9WEvfJTJw982omAutLfO6JY9kwXeZ5Fg58oa2brv07zfIrZjWNbTl233b0b7utAHUDnh0oMOc6k1JgZwVjvtdULjxbhFNf6AVdSFezrcvBOyBposjYpXFouflxngNjSFwqQoyJCUPqEeqJg8EIWeu37Iw9jLqvD70y13fk= odl_user@cc-920f4460-565598d485-khldw" #file("~/.ssh/id_rsa.pub")
-#}
+   admin_ssh_key {
+    username = "azureuser"
+    public_key = file("~/.ssh/id_rsa.pub") #  "AAAAB3NzaC1yc2EAAAADAQABAAABgQC7V+IwEuZBg/p8gDBkb38npNBFgSDWQZANnlzyhvAWs92gJfJp7cty2mqblCGltEmKzfZXglcZJ3pzU+7iV8DVFU1zqUhSLLycWStBTusHKwjx/0FYCcwjmKJd3fGeDntApiZ+w97XOCIcBre7VCArMmR5du51yT2KH4HT4xsyjVQWNk6v+hfKQWlcAx24bxL6R9Dev1YXNEdJT9RWCdf85fflOR+eyiFAMDvnrpRDi/JiYdc8o8jcTaLb6PXd4Gntzfr8sWx56JtK/KWOvEF+1XbYEHUcRhF9FEutOwggPOFSv7WBA4Cbu+JN+O5x7Iy7atU8PacFviW8b1ja3hOWnIj4L7FIEjFPVEa636+6pGanMCBpa0oi/dWCkd9pKf78/rQdWv+W6c8mzUxrbxXGH5BGAIEYY2S+p6ASv5dbOlUtZDnNb9BXaz5xNzwpTjTDSTMy2azjp3Y2S8jSSl955B18EtRjBDA8/930A+u3Qu8oBA5wYeVnGJlMU7AboCc= birte@cc-914822a8-999f76d76-hrb82"
+}
 
   os_disk {
     caching           = "ReadWrite"
