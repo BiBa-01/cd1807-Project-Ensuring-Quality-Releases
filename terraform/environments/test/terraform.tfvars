@@ -1,8 +1,8 @@
 # Azure subscription vars
-subscription_id = "0ee6d06f-69ab-4b3b-9f35-003e1b6eb227" #"2d04f73e-87e7-4ffd-aa6f-c28d4b64c42b"
-client_id = "730bbe39-60ae-4848-89f4-d2c2a2be403e" #"47a292e1-8c66-4dcd-ba4e-1e1da31f1cc0"
-client_secret = "~B28Q~AOPLEj7czTct3gD.DmyjU.tDTyOWbvTcJN" # "mh-8Q~saZ44Y9oQ9HYF4TgRqUyJTiUd3~27A0cn0"
-tenant_id = "f958e84a-92b8-439f-a62d-4f45996b6d07" #"056f4b95-e7ad-457b-be95-35b3c88ebe9f"
+subscription_id = "96de3582-4a7a-4368-82f5-3a7f11e99896"
+client_id = "6d14cb4f-46c7-4185-85de-f3f4d11886e9"
+client_secret = "1cj8Q~brxRJbb8NP-U~vnQ4EkE18sEuyI3McvdsC"
+tenant_id = "056f4b95-e7ad-457b-be95-35b3c88ebe9f"
 
 # Resource Group/Location
 location = "East US"
