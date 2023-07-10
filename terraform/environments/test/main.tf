@@ -30,11 +30,12 @@ terraform {
 data "azurerm_resource_group" "existing" {
   name = "Azuredevops" # Replace with the name of your existing resource group
 }
-module "resource_group" {
-  source               = "../../modules/resource_group"
-  resource_group       = "${var.resource_group}"
-  location             = "${var.location}"
-}
+resource_group = data.azurerm_resource_group.existing.name
+#module "resource_group" {
+#  source               = "../../modules/resource_group"
+ # resource_group       = "${var.resource_group}"
+ # location             = "${var.location}"
+#}
 module "network" {
   source               = "../../modules/network"
   address_space        = "${var.address_space}"
