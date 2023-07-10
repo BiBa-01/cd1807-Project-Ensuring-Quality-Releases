@@ -2,19 +2,36 @@ data "azurerm_resource_group" "existing" {
   name = "Azuredevops" # Replace with the name of your existing resource group
 }
 
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 3.0"
+    }
+  }
 
 provider "azurerm" {
-  version = ">=3.0"
-  tenant_id       = "${var.tenant_id}"
-  subscription_id = var.environmentServiceNameAzureRM #"${var.subscription_id}"
-  client_id       = "${var.client_id}"
-  client_secret   = "${var.client_secret}"
+  tenant_id       = var.tenant_id
+  subscription_id = var.environmentServiceNameAzureRM
+  client_id       = var.client_id
+  client_secret   = var.client_secret
   features {
-        resource_group {
-        prevent_deletion_if_contains_resources = false
-        }
-      }
- }
+    resource_group {
+      prevent_deletion_if_contains_resources = false
+    }
+  }
+}
+#provider "azurerm" {
+#  tenant_id       = "${var.tenant_id}"
+#  subscription_id = var.environmentServiceNameAzureRM #"${var.subscription_id}"
+#  client_id       = "${var.client_id}"
+ # client_secret   = "${var.client_secret}"
+ # features {
+ #       resource_group {
+#        prevent_deletion_if_contains_resources = false
+ #       }
+ #     }
+# }
 
 
 terraform {
