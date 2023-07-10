@@ -4,10 +4,7 @@ data "azurerm_resource_group" "existing" {
 
 
 provider "azurerm" {
-  version = ">=2.0"
-
-  # Use the environmentServiceNameAzureRM variable as the service connection name
-  
+  version = ">=3.0"
   tenant_id       = "${var.tenant_id}"
   subscription_id = var.environmentServiceNameAzureRM #"${var.subscription_id}"
   client_id       = "${var.client_id}"
