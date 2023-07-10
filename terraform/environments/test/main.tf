@@ -15,15 +15,6 @@ provider "azurerm" {
  }
 
 terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      #version = ""
-    }
-  }
-   }
-
-terraform {
   backend "azurerm" {
     storage_account_name = "tfstatebb01"
     container_name       = "tfstatebb01c"
