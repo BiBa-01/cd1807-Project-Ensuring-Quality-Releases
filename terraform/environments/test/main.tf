@@ -8,11 +8,11 @@
  
 terraform {
   backend "azurerm" {
-    storage_account_name = "tfstatebb8"
-    container_name       = "tfstatebb8"
-    key                  = "test.terraform.tfstate"
-    #account_key         = "3gPHPoj0zW9xkF1aXeRlxz4px11MltR2S6meXTXIpjU8xJeCxl0VvYqnt+/cC7qiAC1dUgZI0btC+AStHukx0w=="
-    access_key           = "3gPHPoj0zW9xkF1aXeRlxz4px11MltR2S6meXTXIpjU8xJeCxl0VvYqnt+/cC7qiAC1dUgZI0btC+AStHukx0w=="
+    storage_account_name = "tfstatebb01"
+    container_name       = "tfstatebb01c"
+    key                  = "test.terraform.tfstatebb01c"
+    #account_key         = "3bmpVZCX1+twXV8zYy1LnisUkT8WIpxUdjEFk8yLgBsyVsFXEEvpy5AZXOs2G8QcSDL9cOznQuBi+AStAC3rFA=="
+    access_key           = "3bmpVZCX1+twXV8zYy1LnisUkT8WIpxUdjEFk8yLgBsyVsFXEEvpy5AZXOs2G8QcSDL9cOznQuBi+AStAC3rFA=="
    }
  }
 
