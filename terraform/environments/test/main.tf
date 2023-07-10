@@ -36,11 +36,11 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    storage_account_name = "tfstatebb02"
-    container_name       = "tfstatebb02"
-    key                  = "test.terraform.tfstatebb01c"
-    #account_key         = ""
-    access_key           = ""
+    storage_account_name = "tfstatebb05"
+    container_name       = "tfstatebb05"
+    key                  = "test.terraform.ttfstatebb05"
+    #account_key         = "ajBuYR35Oi7RtVe+cWyear6AcLg4igacNar7GvYkosYOYDLYxKfUOY52aD1+WYxV/WJ0hqbVs4H5+AStnz8zbA=="
+    access_key           = "ajBuYR35Oi7RtVe+cWyear6AcLg4igacNar7GvYkosYOYDLYxKfUOY52aD1+WYxV/WJ0hqbVs4H5+AStnz8zbA=="
    }
  }
 
