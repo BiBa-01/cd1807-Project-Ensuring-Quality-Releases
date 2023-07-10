@@ -53,18 +53,18 @@ stages:
         backendAzureRmContainerName: 'tfstatebb01c'
         backendAzureRmKey: 'test.terraform.tfstatebb01'
 
-   - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-     displayName: 'Terrafom plan'
-     inputs:
-       provider: 'azurerm'
-       command: 'plan'
-       commandOptions: '-out=tfplan'
-       workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-       backendServiceArm: '$(azureServiceConnectionId)'
-       backendAzureRmResourceGroupName: 'Azuredevops'
-       backendAzureRmStorageAccountName: 'tfstatebb01'
-       backendAzureRmContainerName: 'tfstatebb01c'
-       backendAzureRmKey: 'test.terraform.tfstatebb01'
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+      displayName: 'Terrafom plan'
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        commandOptions: '-out=tfplan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        backendServiceArm: '$(azureServiceConnectionId)'
+        backendAzureRmResourceGroupName: 'Azuredevops'
+        backendAzureRmStorageAccountName: 'tfstatebb01'
+        backendAzureRmContainerName: 'tfstatebb01c'
+        backendAzureRmKey: 'test.terraform.tfstatebb01'
 
 
 
