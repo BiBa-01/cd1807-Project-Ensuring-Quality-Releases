@@ -33,7 +33,7 @@ terraform {
 
 
 module "resource_group" {
-  resource_group = data.azurerm_resource_group.existing.azuredevops
+  resource_group = data.azurerm_resource_group.existing.Azuredevops
   source               = "../../modules/resource_group"
   
   location             = "${var.location}"
