@@ -3,7 +3,6 @@ data "azurerm_resource_group" "existing" {
 }
 
 provider "azurerm" {
-  source = "hashicorp/azurerm"
   tenant_id       = "${var.tenant_id}"
   subscription_id = "${var.subscription_id}"
   client_id       = "${var.client_id}"
@@ -13,6 +12,13 @@ provider "azurerm" {
         prevent_deletion_if_contains_resources = false
         }
       }
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "1.2.9"
+    }
+  }
    }
  
 terraform {
