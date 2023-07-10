@@ -7,7 +7,7 @@ provider "azurerm" {
   version = ">=2.0"
 
   # Use the environmentServiceNameAzureRM variable as the service connection name
-  subscription_id = var.environmentServiceNameAzureRM
+  
   tenant_id       = "${var.tenant_id}"
   subscription_id = var.environmentServiceNameAzureRM #"${var.subscription_id}"
   client_id       = "${var.client_id}"
