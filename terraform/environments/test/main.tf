@@ -12,6 +12,8 @@ provider "azurerm" {
         prevent_deletion_if_contains_resources = false
         }
       }
+ }
+
 terraform {
   required_providers {
     azurerm = {
@@ -20,7 +22,7 @@ terraform {
     }
   }
    }
- }
+
 terraform {
   backend "azurerm" {
     storage_account_name = "tfstatebb01"
